@@ -1,0 +1,53 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "demo", "demo\demo.vcproj", "{22824CCE-BFC2-4471-95FE-517C4DBA8105}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "stack2d", "stack2d\stack2d.vcproj", "{29CC7320-B7D7-4CB7-BC16-0D85962E14E1}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "stack3d", "stack3d\stack3d.vcproj", "{2450983A-67D0-4C4E-8DD8-AF02A401786B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "template", "template\template.vcproj", "{5895110B-5035-4BE5-A6A2-FE82CBDE04EE}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "glow", "glow\glow.vcproj", "{617A4BDA-7DCD-459D-99A7-0A37A99A005A}"
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+		{22824CCE-BFC2-4471-95FE-517C4DBA8105}.0 = {617A4BDA-7DCD-459D-99A7-0A37A99A005A}
+		{29CC7320-B7D7-4CB7-BC16-0D85962E14E1}.0 = {617A4BDA-7DCD-459D-99A7-0A37A99A005A}
+		{2450983A-67D0-4C4E-8DD8-AF02A401786B}.0 = {617A4BDA-7DCD-459D-99A7-0A37A99A005A}
+		{5895110B-5035-4BE5-A6A2-FE82CBDE04EE}.0 = {617A4BDA-7DCD-459D-99A7-0A37A99A005A}
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{22824CCE-BFC2-4471-95FE-517C4DBA8105}.Debug.ActiveCfg = Debug|Win32
+		{22824CCE-BFC2-4471-95FE-517C4DBA8105}.Debug.Build.0 = Debug|Win32
+		{22824CCE-BFC2-4471-95FE-517C4DBA8105}.Release.ActiveCfg = Release|Win32
+		{22824CCE-BFC2-4471-95FE-517C4DBA8105}.Release.Build.0 = Release|Win32
+		{29CC7320-B7D7-4CB7-BC16-0D85962E14E1}.Debug.ActiveCfg = Debug|Win32
+		{29CC7320-B7D7-4CB7-BC16-0D85962E14E1}.Debug.Build.0 = Debug|Win32
+		{29CC7320-B7D7-4CB7-BC16-0D85962E14E1}.Release.ActiveCfg = Release|Win32
+		{29CC7320-B7D7-4CB7-BC16-0D85962E14E1}.Release.Build.0 = Release|Win32
+		{2450983A-67D0-4C4E-8DD8-AF02A401786B}.Debug.ActiveCfg = Debug|Win32
+		{2450983A-67D0-4C4E-8DD8-AF02A401786B}.Debug.Build.0 = Debug|Win32
+		{2450983A-67D0-4C4E-8DD8-AF02A401786B}.Release.ActiveCfg = Release|Win32
+		{2450983A-67D0-4C4E-8DD8-AF02A401786B}.Release.Build.0 = Release|Win32
+		{5895110B-5035-4BE5-A6A2-FE82CBDE04EE}.Debug.ActiveCfg = Debug|Win32
+		{5895110B-5035-4BE5-A6A2-FE82CBDE04EE}.Debug.Build.0 = Debug|Win32
+		{5895110B-5035-4BE5-A6A2-FE82CBDE04EE}.Release.ActiveCfg = Release|Win32
+		{5895110B-5035-4BE5-A6A2-FE82CBDE04EE}.Release.Build.0 = Release|Win32
+		{617A4BDA-7DCD-459D-99A7-0A37A99A005A}.Debug.ActiveCfg = Debug|Win32
+		{617A4BDA-7DCD-459D-99A7-0A37A99A005A}.Debug.Build.0 = Debug|Win32
+		{617A4BDA-7DCD-459D-99A7-0A37A99A005A}.Release.ActiveCfg = Release|Win32
+		{617A4BDA-7DCD-459D-99A7-0A37A99A005A}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionItems) = postSolution
+		Item:1 = GPL.txt
+		Item:2 = README.txt
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal
