@@ -1,0 +1,552 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<html>
+
+<head>
+
+<title>
+GLOW Reference
+</title>
+
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3>
+GLOW API version 1.0 reference
+</h3>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+<hr>
+
+<h2>
+class GlowWidgetSubwindow
+</h2>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>General information</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>
+type: class
+<br>
+inherits: <tt><a href="GlowSubwindow.html">GlowSubwindow</a></tt>, <tt><a href="GlowWidgetRoot.html">GlowWidgetRoot</a></tt>
+<br>
+module: <tt><a href="M_glowWidget.html">glowWidget</a></tt>
+</b>
+</p>
+<p>
+<tt>GlowWidgetSubwindow</tt> is a subwindow that contains and manages widgets.
+</p>
+<p>
+GLOW programs that use widgets may place them in a subwindow using a <tt>GlowWidgetSubwindow</tt>.
+</p>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Methods</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Constructors and destructor</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt><b>GlowWidgetSubwindow</b>(<a href="GlowComponent.html">GlowComponent</a>* parent, const <a href="GlowWidgetSubwindowParams.html">GlowWidgetSubwindowParams</a>& params)</tt>
+</p>
+<blockquote>
+Creates a new <tt>GlowWidgetSubwindow</tt> with options specified by the given params. The subwindow is inserted as a child under <tt>parent</tt>.
+</blockquote>
+
+<p>
+<tt><b>GlowWidgetSubwindow</b>(<a href="GlowComponent.html">GlowComponent</a>* parent, int x, int y, int width, int height, <a href="Glow.html">Glow</a>::BufferType mode = <a href="GlowWidgetSubwindowParams.html">GlowWidgetSubwindowParams</a>::defaults.mode, <a href="Glow.html">Glow</a>::EventMask eventMask = <a href="GlowWidgetSubwindowParams.html">GlowWidgetSubwindowParams</a>::defaults.eventMask, <a href="GlowColor.html">GlowColor</a> backColor = <a href="GlowWidgetSubwindowParams.html">GlowWidgetSubwindowParams</a>::defaults.backColor)</tt>
+</p>
+<blockquote>
+Creates a new <tt>GlowWidgetSubwindow</tt> with options specified by the given params. The subwindow is inserted as a child under <tt>parent</tt>. <tt>x</tt> and <tt>y</tt> denote the pixel location of the top left corner of the subwindow, in parent window coordinates. <tt>width</tt> and <tt>height</tt> specify the width and height in pixels. <tt>mode</tt> gives the type of frame buffer to use, and <tt>eventMask</tt> specifies the types of events that are to be received. Normally, these two parameters should not be modified from the default. <tt>backColor</tt> gives the color of the background for the widgets.
+</blockquote>
+
+<p>
+<tt><b>GlowWidgetSubwindow</b>(void)</tt>
+</p>
+<blockquote>
+Creates a new <tt>GlowWidgetSubwindow</tt> but does not initialize it. A widget subwindow created in this way may not be used until its <tt>Init()</tt> method is called.
+</blockquote>
+
+<p>
+<tt>void <b>Init</b>(<a href="GlowComponent.html">GlowComponent</a>* parent, const <a href="GlowWidgetSubwindowParams.html">GlowWidgetSubwindowParams</a>& params)</tt>
+</p>
+<blockquote>
+Initializes the <tt>GlowWidgetSubwindow</tt> with options specified by the given params. The subwindow is inserted as a child under <tt>parent</tt>.
+</blockquote>
+
+<p>
+<tt>void <b>Init</b>(<a href="GlowComponent.html">GlowComponent</a>* parent, int x, int y, int width, int height, <a href="Glow.html">Glow</a>::BufferType mode = <a href="GlowWidgetSubwindowParams.html">GlowWidgetSubwindowParams</a>::defaults.mode, <a href="Glow.html">Glow</a>::EventMask eventMask = <a href="GlowWidgetSubwindowParams.html">GlowWidgetSubwindowParams</a>::defaults.eventMask, <a href="GlowColor.html">GlowColor</a> backColor = <a href="GlowWidgetSubwindowParams.html">GlowWidgetSubwindowParams</a>::defaults.backColor)</tt>
+</p>
+<blockquote>
+Initializes the <tt>GlowWidgetSubwindow</tt> with options specified by the given params. The subwindow is inserted as a child under <tt>parent</tt>. <tt>x</tt> and <tt>y</tt> denote the pixel location of the top left corner of the subwindow, in parent window coordinates. <tt>width</tt> and <tt>height</tt> specify the width and height in pixels. <tt>mode</tt> gives the type of frame buffer to use, and <tt>eventMask</tt> specifies the types of events that are to be received. Normally, these two parameters should not be modified from the default. <tt>backColor</tt> gives the color of the background for the widgets.
+</blockquote>
+
+<p>
+<tt>virtual <b>~GlowWidgetSubwindow</b>(void)</tt>
+</p>
+<blockquote>
+The destructor for <tt>GlowWidgetSubwindow</tt> removes the GLUT subwindow and recursively deletes all widgets under it.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Inherited methods</b>
+<br>
+These methods are inherited from <tt><a href="GlowWidgetRoot.html">GlowWidgetRoot</a></tt>.
+</p>
+
+<blockquote>
+
+<p>
+<tt><a href="GlowSubwindow.html">GlowSubwindow</a>* <b>Subwindow</b>(void) const</tt>
+</p>
+
+<p>
+<tt><a href="GlowColor.html">GlowColor</a> <b>GetBackColor</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>SetBackColor</b>(<a href="GlowColor.html">GlowColor</a> c)</tt>
+</p>
+
+<p>
+<tt>void <b>SetKeyboardFocus</b>(<a href="GlowWidget.html">GlowWidget</a>* widget)</tt>
+</p>
+
+<p>
+<tt><a href="GlowWidget.html">GlowWidget</a>* <b>GetKeyboardFocus</b>(void)</tt>
+</p>
+
+<p>
+<tt>void <b>AdvanceKeyboardFocus</b>(void)</tt>
+</p>
+
+<p>
+<tt><a href="GlowWidget.html">GlowWidget</a>* <b>FindWidget</b>(int& x, int& y)</tt>
+</p>
+
+<p>
+<tt>static void <b>RegisterFilter</b>(<a href="GlowWidgetKeyboardFilter.html">GlowWidgetKeyboardFilter</a>* filter)</tt>
+</p>
+
+<p>
+<tt>static void <b>UnregisterFilter</b>(<a href="GlowWidgetKeyboardFilter.html">GlowWidgetKeyboardFilter</a>* filter)</tt>
+</p>
+
+<p>
+<tt>static void <b>UnregisterAllFilters</b>(void)</tt>
+</p>
+
+<p>
+<tt>static unsigned int <b>NumRegisteredFilters</b>(void)</tt>
+</p>
+
+<p>
+<tt>static bool <b>IsFilterRegistered</b>(<a href="GlowWidgetKeyboardFilter.html">GlowWidgetKeyboardFilter</a>* filter)</tt>
+</p>
+
+</blockquote>
+
+
+<p>
+<b>Inherited methods</b>
+<br>
+These methods are inherited from <tt><a href="GlowSubwindow.html">GlowSubwindow</a></tt>.
+</p>
+
+<blockquote>
+
+<p>
+<tt>int <b>PositionX</b>(void) const</tt>
+</p>
+
+<p>
+<tt>int <b>PositionY</b>(void) const</tt>
+</p>
+
+<p>
+<tt>int <b>GlobalPositionX</b>(void) const</tt>
+</p>
+
+<p>
+<tt>int <b>GlobalPositionY</b>(void) const</tt>
+</p>
+
+<p>
+<tt>int <b>Width</b>(void) const</tt>
+</p>
+
+<p>
+<tt>int <b>Height</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>Move</b>(int x, int y)</tt>
+</p>
+
+<p>
+<tt>void <b>Reshape</b>(int width, int height)</tt>
+</p>
+
+<p>
+<tt>void <b>Raise</b>(void)</tt>
+</p>
+
+<p>
+<tt>void <b>Lower</b>(void)</tt>
+</p>
+
+<p>
+<tt>void <b>Show</b>(void)</tt>
+</p>
+
+<p>
+<tt>void <b>Hide</b>(void)</tt>
+</p>
+
+<p>
+<tt>void <b>Refresh</b>(void)</tt>
+</p>
+
+<p>
+<tt>void <b>SetRefreshEnabled</b>(bool enabled)</tt>
+</p>
+
+<p>
+<tt>bool <b>IsRefreshEnabled</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>SetAutoSwapBuffersEnabled</b>(bool enabled)</tt>
+</p>
+
+<p>
+<tt>bool <b>IsAutoSwapBuffersEnabled</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>NormalizeCoordinates</b>(int x, int y, GLfloat& xn, GLfloat& yn) const</tt>
+</p>
+
+<p>
+<tt><a href="Glow.html">Glow</a>::BufferType <b>GetBufferType</b>(void) const</tt>
+</p>
+
+<p>
+<tt><a href="GlowMenu.html">GlowMenu</a>* <b>GetMenu</b>(<a href="Glow.html">Glow</a>::MouseButton mouseButton) const</tt>
+</p>
+
+<p>
+<tt>void <b>SetMenu</b>(<a href="Glow.html">Glow</a>::MouseButton mouseButton, <a href="GlowMenu.html">GlowMenu</a>* menu = 0)</tt>
+</p>
+
+<p>
+<tt>void <b>UnsetMenu</b>(<a href="Glow.html">Glow</a>::MouseButton mouseButton)</tt>
+</p>
+
+<p>
+<tt>int <b>GetCursor</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>SetCursor</b>(int cursor)</tt>
+</p>
+
+<p>
+<tt><a href="Glow.html">Glow</a>::EventMask <b>GetEventMask</b>(void) const</tt>
+</p>
+
+<p>
+<tt><a href="Glow.html">Glow</a>::EventMask <b>GetInactiveEventMask</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>SetEventMask</b>(<a href="Glow.html">Glow</a>::EventMask mask)</tt>
+</p>
+
+<p>
+<tt>void <b>SetInactiveEventMask</b>(<a href="Glow.html">Glow</a>::EventMask mask)</tt>
+</p>
+
+<p>
+<tt>int <b>GlutWindowNum</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>MakeCurGlutWindow</b>(void)</tt>
+</p>
+
+<p>
+<tt>int <b>GlutInfo</b>(int whichInfo) const</tt>
+</p>
+
+</blockquote>
+
+
+<p>
+<b>Inherited methods</b>
+<br>
+These methods are inherited from <tt><a href="GlowComponent.html">GlowComponent</a></tt>.
+</p>
+
+<blockquote>
+
+<p>
+<tt>void <b>Close</b>(void)</tt>
+</p>
+
+<p>
+<tt><a href="GlowComponent.html">GlowComponent</a>* <b>Parent</b>(void) const</tt>
+</p>
+
+<p>
+<tt><a href="GlowSubwindow.html">GlowSubwindow</a>* <b>WhichWindow</b>(void)</tt>
+</p>
+<blockquote>
+Note: For a subwindow, <tt>WhichWindow()</tt> returns <tt>this</tt>.
+</blockquote>
+
+<p>
+<tt><a href="GlowSubwindow.html">GlowSubwindow</a>* <b>ParentWindow</b>(void) const</tt>
+</p>
+
+<p>
+<tt>GlowWindow* <b>ToplevelWindow</b>(void)</tt>
+</p>
+
+<p>
+<tt>bool <b>IsToplevel</b>(void) const</tt>
+</p>
+
+<p>
+<tt><a href="GlowComponent.html">GlowComponent</a>* <b>Next</b>(void) const</tt>
+</p>
+
+<p>
+<tt><a href="GlowComponent.html">GlowComponent</a>* <b>Prev</b>(void) const</tt>
+</p>
+
+<p>
+<tt>int <b>NumChildren</b>(void) const</tt>
+</p>
+
+<p>
+<tt><a href="GlowComponent.html">GlowComponent</a>* <b>FirstChild</b>(void) const</tt>
+</p>
+
+<p>
+<tt><a href="GlowComponent.html">GlowComponent</a>* <b>LastChild</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>ReorderChild</b>(<a href="GlowComponent.html">GlowComponent</a>* child, <a href="GlowComponent.html">GlowComponent</a>* pos)</tt>
+</p>
+
+<p>
+<tt>void <b>KillChildren</b>(void)</tt>
+</p>
+
+<p>
+<tt>void <b>Activate</b>(void)</tt>
+</p>
+
+<p>
+<tt>void <b>Deactivate</b>(void)</tt>
+</p>
+
+<p>
+<tt>bool <b>IsActive</b>(void)</tt>
+</p>
+
+<p>
+<tt>bool <b>IsInactive</b>(void)</tt>
+</p>
+
+<p>
+<tt>bool <b>IsActiveStandby</b>(void)</tt>
+</p>
+
+<p>
+<tt>void <b>Paint</b>(void)</tt>
+</p>
+
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Overrideable methods</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Inherited methods</b>
+<br>
+These overrideable methods are inherited from <tt><a href="GlowSubwindow.html">GlowSubwindow</a></tt>.
+</p>
+
+<blockquote>
+
+<p>
+<tt>virtual void <b>OnMouseDown</b>(<a href="Glow.html">Glow</a>::MouseButton mouseButton, int x, int y, <a href="Glow.html">Glow</a>::Modifiers modifiers)</tt>
+</p>
+<blockquote>
+<tt>GlowWidgetSubwindow</tt> overrides this method to call <tt><a href="GlowWidgetRoot.html">GlowWidgetRoot</a>::WRMouseDown()</tt>.
+</blockquote>
+
+<p>
+<tt>virtual void <b>OnMouseUp</b>(<a href="Glow.html">Glow</a>::MouseButton mouseButton, int x, int y, <a href="Glow.html">Glow</a>::Modifiers modifiers)</tt>
+</p>
+<blockquote>
+<tt>GlowWidgetSubwindow</tt> overrides this method to call <tt><a href="GlowWidgetRoot.html">GlowWidgetRoot</a>::WRMouseUp()</tt>.
+</blockquote>
+
+<p>
+<tt>virtual void <b>OnMenuDown</b>(int x, int y)</tt>
+</p>
+
+<p>
+<tt>virtual void <b>OnMenuUp</b>()</tt>
+</p>
+
+<p>
+<tt>virtual void <b>OnMouseMotion</b>(int x, int y)</tt>
+</p>
+
+<p>
+<tt>virtual void <b>OnMouseDrag</b>(int x, int y)</tt>
+</p>
+<blockquote>
+<tt>GlowWidgetSubwindow</tt> overrides this method to call <tt><a href="GlowWidgetRoot.html">GlowWidgetRoot</a>::WRMouseDrag()</tt>.
+</blockquote>
+
+<p>
+<tt>virtual void <b>OnMouseEnter</b>(void)</tt>
+</p>
+
+<p>
+<tt>virtual void <b>OnMouseExit</b>(void)</tt>
+</p>
+
+<p>
+<tt>virtual void <b>OnKeyboard</b>(<a href="Glow.html">Glow</a>::KeyCode key, int x, int y, <a href="Glow.html">Glow</a>::Modifiers modifiers)</tt>
+</p>
+<blockquote>
+<tt>GlowWidgetSubwindow</tt> overrides this method to call <tt><a href="GlowWidgetRoot.html">GlowWidgetRoot</a>::WRKeyboard()</tt>.
+</blockquote>
+
+<p>
+<tt>virtual void <b>OnDirectMenuHit</b>(const <a href="GlowMenuMessage.html">GlowMenuMessage</a>& message)</tt>
+</p>
+
+<p>
+<tt>virtual void <b>OnReshape</b>(int width, int height)</tt>
+</p>
+
+<p>
+<tt>virtual void <b>OnInvisible</b>(void)</tt>
+</p>
+
+<p>
+<tt>virtual void <b>OnVisible</b>(void)</tt>
+</p>
+
+</blockquote>
+
+
+<p>
+<b>Inherited methods</b>
+<br>
+These overrideable methods are inherited from <tt><a href="GlowComponent.html">GlowComponent</a></tt>.
+</p>
+
+<blockquote>
+
+<p>
+<tt>virtual bool <b>OnBeginPaint</b>(void)</tt>
+</p>
+<blockquote>
+<tt>GlowWidgetSubwindow</tt> overrides this method to call <tt><a href="GlowWidgetRoot.html">GlowWidgetRoot</a>::WRBeginPaint()</tt>.
+</blockquote>
+
+<p>
+<tt>virtual void <b>OnEndPaint</b>(void)</tt>
+</p>
+<blockquote>
+<tt>GlowWidgetSubwindow</tt> overrides this method to call <tt><a href="GlowWidgetRoot.html">GlowWidgetRoot</a>::WREndPaint()</tt>.
+</blockquote>
+
+<p>
+<tt>virtual void <b>OnActivate</b>(void)</tt>
+</p>
+
+<p>
+<tt>virtual void <b>OnDeactivate</b>(void)</tt>
+</p>
+
+</blockquote>
+
+</blockquote>
+
+
+<hr size=2>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+
+<hr size=2>
+
+<p>
+<address>
+<a href="http://www.ugcs.caltech.edu/~dazuma/glow/">The GLOW Toolkit</a>
+</address>
+</p>
+
+
+</body>
+
+</html>

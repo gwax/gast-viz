@@ -1,0 +1,231 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<html>
+
+<head>
+
+<title>
+GLOW Reference
+</title>
+
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3>
+GLOW API version 1.0 reference
+</h3>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+<hr>
+
+<h2>
+class TSender
+</h2>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>General information</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>
+type: template &lt; typename T &gt; class
+<br>
+inherits: (none)
+<br>
+module: <tt><a href="M_glowSenderReceiver.html">glowSenderReceiver</a></tt>
+</b>
+</p>
+<p>
+<tt>TSender</tt> is a templated class that represents the sending endpoint of an object communication line. The template type is the type of message that is broadcast by this sender. A sender may be bound to any number of <tt><a href="TReceiver.html">TReceiver</a></tt>s templated on the same message type. When the sender sends a message, every receiver is notified. If a receiver is deleted, the sender automatically detects the condition and unbinds itself from the deceased.
+</p>
+<p>
+Most GLOW programs will encounter <tt>TSender</tt>s when dealing with menus, idle and timer tasks, or widgets.
+</p>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Types</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Types</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>typename <b>MessageType</b></tt>
+</p>
+<blockquote>
+A synonym for the type of message.
+</blockquote>
+
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Methods</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Constructor</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt><b>TSender</b>(void)</tt>
+</p>
+<blockquote>
+Creates a new <tt>TSender</tt> bound to nothing.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Managing the receiver list</b>
+<br>
+Manage the list of receivers for this sender using these methods.
+</p>
+
+<blockquote>
+
+<p>
+<tt>void <b>Bind</b>(<a href="TReceiver.html">TReceiver</a>&lt;T&gt;* receiver)</tt>
+</p>
+<blockquote>
+Binds to the given receiver. Throws an assertion if the sender is already bound to this receiver.
+</blockquote>
+
+<p>
+<tt>void <b>Unbind</b>(<a href="TReceiver.html">TReceiver</a>&lt;T&gt;* receiver)</tt>
+</p>
+<blockquote>
+Unbinds from the given receiver. Throws an assertion if the sender is not bound to this receiver.
+</blockquote>
+
+<p>
+<tt>void <b>UnbindAll</b>(void)</tt>
+</p>
+<blockquote>
+Unbinds this sender from all receivers.
+</blockquote>
+
+<p>
+<tt>bool <b>IsBoundTo</b>(<a href="TReceiver.html">TReceiver</a>&lt;T&gt;* receiver)</tt>
+</p>
+<blockquote>
+Returns true if and only if this sender is bound to the given receiver.
+</blockquote>
+
+<p>
+<tt>unsigned int <b>NumReceivers</b>(void)</tt>
+</p>
+<blockquote>
+Returns the number of receivers bound to this sender.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Sending messages</b>
+<br>
+This method sends messages to bound receivers.
+</p>
+
+<blockquote>
+
+<p>
+<tt>void <b>Send</b>(T message)</tt>
+</p>
+<blockquote>
+Sends the given message to all bound receivers.
+</blockquote>
+
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Static methods</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Sending messages without binding</b>
+<br>
+You may also send messages to single receivers without binding.
+</p>
+
+<blockquote>
+
+<p>
+<tt>static void <b>Send</b>(<a href="TReceiver.html">TReceiver</a>&lt;T&gt;* receiver, T message)</tt>
+</p>
+<blockquote>
+Sends the given message to the given receiver.
+</blockquote>
+
+</blockquote>
+
+</blockquote>
+
+<hr size=2>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+<hr size=2>
+
+<p>
+<address>
+<a href="http://www.ugcs.caltech.edu/~dazuma/glow/">The GLOW Toolkit</a>
+</address>
+</p>
+
+
+</body>
+
+</html>

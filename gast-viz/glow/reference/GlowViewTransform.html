@@ -1,0 +1,468 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<html>
+
+<head>
+
+<title>
+GLOW Reference
+</title>
+
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3>
+GLOW API version 1.0 reference
+</h3>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+<hr>
+
+<h2>
+class GlowViewTransform
+</h2>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>General information</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>
+type: class
+<br>
+inherits: <tt><a href="GlowComponent.html">GlowComponent</a></tt>
+<br>
+module: <tt><a href="M_glowViewTransform.html">glowViewTransform</a></tt>
+</b>
+</p>
+<p>
+<tt>GlowViewTransform</tt> is a component that causes its children to be drawn with a 3D transform applied. The transform itself is specified by a <tt><a href="GlowTransformData.html">GlowTransformData</a></tt> object. This component is similar to a VRML transform node, and can be used to create a scene graph using GLOW components. Another use for this component is for implementing a slave to a <tt><a href="GlowViewManipulator.html">GlowViewManipulator</a></tt>. By pointing a <tt>GlowViewTransform</tt> to the manipulator's transform data, you can cause the transform to match the manipulator's motion.
+</p>
+<p>
+GLOW programs that render 3D scenes may find <tt>GlowViewTransform</tt> useful for managing 3D transforms.
+</p>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Methods</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Constructors and destructor</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt><b>GlowViewTransform</b>(<a href="GlowComponent.html">GlowComponent</a>* parent, const <a href="GlowViewTransformParams.html">GlowViewTransformParams</a>& params)</tt>
+</p>
+<blockquote>
+Creates a new <tt>GlowViewTransform</tt> using the given <tt>params</tt>, and locates it underneath <tt>parent</tt> in the component hierarchy.
+</blockquote>
+
+<p>
+<tt><b>GlowViewTransform</b>(void)</tt>
+</p>
+<blockquote>
+Creates a new <tt>GlowViewTransform</tt> but does not initialize it. A component created in this way may not be used until its <tt>Init()</tt> method is called.
+</blockquote>
+
+<p>
+<tt>void <b>Init</b>(<a href="GlowComponent.html">GlowComponent</a>* parent, const <a href="GlowViewTransformParams.html">GlowViewTransformParams</a>& params)</tt>
+</p>
+<blockquote>
+Initializes a new <tt>GlowViewTransform</tt> using the given <tt>params</tt>, and locates it underneath <tt>parent</tt> in the component hierarchy.
+</blockquote>
+
+<p>
+<tt>virtual <b>~GlowViewTransform</b>(void)</tt>
+</p>
+<blockquote>
+The destructor for <tt>GlowViewTransform</tt> also recursively deletes the components's children in the hierarchy.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Transform data methods</b>
+<br>
+These methods essentially just call the corresponding methods on the current transform data object. They are duplicated in <tt>GlowViewTransform</tt> for convenience.
+</p>
+
+<blockquote>
+
+<p>
+<tt>void <b>Set</b>(const Vec3f& trans, const Quatf& rot, GLfloat scale)</tt>
+</p>
+<blockquote>
+Sets the current transform.
+</blockquote>
+
+<p>
+<tt>void <b>SetTranslation</b>(const Vec3f& trans)</tt>
+</p>
+<blockquote>
+Sets the current translation vector on the transform data.
+</blockquote>
+
+<p>
+<tt>void <b>SetRotation</b>(const Quatf& rot)</tt>
+</p>
+<blockquote>
+Sets the current rotation quaternion on the transform data.
+</blockquote>
+
+<p>
+<tt>void <b>SetScale</b>(GLfloat scale)</tt>
+</p>
+<blockquote>
+Sets the current scale factor on the transform data.
+</blockquote>
+
+<p>
+<tt>void <b>SetIdentity</b>(void)</tt>
+</p>
+<blockquote>
+Sets the transform data to the identity transform.
+</blockquote>
+
+<p>
+<tt>void <b>AddTranslation</b>(const Vec3f& trans)</tt>
+</p>
+<blockquote>
+Adds the given translation vector to the transform data.
+</blockquote>
+
+<p>
+<tt>void <b>AddRotation</b>(const Quatf& rot)</tt>
+</p>
+<blockquote>
+Adds the given rotation quaternion to the transform data.
+</blockquote>
+
+<p>
+<tt>void <b>AddScale</b>(GLfloat scale)</tt>
+</p>
+<blockquote>
+Adds the given scale factor to the transform data.
+</blockquote>
+
+<p>
+<tt>const Vec3f& <b>GetTranslation</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the current translation vector of the transform data.
+</blockquote>
+
+<p>
+<tt>const Quatf& <b>GetRotation</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the current rotation quaternion of the transform data.
+</blockquote>
+
+<p>
+<tt>GLfloat <b>GetScale</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the current scale factor of the transform data.
+</blockquote>
+
+<p>
+<tt>Vec3f <b>Apply</b>(const Vec3f& vec) const</tt>
+</p>
+<blockquote>
+Returns the result of applying the current transform to the given vector.
+</blockquote>
+
+<p>
+<tt>Vec3f <b>ApplyInverse</b>(const Vec3f& vec) const</tt>
+</p>
+<blockquote>
+Returns the result of applying the inverse of the current transform to the given vector.
+</blockquote>
+
+<p>
+<tt>void <b>ApplyToGLMatrix</b>(void) const</tt>
+</p>
+<blockquote>
+Multiplies the current OpenGL matrix by the current transform.
+</blockquote>
+
+<p>
+<tt>void <b>ApplyInverseToGLMatrix</b>(void) const</tt>
+</p>
+<blockquote>
+Multiplies the current OpenGL matrix by the inverse of the current transform.
+</blockquote>
+
+<p>
+<tt>void <b>GetGLMatrixf</b>(GLfloat* matrix) const</tt>
+</p>
+<blockquote>
+Sets <tt>matrix[0]</tt> through <tt>matrix[15]</tt> to the matrix representing the current transform, in OpenGL (column-major) order.
+</blockquote>
+
+<p>
+<tt>void <b>GetMatrix</b>(Mat4f& matrix) const</tt>
+</p>
+<blockquote>
+Sets <tt>matrix</tt> to the matrix representing the current transform.
+</blockquote>
+
+<p>
+<tt>bool <b>IsSpinning</b>(void) const</tt>
+</p>
+<blockquote>
+Returns true if the transform data is currently spinning.
+</blockquote>
+
+<p>
+<tt>void <b>StartSpinning</b>(const Quatf& spin)</tt>
+</p>
+<blockquote>
+Starts the transform spinning, using the given quaternion as the delta rotation.
+</blockquote>
+
+<p>
+<tt>void <b>StopSpinning</b>(void)</tt>
+</p>
+<blockquote>
+Stops spinning.
+</blockquote>
+
+<p>
+<tt>void <b>StepSpin</b>(void)</tt>
+</p>
+<blockquote>
+Advances the spin one step. Normally this is called automatically during idle time when spinning is on, so you do not need to call it manually.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Transform data object management</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt><a href="GlowTransformData.html">GlowTransformData</a>* <b>TransformData</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the transform data object currently used by this transform component.
+</blockquote>
+
+<p>
+<tt>void <b>ConnectTo</b>(<a href="GlowTransformData.html">GlowTransformData</a>* transform)</tt>
+</p>
+<blockquote>
+Uses the given transform data instead of the current one.
+</blockquote>
+
+<p>
+<tt>void <b>ConnectTo</b>(GlowViewTransform* transform)</tt>
+</p>
+<blockquote>
+Uses the transform data associatedd with the given view transform.
+</blockquote>
+
+<p>
+<tt>void <b>Disconnect</b>(void)</tt>
+</p>
+<blockquote>
+Disconnects from the current transform data, and creates a new one.
+</blockquote>
+
+<p>
+<tt>void <b>RefreshAllConnected</b>(void)</tt>
+</p>
+<blockquote>
+Refreshes all <tt>GlowViewTransform</tt>s that are connected to this transform's data.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Inherited methods</b>
+<br>
+These methods are inherited from <tt><a href="GlowComponent.html">GlowComponent</a></tt>.
+</p>
+
+<blockquote>
+
+<p>
+<tt>void <b>Close</b>(void)</tt>
+</p>
+
+<p>
+<tt><a href="GlowComponent.html">GlowComponent</a>* <b>Parent</b>(void) const</tt>
+</p>
+
+<p>
+<tt><a href="GlowSubwindow.html">GlowSubwindow</a>* <b>WhichWindow</b>(void)</tt>
+</p>
+
+<p>
+<tt><a href="GlowSubwindow.html">GlowSubwindow</a>* <b>ParentWindow</b>(void) const</tt>
+</p>
+
+<p>
+<tt><a href="GlowWindow.html">GlowWindow</a>* <b>ToplevelWindow</b>(void)</tt>
+</p>
+
+<p>
+<tt>bool <b>IsToplevel</b>(void) const</tt>
+</p>
+
+<p>
+<tt><a href="GlowComponent.html">GlowComponent</a>* <b>Next</b>(void) const</tt>
+</p>
+
+<p>
+<tt><a href="GlowComponent.html">GlowComponent</a>* <b>Prev</b>(void) const</tt>
+</p>
+
+<p>
+<tt>int <b>NumChildren</b>(void) const</tt>
+</p>
+
+<p>
+<tt><a href="GlowComponent.html">GlowComponent</a>* <b>FirstChild</b>(void) const</tt>
+</p>
+
+<p>
+<tt><a href="GlowComponent.html">GlowComponent</a>* <b>LastChild</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>ReorderChild</b>(<a href="GlowComponent.html">GlowComponent</a>* child, <a href="GlowComponent.html">GlowComponent</a>* pos)</tt>
+</p>
+
+<p>
+<tt>void <b>KillChildren</b>(void)</tt>
+</p>
+
+<p>
+<tt>void <b>Activate</b>(void)</tt>
+</p>
+
+<p>
+<tt>void <b>Deactivate</b>(void)</tt>
+</p>
+
+<p>
+<tt>bool <b>IsActive</b>(void)</tt>
+</p>
+
+<p>
+<tt>bool <b>IsInactive</b>(void)</tt>
+</p>
+
+<p>
+<tt>bool <b>IsActiveStandby</b>(void)</tt>
+</p>
+
+<p>
+<tt>void <b>Paint</b>(void)</tt>
+</p>
+
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Overrideable methods</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Inherited methods</b>
+<br>
+These methods are inherited from <tt><a href="GlowComponent.html">GlowComponent</a></tt>.
+</p>
+
+<blockquote>
+
+<p>
+<tt>virtual void <b>OnActivate</b>(void)</tt>
+</p>
+
+<p>
+<tt>virtual void <b>OnDeactivate</b>(void)</tt>
+</p>
+
+<p>
+<tt>virtual void <b>OnBeginPaint</b>(void)</tt>
+</p>
+<blockquote>
+This method is overridden by <tt>GlowViewTransform</tt> to perform the OpenGL transformations. You should not normally override it again.
+</blockquote>
+
+<p>
+<tt>virtual void <b>OnEndPaint</b>(void)</tt>
+</p>
+<blockquote>
+This method is overridden by <tt>GlowViewTransform</tt> to perform the OpenGL transformations. You should not normally override it again.
+</blockquote>
+
+</blockquote>
+
+</blockquote>
+
+
+<hr size=2>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+
+<hr size=2>
+
+<p>
+<address>
+<a href="http://www.ugcs.caltech.edu/~dazuma/glow/">The GLOW Toolkit</a>
+</address>
+</p>
+
+
+</body>
+
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<html>
+
+<head>
+
+<title>
+GLOW Reference
+</title>
+
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3>
+GLOW API version 1.0 reference
+</h3>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+<hr>
+
+<h2>
+module glowSenderReceiver
+</h2>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>General information</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+The glowSenderReceiver module contains templates that implement the generalized broadcaster/listener system used by GLOW. You will need to interact with these message classes if you want to receive events from menus, widgets and timers in the GLOW system, and you may also use them directly in your own programs. The classes provide typechecking and binding services, and automatically unbind connections when subclasses are destructed.
+</p>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Classes</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<tt>class <b><a href="ReceiverTracker.html">ReceiverTracker</a></b></tt>
+</p>
+<blockquote>
+Tracks receivers.
+</blockquote>
+
+<p>
+<tt>abstract template <b><a href="TReceiver.html">TReceiver&lt;&gt;</a></b></tt>
+</p>
+<blockquote>
+Template base class for message receivers.
+</blockquote>
+
+<p>
+<tt>template <b><a href="TSender.html">TSender&lt;&gt;</a></b></tt>
+</p>
+<blockquote>
+Template class for message senders.
+</blockquote>
+
+</blockquote>
+
+
+<hr size=2>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+
+<hr size=2>
+
+<p>
+<address>
+<a href="http://www.ugcs.caltech.edu/~dazuma/glow/">The GLOW Toolkit</a>
+</address>
+</p>
+
+
+</body>
+
+</html>

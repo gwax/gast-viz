@@ -1,0 +1,467 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<html>
+
+<head>
+
+<title>
+GLOW Reference
+</title>
+
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3>
+GLOW API version 1.0 reference
+</h3>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+<hr>
+
+<h2>
+class Mat4f
+</h2>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>General information</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>
+type: class
+<br>
+inherits: (none)
+<br>
+module: <tt><a href="M_glowVectorAlgebra.html">glowVectorAlgebra</a></tt>
+</b>
+</p>
+<p>
+<tt>Mat4f</tt> represents a 4x4 matrix of floats. It is used internally by the 3D view transform classes.
+</p>
+<p>
+Most GLOW programs will not need to use <tt>Mat4f</tt> directly; however, it may be useful for customizing or manipulating the 3D view transform components.
+</p>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Methods</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Constructors</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt><b>Mat4f</b>(void)</tt>
+</p>
+<blockquote>
+Creates a new matrix with the value set to the identity transform.
+</blockquote>
+
+<p>
+<tt><b>Mat4f</b>(GLfloat a, GLfloat b, GLfloat c, GLfloat d, GLfloat e, GLfloat f, GLfloat g, GLfloat h, GLfloat i, GLfloat j, GLfloat k, GLfloat l, GLfloat m, GLfloat n, GLfloat o, GLfloat p)</tt>
+</p>
+<blockquote>
+Creates a new matrix with the given values, in <i>row-major</i> order.
+</blockquote>
+
+<p>
+<tt><b>Mat4f</b>(const GLfloat* vals)</tt>
+</p>
+<blockquote>
+Creates a new vector, copying the given array of coordinates in <i>column-major</i> order. This is useful for constructing a matrix from an OpenGL matrix returned by <tt>glGetFloatv</tt>.
+</blockquote>
+
+<p>
+<tt><b>Mat4f</b>(const Mat4f& v)</tt>
+</p>
+<blockquote>
+Copy constructor.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Setters</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>void <b>Set</b>(GLfloat a, GLfloat b, GLfloat c, GLfloat d, GLfloat e, GLfloat f, GLfloat g, GLfloat h, GLfloat i, GLfloat j, GLfloat k, GLfloat l, GLfloat m, GLfloat n, GLfloat o, GLfloat p)</tt>
+</p>
+<blockquote>
+Sets the vector to the specified values, in <i>row-major</i> order.
+</blockquote>
+
+<p>
+<tt>void <b>Set</b>(const GLfloat* vals)</tt>
+</p>
+<blockquote>
+Sets the matrix to the specified array of coordinates in <i>column-major</i> order. This is useful for setting a matrix from an OpenGL matrix returned by <tt>glGetFloatv</tt>.
+</blockquote>
+
+<p>
+<tt>Mat4f& <b>operator=</b>(const Mat4f& v)</tt>
+</p>
+<blockquote>
+Copies the given matrix.
+</blockquote>
+
+<p>
+<tt>Mat4f& <b>operator=</b>(const GLfloat* vals)</tt>
+</p>
+<blockquote>
+Sets the matrix to the specified array of coordinates in <i>column-major</i> order. This is useful for setting a matrix from an OpenGL matrix returned by <tt>glGetFloatv</tt>.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Misc access</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>void <b>SetZero</b>(void)</tt>
+</p>
+<blockquote>
+Sets the matrix to the zero transform.
+</blockquote>
+
+<p>
+<tt>bool <b>IsZero</b>(void) const</tt>
+</p>
+<blockquote>
+Is this matrix the zero transform?
+</blockquote>
+
+<p>
+<tt>void <b>SetIdentity</b>(void)</tt>
+</p>
+<blockquote>
+Sets the matrix to the identity transform.
+</blockquote>
+
+<p>
+<tt>bool <b>IsIdentity</b>(void) const</tt>
+</p>
+<blockquote>
+Is this matrix the identity transform?
+</blockquote>
+
+<p>
+<tt>void <b>SetVal</b>(short row, short column, GLfloat val)</tt>
+</p>
+<blockquote>
+Sets an indexed value in the matrix.
+</blockquote>
+
+<p>
+<tt>GLfloat <b>GetVal</b>(short row, short column) const</tt>
+</p>
+<blockquote>
+Gets an indexed value in the matrix.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>OpenGL matrix integration</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>void <b>GetGLMatrix</b>(GLfloat* mat) const</tt>
+</p>
+<blockquote>
+Sets mat[0]..mat[15] to an OpenGL (column-major order) matrix matching this matrix.
+</blockquote>
+
+<p>
+<tt>const GLfloat* <b>GetGLMatrix</b>(void) const</tt>
+</p>
+<blockquote>
+Returns a pointer to an OpenGL (column-major order) matrix matching this matrix.
+</blockquote>
+
+<p>
+<tt><b>operator const GLfloat*</b>(void) const</tt>
+</p>
+<blockquote>
+Cast to an OpenGL (column-major order) matrix matching this matrix.
+</blockquote>
+
+<p>
+<tt>void <b>SetGLMatrix</b>(const GLfloat* mat)</tt>
+</p>
+<blockquote>
+Sets the matrix to the specified array of coordinates in OpenGL (column-major) order.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Affine transforms</b>
+<br>
+Use these methods to set a matrix to an affine transformation.
+</p>
+
+<blockquote>
+
+<p>
+<tt>void <b>SetTranslation</b>(GLfloat x, GLfloat y, GLfloat z)</tt>
+<br>
+<tt>void <b>SetTranslation</b>(const <a href="Vec3f.html">Vec3f</a>& v)</tt>
+</p>
+<blockquote>
+Sets the matrix to the specified translation transform.
+</blockquote>
+
+<p>
+<tt>void <b>SetRotation</b>(GLfloat x, GLfloat y, GLfloat z, GLfloat angle)</tt>
+<br>
+<tt>void <b>SetRotation</b>(const <a href="Vec3f.html">Vec3f</a>& axis, GLfloat angle)</tt>
+<br>
+<tt>void <b>SetRotation</b>(const <a href="Quatf.html">Quatf</a>& rot)</tt>
+</p>
+<blockquote>
+Sets the matrix to the specified rotation transform. The angle must be specified in radians, and the axis should be normalized.
+</blockquote>
+
+<p>
+<tt>void <b>SetScale</b>(GLfloat x, GLfloat y, GLfloat z)</tt>
+<br>
+<tt>void <b>SetScale</b>(const <a href="Vec3f.html">Vec3f</a>& scale)</tt>
+<br>
+<tt>void <b>SetScale</b>(GLfloat scale)</tt>
+</p>
+<blockquote>
+Sets the matrix to the specified scale transform. The third form indicates a uniform scale
+</blockquote>
+
+<p>
+<tt>void <b>SetAxisTransformation</b>(const <a href="Vec3f.html">Vec3f</a>& x, const <a href="Vec3f.html">Vec3f</a>& y, const <a href="Vec3f.html">Vec3f</a>& z)</tt>
+</p>
+<blockquote>
+Sets the matrix to a transformation that transforms the principal axes to the given vectors, applying the necessary rotation, scale and shear.
+</blockquote>
+
+<p>
+<tt>void <b>RemoveTranslation</b>(void)</tt>
+</p>
+<blockquote>
+Removes the translation component from the matrix.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Special operations</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>const Mat4f <b>Inverse</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the inverse of this matrix, or the zero matrix if this matrix is singular.
+</blockquote>
+
+<p>
+<tt>void <b>SetInverse</b>(const Mat4f& original)</tt>
+</p>
+<blockquote>
+Sets this matrix to the inverse of the given original, or the zero matrix if this matrix is singular.
+</blockquote>
+
+<p>
+<tt>const Mat4f <b>Transpose</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the transpose of this matrix.
+</blockquote>
+
+<p>
+<tt>void <b>SetTranspose</b>(const Mat4f& original)</tt>
+</p>
+<blockquote>
+Sets this matrix to the transpose of the given original.
+</blockquote>
+
+<p>
+<tt>const Mat4f <b>Cofactors</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the matrix of cofactors of this matrix.
+</blockquote>
+
+<p>
+<tt>void <b>SetCofactors</b>(const Mat4f& original)</tt>
+</p>
+<blockquote>
+Sets this matrix to the matrix of cofactors of the given original.
+</blockquote>
+
+<p>
+<tt>GLfloat <b>Determinant</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the determinant of this matrix.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Arithmetic operations</b>
+<br>
+<tt>Mat4f</tt> provides a full set of arithmetic operations on 4x4 matrices.
+</p>
+
+<blockquote>
+
+<p>
+<dl>
+<dt>
+<tt><b>Mat4f == Mat4f</b> ---> bool</tt>
+<dd>
+matrix equality
+<dt>
+<tt><b>Mat4f != Mat4f</b> ---> bool</tt>
+<dd>
+matrix inequality
+</dl>
+</p>
+<p>
+<dl>
+<dt>
+<tt><b>- Mat4f</b> ---> Mat4f</tt>
+<dd>
+matrix negation
+</dl>
+</p>
+<p>
+<dl>
+<dt>
+<tt><b>Mat4f * GLfloat</b> ---> Mat4f</tt>
+<dd>
+scalar multiplication
+<dt>
+<tt><b>GLfloat * Mat4f</b> ---> Mat4f</tt>
+<dd>
+scalar multiplication
+<dt>
+<tt><b>Mat4f / GLfloat</b> ---> Mat4f</tt>
+<dd>
+scalar division
+<dt>
+<tt><b>Mat4f *= GLfloat</b></tt>
+<dd>
+in-place scalar multiplication
+<dt>
+<tt><b>Mat4f /= GLfloat</b></tt>
+<dd>
+in-place scalar division
+</p>
+</dl>
+<p>
+<dl>
+<dt>
+<tt><b>Mat4f + Mat4f</b> ---> Mat4f</tt>
+<dd>
+matrix addition
+<dt>
+<tt><b>Mat4f - Mat4f</b> ---> Mat4f</tt>
+<dd>
+matrix subtraction
+<dt>
+<tt><b>Mat4f * Mat4f</b> ---> Mat4f</tt>
+<dd>
+matrix multiplication
+<dt>
+<tt><b>Mat4f += Mat4f</b></tt>
+<dd>
+in-place matrix addition
+<dt>
+<tt><b>Mat4f -= Mat4f</b></tt>
+<dd>
+in-place matrix subtraction
+<dt>
+<tt><b>Mat4f *= Mat4f</b></tt>
+<dd>
+in-place matrix multiplication
+</dl>
+</p>
+<p>
+<dl>
+<dt>
+<tt><b>Mat4f * Vec3f</b> ---> Vec3f</tt>
+<dd>
+application of matrix to vector
+</dl>
+</p>
+
+</blockquote>
+
+</blockquote>
+
+
+<hr size=2>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+
+<hr size=2>
+
+<p>
+<address>
+<a href="http://www.ugcs.caltech.edu/~dazuma/glow/">The GLOW Toolkit</a>
+</address>
+</p>
+
+
+</body>
+
+</html>

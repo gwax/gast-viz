@@ -1,0 +1,185 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<html>
+
+<head>
+
+<title>
+GLOW Reference
+</title>
+
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3>
+GLOW API version 1.0 reference
+</h3>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+<hr>
+
+<h2>
+class GlowViewTransformParams
+</h2>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>General information</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>
+type: struct
+<br>
+inherits: (none)
+<br>
+module: <tt><a href="M_glowViewTransform.html">glowViewTransform</a></tt>
+</b>
+</p>
+<p>
+<tt>GlowViewTransformParams</tt> encloses parameters for construction of a <tt><a href="GlowViewTransform.html">GlowViewTransform</a></tt>.
+</p>
+<p>
+GLOW programs that use view transforms will need to use <tt>GlowViewTransformParams</tt>.
+</p>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Data</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Parameter data</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt><a href="GlowTransformData.html">GlowTransformData</a>* <b>connectTo</b></tt>
+</p>
+<blockquote>
+Specifies the transform data to use, or use 0 to create a new transform data object. Initial default is 0.
+</blockquote>
+<p>
+<tt>Vec3f <b>initialTranslation</b></tt>
+</p>
+<blockquote>
+Initial value for the translation component of the transform to create. Ignored if a connectTo is specified. Initial default is the identity transform.
+</blockquote>
+<p>
+<tt>Quatf <b>initialRotation</b></tt>
+</p>
+<blockquote>
+Initial value for the rotation component of the transform to create. Ignored if a connectTo is specified. Initial default is the identity transform.
+</blockquote>
+<p>
+<tt>GLfloat <b>initialScale</b></tt>
+</p>
+<blockquote>
+Initial value for the scale component of the transform to create. Ignored if a connectTo is specified. Initial default is the identity transform.
+</blockquote>
+
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Static Data</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Defaults</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>static GlowViewTransformParams <b>defaults</b></tt>
+</p>
+<blockquote>
+Default parameters. These are copied every time a new GlowViewTransformParams is constructed.
+</blockquote>
+
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Methods</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Constructor</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt><b>GlowViewTransformParams</b>(void)</tt>
+</p>
+<blockquote>
+Constructs a new parameter block, copying <tt>defaults</tt>
+</blockquote>
+
+</blockquote>
+
+</blockquote>
+
+
+<hr size=2>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+
+<hr size=2>
+
+<p>
+<address>
+<a href="http://www.ugcs.caltech.edu/~dazuma/glow/">The GLOW Toolkit</a>
+</address>
+</p>
+
+
+</body>
+
+</html>

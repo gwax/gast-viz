@@ -1,0 +1,604 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<html>
+
+<head>
+
+<title>
+GLOW Reference
+</title>
+
+</head>
+
+<body bgcolor="#FFFFFF">
+
+
+
+<p>
+<b>
+<a href="../tutorial/index.html">[Tutorial]</a>
+</b>
+</p>
+
+<hr>
+
+
+
+
+
+<h2>
+GLOW API version 1.0 reference
+</h2>
+
+
+<p>
+This is the definitive reference document for The GLOW Toolkit, a cross-platform GUI framework and widget library for interactive OpenGL-based programs.
+</p>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>General information</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b><a href="compiler.html">Compiler compatibility</a></b>
+</p>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Utility interfaces</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b><a href="symbols.html">Preprocessor symbols</a></b>
+</p>
+
+<p>
+<b>module <a href="M_glowDebug.html">glowDebug</a></b>
+</p>
+
+<p>
+<b>module <a href="M_glowSenderReceiver.html">glowSenderReceiver</a></b>
+</p>
+<ul>
+<li>
+class <a href="ReceiverTracker.html">ReceiverTracker</a>
+</li>
+<li>
+abstract template <a href="TReceiver.html">TReceiver&lt;&gt;</a>
+</li>
+<li>
+template <a href="TSender.html">TSender&lt;&gt;</a>
+</li>
+</ul>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>GLOW Foundation Layer</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>module <a href="M_glow.html">glow</a></b>
+</p>
+
+<ul>
+<li>
+class <a href="Glow.html">Glow</a>
+</li>
+<li>
+class <a href="GlowComponent.html">GlowComponent</a>
+</li>
+<li>
+class <a href="GlowSubwindow.html">GlowSubwindow</a>
+</li>
+<li>
+class <a href="GlowWindow.html">GlowWindow</a>
+</li>
+<li>
+class <a href="GlowMenu.html">GlowMenu</a>
+</li>
+<li>
+struct <a href="GlowSubwindowParams.html">GlowSubwindowParams</a>
+</li>
+<li>
+struct <a href="GlowWindowParams.html">GlowWindowParams</a>
+</li>
+<li>
+struct <a href="GlowMenuMessage.html">GlowMenuMessage</a>
+</li>
+<li>
+struct <a href="GlowIdleMessage.html">GlowIdleMessage</a>
+</li>
+<li>
+struct <a href="GlowTimerMessage.html">GlowTimerMessage</a>
+</li>
+<li>
+struct <a href="GlowKeyboardData.html">GlowKeyboardData</a>
+</li>
+<li>
+struct <a href="GlowMouseData.html">GlowMouseData</a>
+</li>
+<li>
+abstract <a href="GlowIdleReceiver.html">GlowIdleReceiver</a>
+</li>
+<li>
+abstract <a href="GlowTimerReceiver.html">GlowTimerReceiver</a>
+</li>
+<li>
+abstract <a href="GlowMenuReceiver.html">GlowMenuReceiver</a>
+</li>
+<li>
+abstract <a href="GlowKeyboardFilter.html">GlowKeyboardFilter</a>
+</li>
+<li>
+abstract <a href="GlowMouseFilter.html">GlowMouseFilter</a>
+</li>
+</ul>
+
+<p>
+<b>module <a href="M_glowAux.html">glowAux</a></b>
+</p>
+
+<ul>
+<li>
+class <a href="GlowColor.html">GlowColor</a>
+</li>
+<li>
+class <a href="GlowFont.html">GlowFont</a>
+</li>
+</ul>
+
+<p>
+<b>module <a href="M_glowUtilities.html">glowUtilities</a></b>
+</p>
+
+<ul>
+<li>
+class <a href="GlowFixedSizeWindow.html">GlowFixedSizeWindow</a>
+</li>
+<li>
+abstract <a href="GlowDeferredTask.html">GlowDeferredTask</a>
+</li>
+<li>
+class <a href="GlowReceiverTrackerCompone.html">GlowReceiverTrackerComponent</a>
+</li>
+</ul>
+
+<p>
+<b>module <a href="M_glowWidget.html">glowWidget</a></b>
+</p>
+
+<ul>
+<li>
+class <a href="GlowWidget.html">GlowWidget</a>
+</li>
+<li>
+class <a href="GlowWidgetSubwindow.html">GlowWidgetSubwindow</a>
+</li>
+<li>
+class <a href="GlowWidgetWindow.html">GlowWidgetWindow</a>
+</li>
+<li>
+class <a href="GlowFixedSizeWidgetWindow.html">GlowFixedSizeWidgetWindow</a>
+</li>
+<li>
+class <a href="GlowSubwindowInWidget.html">GlowSubwindowInWidget</a>
+</li>
+<li>
+class <a href="GlowWidgetTabFilter.html">GlowWidgetTabFilter</a>
+</li>
+<li>
+base <a href="GlowWidgetRoot.html">GlowWidgetRoot</a>
+</li>
+<li>
+struct <a href="GlowWidgetParams.html">GlowWidgetParams</a>
+</li>
+<li>
+struct <a href="GlowWidgetSubwindowParams.html">GlowWidgetSubwindowParams</a>
+</li>
+<li>
+struct <a href="GlowWidgetWindowParams.html">GlowWidgetWindowParams</a>
+</li>
+<li>
+struct <a href="GlowWidgetKeyboardData.html">GlowWidgetKeyboardData</a>
+</li>
+<li>
+abstract <a href="GlowWidgetKeyboardFilter.html">GlowWidgetKeyboardFilter</a>
+</li>
+</ul>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Useful GLOW components</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>module <a href="M_glowRenderSwitch.html">glowRenderSwitch</a></b>
+</p>
+
+<ul>
+<li>
+class <a href="GlowRenderSwitch.html">GlowRenderSwitch</a>
+</li>
+</ul>
+
+<p>
+<b>module <a href="M_glowVectorAlgebra.html">glowVectorAlgebra</a></b>
+</p>
+
+<ul>
+<li>
+class <a href="Math.html">Math</a>
+</li>
+<li>
+class <a href="Vec3f.html">Vec3f</a>
+</li>
+<li>
+class <a href="Mat4f.html">Mat4f</a>
+</li>
+<li>
+class <a href="Quatf.html">Quatf</a>
+</li>
+</ul>
+
+<p>
+<b>module <a href="M_glowViewTransform.html">glowViewTransform</a></b>
+</p>
+
+<ul>
+<li>
+class <a href="GlowTransformData.html">GlowTransformData</a>
+</li>
+<li>
+class <a href="GlowViewTransform.html">GlowViewTransform</a>
+</li>
+<li>
+class <a href="GlowViewManipulator.html">GlowViewManipulator</a>
+</li>
+<li>
+struct <a href="GlowViewTransformParams.html">GlowViewTransformParams</a>
+</li>
+<li>
+struct <a href="GlowViewManipulatorParams.html">GlowViewManipulatorParams</a>
+</li>
+</ul>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>GLOW Widget library</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>module <a href="M_glowCheckBoxWidget.html">glowCheckBoxWidget</a></b>
+</p>
+
+<ul>
+<li>
+class <a href="GlowCheckBoxWidget.html">GlowCheckBoxWidget</a>
+</li>
+<li>
+struct <a href="GlowCheckBoxParams.html">GlowCheckBoxParams</a>
+</li>
+<li>
+struct <a href="GlowCheckBoxMessage.html">GlowCheckBoxMessage</a>
+</li>
+<li>
+abstract <a href="GlowCheckBoxReceiver.html">GlowCheckBoxReceiver</a>
+</li>
+</ul>
+
+<p>
+<b>module <a href="M_glowLabelWidget.html">glowLabelWidget</a></b>
+</p>
+
+<ul>
+<li>
+class <a href="GlowLabelWidget.html">GlowLabelWidget</a>
+</li>
+<li>
+class <a href="GlowWidgetLabelWidget.html">GlowWidgetLabelWidget</a>
+</li>
+<li>
+base <a href="GlowWidgetLabelHelper.html">GlowWidgetLabelHelper</a>
+</li>
+<li>
+struct <a href="GlowLabelParams.html">GlowLabelParams</a>
+</li>
+</ul>
+
+<p>
+<b>module <a href="M_glowMenuButtonWidget.html">glowMenuButtonWidget</a></b>
+</p>
+
+<ul>
+<li>
+class <a href="GlowMenuButtonWidget.html">GlowMenuButtonWidget</a>
+</li>
+<li>
+class <a href="GlowPopupMenuWidget.html">GlowPopupMenuWidget</a>
+</li>
+<li>
+class <a href="GlowLabeledPopupMenuWidget.html">GlowLabeledPopupMenuWidget</a>
+</li>
+<li>
+struct <a href="GlowMenuButtonParams.html">GlowMenuButtonParams</a>
+</li>
+<li>
+struct <a href="GlowPopupMenuParams.html">GlowPopupMenuParams</a>
+</li>
+<li>
+struct <a href="GlowLabeledPopupMenuParams.html">GlowLabeledPopupMenuParams</a>
+</li>
+<li>
+struct <a href="GlowPopupMenuMessage.html">GlowPopupMenuMessage</a>
+</li>
+<li>
+abstract <a href="GlowPopupMenuReceiver.html">GlowPopupMenuReceiver</a>
+</li>
+</ul>
+
+<p>
+<b>module <a href="M_glowPanelWidget.html">glowPanelWidget</a></b>
+</p>
+
+<ul>
+<li>
+class <a href="GlowPanelWidget.html">GlowPanelWidget</a>
+</li>
+<li>
+struct <a href="GlowPanelParams.html">GlowPanelParams</a>
+</li>
+</ul>
+
+<p>
+<b>module <a href="M_glowPushButtonWidget.html">glowPushButtonWidget</a></b>
+</p>
+
+<ul>
+<li>
+class <a href="GlowPushButtonWidget.html">GlowPushButtonWidget</a>
+</li>
+<li>
+class <a href="GlowDismissPushButtonWidge.html">GlowDismissPushButtonWidget</a>
+</li>
+<li>
+class <a href="GlowWidgetMapToPushButtonF.html">GlowWidgetMapToPushButtonFilter</a>
+</li>
+<li>
+struct <a href="GlowPushButtonParams.html">GlowPushButtonParams</a>
+</li>
+<li>
+struct <a href="GlowPushButtonMessage.html">GlowPushButtonMessage</a>
+</li>
+<li>
+abstract <a href="GlowPushButtonReceiver.html">GlowPushButtonReceiver</a>
+</li>
+</ul>
+
+<p>
+<b>module <a href="M_glowRadioButtonWidget.html">glowRadioButtonWidget</a></b>
+</p>
+
+<ul>
+<li>
+class <a href="GlowRadioButtonWidget.html">GlowRadioButtonWidget</a>
+</li>
+<li>
+class <a href="GlowRadioGroupWidget.html">GlowRadioGroupWidget</a>
+</li>
+<li>
+struct <a href="GlowRadioButtonParams.html">GlowRadioButtonParams</a>
+</li>
+<li>
+struct <a href="GlowRadioGroupParams.html">GlowRadioGroupParams</a>
+</li>
+<li>
+struct <a href="GlowRadioButtonMessage.html">GlowRadioButtonMessage</a>
+</li>
+<li>
+abstract <a href="GlowRadioButtonReceiver.html">GlowRadioButtonReceiver</a>
+</li>
+</ul>
+
+<p>
+<b>module <a href="M_glowScrollBarWidget.html">glowScrollBarWidget</a></b>
+</p>
+
+<ul>
+<li>
+class <a href="GlowScrollBarWidget.html">GlowScrollBarWidget</a>
+</li>
+<li>
+struct <a href="GlowScrollBarParams.html">GlowScrollBarParams</a>
+</li>
+<li>
+struct <a href="GlowScrollBarMessage.html">GlowScrollBarMessage</a>
+</li>
+<li>
+abstract <a href="GlowScrollBarReceiver.html">GlowScrollBarReceiver</a>
+</li>
+</ul>
+
+<p>
+<b>module <a href="M_glowSeparatorWidget.html">glowSeparatorWidget</a></b>
+</p>
+
+<ul>
+<li>
+class <a href="GlowSeparatorWidget.html">GlowSeparatorWidget</a>
+</li>
+<li>
+struct <a href="GlowSeparatorParams.html">GlowSeparatorParams</a>
+</li>
+</ul>
+
+<p>
+<b>module <a href="M_glowSliderWidget.html">glowSliderWidget</a></b>
+</p>
+
+<ul>
+<li>
+class <a href="GlowSliderWidget.html">GlowSliderWidget</a>
+</li>
+<li>
+class <a href="GlowLabeledSliderWidget.html">GlowLabeledSliderWidget</a>
+</li>
+<li>
+struct <a href="GlowSliderParams.html">GlowSliderParams</a>
+</li>
+<li>
+struct <a href="GlowLabeledSliderParams.html">GlowLabeledSliderParams</a>
+</li>
+<li>
+struct <a href="GlowSliderMessage.html">GlowSliderMessage</a>
+</li>
+<li>
+abstract <a href="GlowSliderReceiver.html">GlowSliderReceiver</a>
+</li>
+</ul>
+
+<p>
+<b>module <a href="M_glowTextFieldWidget.html">glowTextFieldWidget</a></b>
+</p>
+
+<ul>
+<li>
+class <a href="GlowTextFieldWidget.html">GlowTextFieldWidget</a>
+</li>
+<li>
+class <a href="GlowHiddenTextFieldWidget.html">GlowHiddenTextFieldWidget</a>
+</li>
+<li>
+class <a href="GlowLabeledTextFieldWidget.html">GlowLabeledTextFieldWidget</a>
+</li>
+<li>
+class <a href="GlowLabeledHiddenTextField.html">GlowLabeledHiddenTextFieldWidget</a>
+</li>
+<li>
+struct <a href="GlowTextFieldParams.html">GlowTextFieldParams</a>
+</li>
+<li>
+struct <a href="GlowLabeledTextFieldParams.html">GlowLabeledTextFieldParams</a>
+</li>
+</ul>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Quick interfaces for widgets</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>module <a href="M_glowQuickPalette.html">glowQuickPalette</a></b>
+</p>
+
+<ul>
+<li>
+class <a href="GlowQuickPaletteWindow.html">GlowQuickPaletteWindow</a>
+</li>
+<li>
+class <a href="GlowQuickPaletteSubwindow.html">GlowQuickPaletteSubwindow</a>
+</li>
+<li>
+class <a href="GlowQuickPanelWidget.html">GlowQuickPanelWidget</a>
+</li>
+<li>
+class <a href="GlowQuickRadioGroupWidget.html">GlowQuickRadioGroupWidget</a>
+</li>
+<li>
+base <a href="GlowQuickPalette.html">GlowQuickPalette</a>
+</li>
+</ul>
+
+<p>
+<b>module <a href="M_glowMessageWindow.html">glowMessageWindow</a></b>
+</p>
+
+<ul>
+<li>
+class <a href="GlowMessageWindow.html">GlowMessageWindow</a>
+</li>
+<li>
+struct <a href="GlowMessageWindowParams.html">GlowMessageWindowParams</a>
+</li>
+<li>
+struct <a href="GlowMessageWindowMessage.html">GlowMessageWindowMessage</a>
+</li>
+<li>
+abstract <a href="GlowMessageWindowReceiver.html">GlowMessageWindowReceiver</a>
+</li>
+</ul>
+
+<p>
+<b>module <a href="M_glowTextFieldWindow.html">glowTextFieldWindow</a></b>
+</p>
+
+<ul>
+<li>
+class <a href="GlowTextFieldWindow.html">GlowTextFieldWindow</a>
+</li>
+<li>
+struct <a href="GlowTextFieldWindowParams.html">GlowTextFieldWindowParams</a>
+</li>
+<li>
+struct <a href="GlowTextFieldWindowMessage.html">GlowTextFieldWindowMessage</a>
+</li>
+<li>
+abstract <a href="GlowTextFieldWindowReceive.html">GlowTextFieldWindowReceiver</a>
+</li>
+</ul>
+
+</blockquote>
+
+
+
+
+
+
+
+
+<hr size=2>
+
+<p>
+<address>
+<a href="http://www.ugcs.caltech.edu/~dazuma/glow/">The GLOW Toolkit</a>
+</address>
+</p>
+
+
+</body>
+
+</html>

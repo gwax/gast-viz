@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<html>
+
+<head>
+
+<title>
+GLOW Reference
+</title>
+
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3>
+GLOW API version 1.0 reference
+</h3>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+<hr>
+
+<h2>
+class GlowMenuMessage
+</h2>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>General information</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>
+type: struct
+<br>
+inherits: (none)
+<br>
+module: <tt><a href="M_glow.html">glow</a></tt>
+</b>
+</p>
+<p>
+<tt>GlowMenuMessage</tt> encloses data sent to a <tt><a href="GlowMenuReceiver.html">GlowMenuReceiver</a></tt> to notify it of a menu selection event.
+</p>
+<p>
+Most GLOW programs that use menus will need to use <tt>GlowMenuMessage</tt>s.
+</p>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Data</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Event data</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>int <b>code</b></tt>
+</p>
+<blockquote>
+The code associated with the menu item that was selected.
+</blockquote>
+<p>
+<tt><a href="GlowMenu.html">GlowMenu</a>* <b>menu</b></tt>
+</p>
+<blockquote>
+The menu containing the item that was selected.
+</blockquote>
+<p>
+<tt><a href="GlowSubwindow.html">GlowSubwindow</a>* <b>window</b></tt>
+</p>
+<blockquote>
+The subwindow that popped up this menu.
+</blockquote>
+<p>
+<tt>int <b>x</b></tt>
+</p>
+<blockquote>
+Mouse x location where the menu was originally popped up, in pixel coordinates of the subwindow.
+</blockquote>
+<p>
+<tt>int <b>y</b></tt>
+</p>
+<blockquote>
+Mouse y location where the menu was originally popped up, in pixel coordinates of the subwindow.
+</blockquote>
+
+</blockquote>
+
+</blockquote>
+
+
+<hr size=2>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+
+<hr size=2>
+
+<p>
+<address>
+<a href="http://www.ugcs.caltech.edu/~dazuma/glow/">The GLOW Toolkit</a>
+</address>
+</p>
+
+
+</body>
+
+</html>

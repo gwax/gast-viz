@@ -1,0 +1,300 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<html>
+
+<head>
+
+<title>
+GLOW Reference
+</title>
+
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3>
+GLOW API version 1.0 reference
+</h3>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+<hr>
+
+<h2>
+class GlowTextFieldParams
+</h2>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>General information</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>
+type: struct
+<br>
+inherits: <tt><a href="GlowWidgetParams.html">GlowWidgetParams</a></tt>
+<br>
+module: <tt><a href="M_glowTextFieldWidget.html">glowTextFieldWidget</a></tt>
+</b>
+</p>
+<p>
+<tt>GlowTextFieldParams</tt> encloses parameters for construction of a <tt><a href="GlowTextFieldWidget.html">GlowTextFieldWidget</a></tt>.
+</p>
+<p>
+GLOW programs which use text fields may need to use <tt>GlowTextFieldParams</tt> to construct a text field widget.
+</p>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Data</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>General widget parameter data</b>
+<br>
+These fields are inherited from <tt><a href="GlowWidgetParams.html">GlowWidgetParams</a></tt>. Note that their default values may be different from the generic widget parameters.
+</p>
+
+<blockquote>
+
+<p>
+<tt>int <b>width</b></tt>
+</p>
+<blockquote>
+Width of the widget. Initial default is 100.
+</blockquote>
+<p>
+<tt>int <b>height</b></tt>
+</p>
+<blockquote>
+Height of the widget. Initial default is 20.
+</blockquote>
+<p>
+<tt>int <b>x</b></tt>
+</p>
+<blockquote>
+X location of the upper left of the widget, in pixel coordinates of the parent widget. Initial default is 0.
+</blockquote>
+<p>
+<tt>int <b>y</b></tt>
+</p>
+<blockquote>
+Y location of the upper left of the widget, in pixel coordinates of the parent widget. Initial default is 0.
+</blockquote>
+<p>
+<tt>long <b>refcon</b></tt>
+</p>
+<blockquote>
+Reference constant for this widget. Initial default 0.
+</blockquote>
+<p>
+<tt>bool <b>clipping</b></tt>
+</p>
+<blockquote>
+Should the widget clip to its rectangle when drawing children. Initial default is false.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Parameter data specific to text fields</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt><a href="GlowTextFieldWidget.html">GlowTextFieldWidget</a>::Style <b>style</b></tt>
+</p>
+<blockquote>
+Drawing style for the box. Initial default is <tt><a href="GlowTextFieldWidget.html">GlowTextFieldWidget</a>::loweredStyle</tt>.
+</blockquote>
+<p>
+<tt>const char* <b>initialText</b></tt>
+</p>
+<blockquote>
+Text for the label. Initial default is "".
+</blockquote>
+<p>
+<tt><a href="GlowFont.html">GlowFont</a> <b>font</b></tt>
+</p>
+<blockquote>
+Font for the label. Initial default is <tt><a href="GlowFont.html">GlowFont</a>::helvetica12</tt>.
+</blockquote>
+<p>
+<tt>int <b>selectionStart</b></tt>
+</p>
+<blockquote>
+Starting position of the selection. Initial default is 0.
+</blockquote>
+<p>
+<tt>int <b>selectionEnd</b></tt>
+</p>
+<blockquote>
+Ending position of the selection. Initial default is 0.
+</blockquote>
+<p>
+<tt>int <b>blinkInterval</b></tt>
+</p>
+<blockquote>
+Interval between caret blinks in milliseconds. Initial default is 500.
+</blockquote>
+<p>
+<tt>int <b>autoScrollInterval</b></tt>
+</p>
+<blockquote>
+Interval between autoscroll moves in milliseconds. Initial default is 50.
+</blockquote>
+<p>
+<tt>int <b>inset</b></tt>
+</p>
+<blockquote>
+Pixels to inset the text from the edge of the box. Initial defauilt is 5.
+</blockquote>
+<p>
+<tt>int <b>caretInset</b></tt>
+</p>
+<blockquote>
+Pixels to inset the clip area for the caret from the edge of the box. Initial defauilt is 2.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Color parameter data</b>
+</p>
+
+<blockquote>
+
+<tt><a href="GlowColor.html">GlowColor</a> <b>backColor</b></tt>
+<br>
+<tt><a href="GlowColor.html">GlowColor</a> <b>textColor</b></tt>
+<br>
+<tt><a href="GlowColor.html">GlowColor</a> <b>caretColor</b></tt>
+<br>
+<tt><a href="GlowColor.html">GlowColor</a> <b>focusBackColor</b></tt>
+<br>
+<tt><a href="GlowColor.html">GlowColor</a> <b>focusTextColor</b></tt>
+<br>
+<tt><a href="GlowColor.html">GlowColor</a> <b>focusCaretColor</b></tt>
+<br>
+<tt><a href="GlowColor.html">GlowColor</a> <b>hiliteBackColor</b></tt>
+<br>
+<tt><a href="GlowColor.html">GlowColor</a> <b>hiliteTextColor</b></tt>
+<br>
+<tt><a href="GlowColor.html">GlowColor</a> <b>disableBackColor</b></tt>
+<br>
+<tt><a href="GlowColor.html">GlowColor</a> <b>disableTextColor</b></tt>
+<br>
+<tt><a href="GlowColor.html">GlowColor</a> <b>disableCaretColor</b></tt>
+<br>
+<tt><a href="GlowColor.html">GlowColor</a> <b>disableOutlineColor</b></tt>
+<br>
+<tt><a href="GlowColor.html">GlowColor</a> <b>lightBevelColor</b></tt>
+<br>
+<tt><a href="GlowColor.html">GlowColor</a> <b>darkBevelColor</b></tt>
+
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Static Data</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Defaults</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>static GlowTextFieldParams <b>defaults</b></tt>
+</p>
+<blockquote>
+Default parameters. These are copied every time a new <tt>GlowTextFieldParams</tt> is constructed.
+</blockquote>
+
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Methods</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Constructor</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt><b>GlowTextFieldParams</b>(void)</tt>
+</p>
+<blockquote>
+Constructs a new parameter block, copying <tt>defaults</tt>
+</blockquote>
+
+</blockquote>
+
+</blockquote>
+
+
+<hr size=2>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+
+<hr size=2>
+
+<p>
+<address>
+<a href="http://www.ugcs.caltech.edu/~dazuma/glow/">The GLOW Toolkit</a>
+</address>
+</p>
+
+
+</body>
+
+</html>

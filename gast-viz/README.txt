@@ -2,7 +2,7 @@
 The Generalized Atomistic Simulation Toolkit for Visualization
 GAST-Viz
 
-version 1.0.0 (21 January 2004)
+version 1.0.1 (11 March 2004)
 Copyright (c)2003-2004, George Waksman <waksman@mit.edu>. All rights reserved.
 
 This program is free software; you can redistribute it and/or modify
@@ -96,7 +96,7 @@ with, most notably stack2d and stack3d.
 	As should be pretty clear from the copyright notices that
 exist on all of the files, I, George Waksman, am the copyright
 holder for all of the code and associated documentation involved
-with GAST-Viz. As of version 1.0.0, all coding was done by myself.
+with GAST-Viz. As of version 1.0.1, all coding was done by myself.
 	That having been said, I have decided to license GAST-Viz
 using the GNU General Public License (GPL) version 2 or later,
 which should be included with GAST-Viz itself and should be
@@ -132,6 +132,12 @@ the Undergraduate Research Opportunities Program (UROP).
 =================================================
 2.1 - Release Notes
 -------------------------------------------------
+version 1.0.1
+-------------------------------------------------
+It occured to me that I could include glow in my release because of
+the way in which it is licensed and have done so, GAST-Viz should
+now compile right after downloading
+
 version 1.0.0
 -------------------------------------------------
 Initial release, everything complete and functional
@@ -210,7 +216,7 @@ Installation is a simple process as it's mainly a matter of getting
 your system ready to compile GAST-Viz and then doing so. If you have
 a working C++ compiler then you are most of the way there. It is
 likely that I will make some precompiled binaries available for some
-of the more popular systems (Win32 very likely, Deban packages
+of the more popular systems (Win32 very likely, Debian packages
 possible, etc. we'll see).
 
 If you have gotten you hands on some precompiled binaries the only
@@ -228,27 +234,14 @@ is easily found by typing "glut visual studio .net" into Google)
 GLUT can be obtained from http://www.opengl.org/resources/libraries/glut.html
 and a number of other places on the Internet.
 
-Then you must obtain a copy of GLOW from http://glow.sourceforge.net/
-
-Unpacking GLOW (I have used version 1.0.4) will give you the complete
-set of source code for GLOW as well as a great deal of documentation,
-which is very useful if you plan to build further GAST-Viz
-applications that have a user interface.
-
-From here, I have made things simple for you, in the unpacked glow
-folder should be a folder named glow_src, copy this folder and its
-contents into the GAST-Viz folder named glow. The end result should
-be that in the GAST-Viz folder will be glow\glow_src and that will
-contain all of the GLOW source files. From here, the makefiles and
-project files will handle everything else GLOW related.
-
 All that is left now is to compile and run the sample applications.
-To compile the applications under Visual Studio .NET simple open
+To compile the applications under Visual Studio .NET simply open
 the included solution file and build. To compile the applications
 under Linux, enter the subdirectory of the specific application that
-you would like to build and then "make". For information on
-compiling your own applications, see section 4.2 - Compiling Your
-Own Applications.
+you would like to build and then "make". OSX links a little bit
+differently from Linux and I have made makefiles to work around this
+issue (Makefile.OSX). For information on compiling your own
+applications, see section 4.2 - Compiling Your Own Applications.
 
 3.3 - Included Sample Applications
 -------------------------------------------------

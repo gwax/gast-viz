@@ -1,0 +1,326 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<html>
+
+<head>
+
+<title>
+GLOW Reference
+</title>
+
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3>
+GLOW API version 1.0 reference
+</h3>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+<hr>
+
+<h2>
+class GlowWidgetLabelHelper
+</h2>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>General information</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>
+type: base
+<br>
+inherits: (none)
+<br>
+module: <tt><a href="M_glowLabelWidget.html">glowLabelWidget</a></tt>
+</b>
+</p>
+<p>
+<tt>GlowWidgetLabelHelper</tt> assists the creation of labeled widget. It manages and poisitions the label and provides accessors and mutators for the label's size and attributes. You do not instantiate a <tt>GlowWidgetLabelHelper</tt> directly, but instead use one of the classes derived from it, such as <tt><a href="GlowLabeledPopupMenuWidget.html">GlowLabeledPopupMenuWidget</a></tt>. To create a labeled widget class, you should inherit both from the main class for your widget, and from <tt>GlowWidgetLabelHelper</tt>.
+</p>
+<p>
+GLOW programs that use labeled widgets must deal with <tt>GlowWidgetLabelHelper</tt>s.
+</p>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Constants</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Positioning constants</b>
+<br>
+These constants specify the positioning of the label.
+</p>
+
+<blockquote>
+
+<p>
+<tt>enum GlowWidgetLabelHelper::LabelPosition <b>defaultLabelPosition</b></tt>
+</p>
+<blockquote>
+Default position (equal to <tt>leftLabelPosition</tt>)
+</blockquote>
+<p>
+<tt>enum GlowWidgetLabelHelper::LabelPosition <b>leftLabelPosition</b></tt>
+</p>
+<blockquote>
+Position to the left of the widget.
+</blockquote>
+<p>
+<tt>enum GlowWidgetLabelHelper::LabelPosition <b>rightLabelPosition</b></tt>
+</p>
+<blockquote>
+Position to the right of the widget.
+</blockquote>
+<p>
+<tt>enum GlowWidgetLabelHelper::LabelPosition <b>topLabelPosition</b></tt>
+</p>
+<blockquote>
+Position over the widget.
+</blockquote>
+<p>
+<tt>enum GlowWidgetLabelHelper::LabelPosition <b>bottomLabelPosition</b></tt>
+</p>
+<blockquote>
+Position under the widget.
+</blockquote>
+
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Methods</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Label attributes</b>
+<br>
+You can access the label's attributes using these methods.
+</p>
+
+<blockquote>
+
+<p>
+<tt>int <b>GetLabelSpacing</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the spacing between the label and the widget.
+</blockquote>
+
+<p>
+<tt>void <b>SetLabelSpacing</b>(int spacing)</tt>
+</p>
+<blockquote>
+Sets the spacing between the label and the widget.
+</blockquote>
+
+<p>
+<tt>GlowWidgetLabelHelper::LabelPosition <b>GetLabelPosition</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the position code for the label.
+</blockquote>
+
+<p>
+<tt>void <b>SetLabelPosition</b>(GlowWidgetLabelHelper::LabelPosition position)</tt>
+</p>
+<blockquote>
+Sets the position code for the label.
+</blockquote>
+
+<p>
+<tt>int <b>GetLabelWidth</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the maximum width for the label.
+</blockquote>
+
+<p>
+<tt>void <b>SetLabelWidth</b>(int width)</tt>
+</p>
+<blockquote>
+Sets the maximum width for the label.
+</blockquote>
+
+<p>
+<tt>int <b>GetLabelHeight</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the maximum height for the label.
+</blockquote>
+
+<p>
+<tt>void <b>SetLabelHeight</b>(int height)</tt>
+</p>
+<blockquote>
+Sets the maximum height for the label.
+</blockquote>
+
+<p>
+<tt>const char* <b>GetLabelText</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the current text of the label.
+</blockquote>
+
+<p>
+<tt>void <b>SetLabelText</b>(const char* text)</tt>
+</p>
+<blockquote>
+Sets the current text of the label.
+</blockquote>
+
+<p>
+<tt><a href="GlowFont.html">GlowFont</a> <b>GetLabelFont</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the font of the label.
+</blockquote>
+
+<p>
+<tt>void <b>SetLabelFont</b>(<a href="GlowFont.html">GlowFont</a> font)</tt>
+</p>
+<blockquote>
+Sets the font of the label.
+</blockquote>
+
+<p>
+<tt><a href="GlowColor.html">GlowColor</a> <b>GetLabelTextColor</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the color of the label's text.
+</blockquote>
+
+<p>
+<tt>void <b>SetLabelTextColor</b>(<a href="GlowColor.html">GlowColor</a> font)</tt>
+</p>
+<blockquote>
+Sets the color of the label's text.
+</blockquote>
+
+<p>
+<tt><a href="GlowColor.html">GlowColor</a> <b>GetLabelDisableTextColor</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the color of the label's text when disabled.
+</blockquote>
+
+<p>
+<tt>void <b>SetLabelDisableTextColor</b>(<a href="GlowColor.html">GlowColor</a> font)</tt>
+</p>
+<blockquote>
+Sets the color of the label's text when disabled.
+</blockquote>
+
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Methods for subclasses</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Initializer</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>void <b>InitLabel</b>(<a href="GlowWidget.html">GlowWidget</a>* main, GlowWidgetLabelHelper::LabelPosition position, int width, int height, int spacing, const char* text, <a href="GlowFont.html">GlowFont</a> font = <a href="GlowFont.html">GlowFont</a>::helvetica12, <a href="GlowColor.html">GlowColor</a> textColor = <a href="GlowLabelParams.html">GlowLabelParams</a>::defaults.textColor, <a href="GlowColor.html">GlowColor</a> disableTextColor = <a href="GlowLabelParams.html">GlowLabelParams</a>::defaults.disableTextColor)</tt>
+</p>
+<blockquote>
+Initializes a <tt>GlowWidgetLabelHelper</tt> with options specified by the given params. <tt>main</tt> specifies the main widget. <tt>spacing</tt> gives the space in pixels between the label and the widget. <tt>position</tt> gives the position of the label relative to the widget. <tt>width</tt> and <tt>height</tt> give a maximum size for the label. <tt>font</tt> gives the font to use for the label. <tt>textColor</tt> and <tt>disableTextColor</tt> give the colors for the label. This method must be called, normally from a widget's constructor or its <tt>Init()</tt> method, before the label may be accessed.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Assistance</b>
+<br>
+These methods are provided to assist widgets in managing their labels.
+</p>
+
+<blockquote>
+
+<p>
+<tt><a href="GlowWidget.html">GlowWidget</a>::AutoPackError <b>HelpAutoPack</b>(int& hSize, int& vSize, int& leftMargin, int& rightMargin, int& topMargin, int& bottomMargin)</tt>
+</p>
+<blockquote>
+Modifies the given reference parameters to reflect the label. It reduces the sizes by the label's size and spacing, and sets the margins appropriately.
+</blockquote>
+</p>
+
+<p>
+<tt><a href="GlowWidgetLabelWidget.html">GlowWidgetLabelWidget</a>* <b>Label</b>(void) const</tt>
+</p>
+<blockquote>
+Returns a pointer to the actual widget implementing the label. A subclass normally shouldn't need to gain access to this pointer, but should instead use the provided access methods.
+</blockquote>
+
+</blockquote>
+
+</blockquote>
+
+
+<hr size=2>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+
+<hr size=2>
+
+<p>
+<address>
+<a href="http://www.ugcs.caltech.edu/~dazuma/glow/">The GLOW Toolkit</a>
+</address>
+</p>
+
+
+</body>
+
+</html>

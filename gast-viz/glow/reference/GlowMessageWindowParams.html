@@ -1,0 +1,239 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<html>
+
+<head>
+
+<title>
+GLOW Reference
+</title>
+
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3>
+GLOW API version 1.0 reference
+</h3>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+<hr>
+
+<h2>
+class GlowMessageWindowParams
+</h2>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>General information</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>
+type: struct
+<br>
+inherits: (none)
+<br>
+module: <tt><a href="M_glowMessageWindow.html">glowMessageWindow</a></tt>
+</b>
+</p>
+<p>
+<tt>GlowMessageWindowParams</tt> encloses parameters for construction of a <tt><a href="GlowMessageWindow.html">GlowMessageWindow</a></tt>.
+</p>
+<p>
+GLOW programs that use message windows will need to use <tt>GlowMessageWindowParams</tt>.
+</p>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Data</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Parameter data</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>const char* <b>windowTitle</b></tt>
+</p>
+<blockquote>
+Title for the window. Initial default is "Note".
+</blockquote>
+<p>
+<tt>int <b>x</b></tt>
+</p>
+<blockquote>
+X location of the upper left of the window, in pixel coordinates of the screen. Initial default is <tt><a href="GlowWindow.html">GlowWindow</a>::autoPosition</tt>.
+</blockquote>
+<p>
+<tt>int <b>y</b></tt>
+</p>
+<blockquote>
+Y location of the upper left of the window, in pixel coordinates of the screen. Initial default is <tt><a href="GlowWindow.html">GlowWindow</a>::autoPosition</tt>.
+</blockquote>
+<p>
+<tt>const char* <b>text</b></tt>
+</p>
+<blockquote>
+Text to display. Include newline characters to specify a multi-line message. Initial default is the empty string "".
+</blockquote>
+<p>
+<tt><a href="GlowFont.html">GlowFont</a> <b>textFont</b></tt>
+</p>
+<blockquote>
+Font for the text. Initial default is <tt><a href="GlowFont.html">GlowFont</a>::helvetica12</tt>.
+</blockquote>
+<p>
+<tt><a href="GlowFont.html">GlowFont</a> <b>buttonFont</b></tt>
+</p>
+<blockquote>
+Font for the buttons. Initial default is <tt><a href="GlowFont.html">GlowFont</a>::helvetica12</tt>.
+</blockquote>
+<p>
+<tt>const char* <b>buttonLabels</b></tt>
+</p>
+<blockquote>
+Labels for the buttons, tab-delimited. Initial default is "OK" (denoting a single button with that label).
+</blockquote>
+<p>
+<tt>int <b>windowSpacing</b></tt>
+</p>
+<blockquote>
+Spacing between elements in the window. Initial default is 20.
+</blockquote>
+<p>
+<tt>int <b>enterButton</b></tt>
+</p>
+<blockquote>
+Button number to map the enter key to. Remember that buttons are numbered starting with 0. Use a negative number for no mapping. Initial default is 0.
+</blockquote>
+<p>
+<tt>int <b>escapeButton</b></tt>
+</p>
+<blockquote>
+Button number to map the escape key to. Remember that buttons are numbered starting with 0. Use a negative number for no mapping. Initial default is 1.
+</blockquote>
+<p>
+<tt><a href="GlowMessageWindowReceiver.html">GlowMessageWindowReceiver</a>* <b>receiver</b></tt>
+</p>
+<blockquote>
+Receiver to receive events for this window, or the null pointer for no event reporting. You can still add or remove receivers later. Initial default is null.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Color data</b>
+</p>
+
+<blockquote>
+
+<tt><a href="GlowColor.html">GlowColor</a> <b>backColor</b></tt>
+<br>
+<tt><a href="GlowColor.html">GlowColor</a> <b>textColor</b></tt>
+
+</blockquote>
+
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Static Data</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Defaults</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>static GlowMessageWindowParams <b>defaults</b></tt>
+</p>
+<blockquote>
+Default parameters. These are copied every time a new GlowMessageWindowParams is constructed.
+</blockquote>
+
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Methods</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Constructor</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt><b>GlowMessageWindowParams</b>(void)</tt>
+</p>
+<blockquote>
+Constructs a new parameter block, copying <tt>defaults</tt>
+</blockquote>
+
+</blockquote>
+
+</blockquote>
+
+<hr size=2>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+<hr size=2>
+
+<p>
+<address>
+<a href="http://www.ugcs.caltech.edu/~dazuma/glow/">The GLOW Toolkit</a>
+</address>
+</p>
+
+
+</body>
+
+</html>

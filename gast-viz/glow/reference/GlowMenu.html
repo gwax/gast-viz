@@ -1,0 +1,414 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<html>
+
+<head>
+
+<title>
+GLOW Reference
+</title>
+
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3>
+GLOW API version 1.0 reference
+</h3>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+<hr>
+
+<h2>
+class GlowMenu
+</h2>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>General information</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>
+type: class
+<br>
+inherits: (none)
+<br>
+module: <tt><a href="M_glow.html">glow</a></tt>
+</b>
+</p>
+<p>
+<tt>GlowMenu</tt> encapsulates a menu. It provides facilities for manipulating the structure of the menu, as well as the type of notification desired when an item is chosen from it. A <tt>GlowMenu</tt> must be attached to a <tt><a href="GlowSubwindow.html">GlowSubwindow</a></tt> to be used.
+</p>
+<p>
+There are two types of items that can be present in a menu: normal items and submenu items. Normal items are identified by a text label and an integer code, which is provided to the object receiving notification of the menu selection. Submenu items are identified by a text label and a pointer to another <tt>GlowMenu</tt> object. Items may also be marked, which prepends a short string to the label. Items are numbered starting at 0.
+</p>
+<p>
+GLOW programs that make use of menus will utilize the <tt>GlowMenu</tt> class.
+</p>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Constants</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Binding settings</b>
+<br>
+These constants specify the type of notification desired when a menu item is chosen. Defined as an enumeration of type <tt>GlowMenu::BindState</tt>.
+</p>
+
+<blockquote>
+
+<p>
+<tt>enum GlowMenu::BindState <b>bindNone</b></tt>
+</p>
+<blockquote>
+Perform no explicit notification. However, a subclass of <tt>GlowMenu</tt> may still override the <tt>OnHit()</tt> method to gain notification of menu choices.
+</blockquote>
+<p>
+<tt>enum GlowMenu::BindState <b>bindNormal</b></tt>
+</p>
+<blockquote>
+Notify by binding <tt>Notifier()</tt> to <tt><a href="GlowMenuReceiver.html">GlowMenuReceiver</a></tt>(s).
+</blockquote>
+<p>
+<tt>enum GlowMenu::BindState <b>bindSubwindow</b></tt>
+</p>
+<blockquote>
+Notify by invoking the <tt>OnDirectMenuHit()</tt> method of the appropriate <tt><a href="GlowSubWindow.html">GlowSubWindow</a></tt>.
+</blockquote>
+
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Methods</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Constructor and destructor</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt><b>GlowMenu</b>(void)</tt>
+</p>
+<blockquote>
+Creates a new <tt>GlowMenu</tt> with no items. Also creates the corresponding GLUT menu.
+</blockquote>
+
+<p>
+<tt>virtual <b>~GlowMenu</b>(void)</tt>
+</p>
+<blockquote>
+The destructor for <tt>GlowMenu</tt> deletes the corresponding GLUT menu.
+</blockquote>
+
+</blockquote>
+
+<p>
+<b>Adding and removing items</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>void <b>AddEntry</b>(const char* label, int code)</tt>
+</p>
+<blockquote>
+Appends a normal item to the menu, with the given label and code.
+</blockquote>
+
+<p>
+<tt>void <b>AddSubmenu</b>(const char* label, GlowMenu* menu)</tt>
+</p>
+<blockquote>
+Appends a submenu item to the menu, with the given label and menu.
+</blockquote>
+
+<p>
+<tt>void <b>InsertEntry</b>(int itemNum, const char* label, int code)</tt>
+</p>
+<blockquote>
+Inserts a normal item in the menu at the given itemNum position, with the given label and code.
+</blockquote>
+
+<p>
+<tt>void <b>InsertSubmenu</b>(int itemNum, const char* label, GlowMenu* menu)</tt>
+</p>
+<blockquote>
+Inserts a submenu item in the menu at the given itemNum position, with the given label and menu.
+</blockquote>
+
+<p>
+<tt>void <b>RemoveItem</b>(int itemNum)</tt>
+</p>
+<blockquote>
+Removes an item from the menu.
+</blockquote>
+
+<p>
+<tt>int <b>NumItems</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the number of items in the menu.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Manipulating an item's label</b>
+<br>
+These methods manipulate the label for a menu item. You may also specify a mark string that is prepended to the item label, mark and unmark items, and search for marked items.
+</p>
+
+<blockquote>
+
+<p>
+<tt>const char* <b>GetItemLabel</b>(int itemNum) const</tt>
+</p>
+<blockquote>
+Returns the label associated with an item. Does not include the mark, if any.
+</blockquote>
+
+<p>
+<tt>void <b>SetItemLabel</b>(int itemNum, const char* label)</tt>
+</p>
+<blockquote>
+Sets the label associated with an item. Does not affect the mark, if any.
+</blockquote>
+
+<p>
+<tt>const char* <b>GetItemMark</b>(int itemNum) const</tt>
+</p>
+<blockquote>
+Returns the mark string associated with an item. If the item is not marked, returns 0.
+</blockquote>
+
+<p>
+<tt>void <b>SetItemMark</b>(int itemNum, const char* mark)</tt>
+</p>
+<blockquote>
+Sets the mark associated with an item. If mark == 0, unmarks the item.
+</blockquote>
+
+<p>
+<tt>void <b>ToggleItemMark</b>(int itemNum, const char* mark)</tt>
+</p>
+<blockquote>
+If the item is marked, unmarks it; otherwise, sets the mark to the given string.
+</blockquote>
+
+<p>
+<tt>void <b>UnmarkItem</b>(int itemNum)</tt>
+</p>
+<blockquote>
+Unmarks the specified item. Has no effect if the item is already unmarked.
+</blockquote>
+
+<p>
+<tt>void <b>UnmarkAllItems</b>(void)</tt>
+</p>
+<blockquote>
+Unmarks all items in the menu.
+</blockquote>
+
+<p>
+<tt>bool <b>IsItemMarked</b>(int itemNum) const</tt>
+</p>
+<blockquote>
+Returns true if and only if the given item is marked.
+</blockquote>
+
+<p>
+<tt>int <b>NextMarkedItem</b>(int itemNum) const</tt>
+</p>
+<blockquote>
+Returns the item number of the first marked item > itemNum. Pass -1 to return the first marked item. If no more items are marked, returns -1.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Manipulating an item's attributes</b>
+<br>
+These methods manipulate the other attributes of an item, including changing its type.
+</p>
+
+<blockquote>
+
+<p>
+<tt>bool <b>IsEntry</b>(int itemNum) const</tt>
+</p>
+<blockquote>
+Returns true if and only if the item is a normal item.
+</blockquote>
+
+<p>
+<tt>bool <b>IsSubmenu</b>(int itemNum) const</tt>
+</p>
+<blockquote>
+Returns true if and only if the item is a submenu.
+</blockquote>
+
+<p>
+<tt>int <b>GetItemCode</b>(int itemNum) const</tt>
+</p>
+<blockquote>
+Returns the code associated with the specified normal item. Throws an assertion if the item is a submenu.
+</blockquote>
+
+<p>
+<tt>void <b>SetItemCode</b>(int itemNum, int code)</tt>
+</p>
+<blockquote>
+Sets the code associated with the specified item. If the item is a submenu, changes it to a normal item. Does not affect the label or the mark.
+</blockquote>
+
+<p>
+<tt>GlowMenu* <b>GetItemSubmenu</b>(int itemNum) const</tt>
+</p>
+<blockquote>
+Returns the submenu associated with the specified submenu item. Throws an assertion if the item is a normal item.
+</blockquote>
+
+<p>
+<tt>void <b>SetItemSubmenu</b>(int itemNum, GlowMenu* submenu)</tt>
+</p>
+<blockquote>
+Sets the submenu associated with the specified item. If the item is a normal item, changes it to a submenu. Does not affect the label or the mark.
+</blockquote>
+
+<p>
+<tt>void <b>ChangeToEntry</b>(int itemNum, const char* label, int code)</tt>
+</p>
+<blockquote>
+Changes the specified item to a normal item, and sets the label and code. Does not affect the mark.
+</blockquote>
+
+<p>
+<tt>void <b>ChangeToSubmenu</b>(int itemNum, const char* label, GlowMenu* submenu)</tt>
+</p>
+<blockquote>
+Changes the specified item to a submenu and sets the label and submenu. Does not affect the mark.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Managing notification</b>
+<br>
+Several different notification methods are available for <tt>GlowMenu</tt>s. The menu can broadcast a message to a set of <tt><a href="GlowMenuReceiver.html">GlowMenuReceiver</a></tt>s, it can invoke the <tt>OnDirectMenuHit()</tt> method of the appropriate <tt><a href="GlowSubwindow.html">GlowSubwindow</a></tt>, or it can do nothing. In addition, this behavior can be overridden by overriding <tt>OnHit()</tt>.
+</p>
+
+<blockquote>
+
+<p>
+<tt>void <b>SetBindState</b>(GlowMenu::BindState state)</tt>
+</p>
+<blockquote>
+Sets the bind state to the specified value. Use the constants provided in <tt>GlowMenu</tt>.
+</blockquote>
+
+<p>
+<tt>GlowMenu::BindState <b>GetBindState</b>(void)</tt>
+</p>
+<blockquote>
+Returns the current bind behavior.
+</blockquote>
+
+<p>
+<tt><a href="TSender.html">TSender</a>&lt;const <a href="GlowMenuMessage.html">GlowMenuMessage</a>&&gt;& <b>Notifier</b>(void)</tt>
+</p>
+<blockquote>
+Accesses the sender used by <tt>bindNormal</tt>. You should bind this sender to receivers interested in menu selection events.
+</blockquote>
+
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Overrideable methods</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Menu hit events</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>virtual void <b>OnHit</b>(int code, <a href="GlowSubwindow.html">GlowSubwindow</a>* window, int x, int y)</tt>
+</p>
+<blockquote>
+Override this method to customize the type of notification done on a menu choice. The default method performs notification based on the current bind state.
+</blockquote>
+
+</blockquote>
+
+</blockquote>
+
+
+<hr size=2>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+
+<hr size=2>
+
+<p>
+<address>
+<a href="http://www.ugcs.caltech.edu/~dazuma/glow/">The GLOW Toolkit</a>
+</address>
+</p>
+
+
+</body>
+
+</html>

@@ -1,0 +1,382 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<html>
+
+<head>
+
+<title>
+GLOW Reference
+</title>
+
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3>
+GLOW API version 1.0 reference
+</h3>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+<hr>
+
+<h2>
+class GlowComponent
+</h2>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>General information</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>
+type: class
+<br>
+inherits: (none)
+<br>
+module: <tt><a href="M_glow.html">glow</a></tt>
+</b>
+</p>
+<p>
+<tt>GlowComponent</tt> is the base class of all drawable objects. <tt><a href="GlowSubwindow.html">GlowSubwindow</a></tt>, <tt><a href="GlowWindow.html">GlowWindow</a></tt>, <tt><a href="GlowWidget.html">GlowWidget</a></tt>, and all other drawable components inherit from <tt>GlowComponent</tt>. The component level understands three concepts: redraw, activation and hierarchy. To perform drawing, a subclass should override one or both of the methods <tt>OnBeginPaint()</tt> and <tt>OnEndPaint()</tt>. GLOW components may be arranged in a hierarchy similar to a scene graph. Several functions, such as drawing and activation, when applied to a component in the hierarchy, also recursively apply to all its descendents. Deleting a component also deletes its descendents.
+</p>
+<p>
+All GLOW programs must make use of components at one time or another. Normally, you do not use <tt>GlowComponent</tt>s directly, but instead subclass a <tt>GlowComponent</tt>.
+</p>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Methods</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Constructors and destructor</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt><b>GlowComponent</b>(GlowComponent* parent)</tt>
+</p>
+<blockquote>
+Creates a new <tt>GlowComponent</tt> and adds it to <tt>parent</tt>'s children. The new component now lives underneath <tt>parent</tt> in the hierarchy.
+</blockquote>
+
+<p>
+<tt><b>GlowComponent</b>(void)</tt>
+</p>
+<blockquote>
+Creates a new <tt>GlowComponent</tt> but does not initialize it. A component created in this way may not be used until its <tt>Init()</tt> method is called.
+</blockquote>
+
+<p>
+<tt>void <b>Init</b>(GlowComponent* parent)</tt>
+</p>
+<blockquote>
+Initializes a <tt>GlowComponent</tt> by adding it to <tt>parent</tt>'s children. The new component now lives underneath <tt>parent</tt> in the hierarchy.
+</blockquote>
+
+<p>
+<tt>virtual <b>~GlowComponent</b>(void)</tt>
+</p>
+<blockquote>
+The destructor for <tt>GlowComponent</tt> also recursively deletes the component's children in the hierarchy.
+</blockquote>
+
+<p>
+<tt>void <b>Close</b>(void)</tt>
+</p>
+<blockquote>
+Requests a deferred deletion of the component. The component won't actually be deleted until you've finished handling the current event and control is passed back to GLOW. This should be useful, for example, for destroying a window from within one of its methods or a method of one of its children, as it is safer than <tt>delete this</tt>.
+</blockquote>
+
+</blockquote>
+
+<p>
+<b>Examining a component's ancestors</b>
+<br>
+You can gather information about components further up in the hierarchy.
+</p>
+
+<blockquote>
+
+<p>
+<tt>GlowComponent* <b>Parent</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the immediate parent of this component. If this component is the root of a heirarchy, returns 0.
+</blockquote>
+
+<p>
+<tt><a href="GlowSubwindow.html">GlowSubwindow</a>* <b>WhichWindow</b>(void)</tt>
+</p>
+<blockquote>
+If this component is a <tt><a href="GlowSubwindow.html">GlowSubwindow</a></tt>, returns <tt>this</tt>, otherwise, returns the nearest <tt><a href="GlowSubwindow.html">GlowSubwindow</a></tt> containing this component.
+</blockquote>
+
+<p>
+<tt><a href="GlowSubwindow.html">GlowSubwindow</a>* <b>ParentWindow</b>(void) const</tt>
+</p>
+<blockquote>
+Returns <tt>Parent()->WhichWindow()</tt>.
+</blockquote>
+
+<p>
+<tt><a href="GlowWindow.html">GlowWindow</a>* <b>ToplevelWindow</b>(void)</tt>
+</p>
+<blockquote>
+Returns a pointer to the object at the top of the hierarchy, which is always a <tt><a href="GlowWindow.html">GlowWindow</a></tt>.
+</blockquote>
+
+<p>
+<tt>bool <b>IsToplevel</b>(void) const</tt>
+</p>
+<blockquote>
+Returns true if and only if this component is at the top of a hierarchy.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Examining a component's siblings</b>
+<br>
+You can get information on a component's siblings using these methods.
+</p>
+
+<blockquote>
+
+<p>
+<tt>GlowComponent* <b>Next</b>(void) const</tt>
+</p>
+<blockquote>
+Returns a pointer to the next component in its parents children list, or NULL if this is the last component.
+</blockquote>
+
+<p>
+<tt>GlowComponent* <b>Prev</b>(void) const</tt>
+</p>
+<blockquote>
+Returns a pointer to the previous component in its parents children list, or NULL if this is the first component.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Examining a component's children</b>
+<br>
+You can manipulate a component's children using these methods.
+</p>
+
+<blockquote>
+
+<p>
+<tt>int <b>NumChildren</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the number of children under this component.
+</blockquote>
+
+<p>
+<tt>GlowComponent* <b>FirstChild</b>(void) const</tt>
+</p>
+<blockquote>
+Returns a pointer to the first child component, or NULL if this component has no children.
+</blockquote>
+
+<p>
+<tt>GlowComponent* <b>LastChild</b>(void) const</tt>
+</p>
+<blockquote>
+Returns a pointer to the last child component, or NULL if this component has no children.
+</blockquote>
+
+<p>
+<tt>void <b>ReorderChild</b>(GlowComponent* child, GlowComponent* pos)</tt>
+</p>
+<blockquote>
+Reorders the children, moving the given child immediately before the given position in the child component list. To move the child to the end of the list, pass NULL for the position. Throws an assertion if either component is not a child of this component.
+</blockquote>
+
+<p>
+<tt>void <b>KillChildren</b>(void)</tt>
+</p>
+<blockquote>
+Deletes all children of this component.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Component activation and deactivation</b>
+<br>
+Components may be activated or deactivated. Deactivation propagates down the hierarchy to all children, so deactivating a component deactivates all its descendents. Reactivating the component reactivates its descendents unless they have also been explicitly deactivated. There are three states for activation: active, inactive, and activeStandby. Active means the component is active. Inactive means the component has been explicitly deactivated. ActiveStandby means the component is inactive because one of its ancestors was explicitly deactivated, but the component has not been explicitly deactivated itself. These methods also may cause activation events, described below, to be raised; however, those events are not raised immediately. Instead, they are queued and then raised when control is given back to the GLOW system. (This is similar to the mechanism employed by GLUT.) This allows GLOW to combine or eliminate events where possible; e.g. if a component is deactivated and then re-activated immediately before GLOW regains control, no event is sent. However, the activation state as reported by methods like <tt>IsActive()</tt> will reflect changes immediately.
+</p>
+
+<blockquote>
+
+<p>
+<tt>void <b>Activate</b>(void)</tt>
+</p>
+<blockquote>
+Activates this component. Also changes any descendants from activeStandby to active if appropriate.
+</blockquote>
+
+<p>
+<tt>void <b>Deactivate</b>(void)</tt>
+</p>
+<blockquote>
+Deactivates this component. Also changes any descendants from active to activeStandby if appropriate.
+</blockquote>
+
+<p>
+<tt>bool <b>IsActive</b>(void)</tt>
+</p>
+<blockquote>
+Returns true if and only if this component is in the active state.
+</blockquote>
+
+<p>
+<tt>bool <b>IsInactive</b>(void)</tt>
+</p>
+<blockquote>
+Returns true if and only if this component is in the inactive state.
+</blockquote>
+
+<p>
+<tt>bool <b>IsActiveStandby</b>(void)</tt>
+</p>
+<blockquote>
+Returns true if and only if this component is in the activeStandby state.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Drawing methods</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>void <b>Paint</b>(void)</tt>
+</p>
+<blockquote>
+This advanced routine draws this component and all its children by recursively calling the respective <tt>OnBeginPaint()</tt> and <tt>OnEndPaint()</tt> methods. Normally, you do not need to draw components explicitly in this mannner, because GLOW will call the appropriate <tt>Paint()</tt> methods when it handles a refresh event. However, if you ever need a component to draw itself without going through the refresh mechanism, you can use this routine.
+</blockquote>
+
+</blockquote>
+
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Overrideable methods</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Drawing methods</b>
+<br>
+Subclasses should override these methods to perform drawing. They are called whenever a component needs to be redrawn, either in response to a window manager event or in response to an explicit call to the <tt>Refresh()</tt> method of a window. Drawing propagates down the component hierarchy as follows. The window manager first informs a window or a subwindow that it needs to be redrawn. A redraw then begins at that point in the hierarchy and propagates downward towards the descendents. The recursion kernel is as follows. First, the component's <tt>OnBeginPaint()</tt> method is called. If <tt>OnBeginPaint()</tt> returns true, each of the component's children is recursively redrawn. Finally, after all children have finished, the component's <tt>OnEndPaint()</tt> method is called. If <tt>OnBeginPaint()</tt> returns false, the children are ignored, but <tt>OnEndPaint()</tt> is still called. Recursion stops when a subwindow is encountered. If a component has a child which is a subwindow, the subwindow is <i>not</i> recursively redrawn. Instead, if that subwindow needs redrawing, the window manager will send it a separate redraw request, and another recursive redraw will begin at that subwindow.
+</p>
+
+<blockquote>
+
+<p>
+<tt>virtual bool <b>OnBeginPaint</b>(void)</tt>
+</p>
+<blockquote>
+Override this method to perform any drawing that must be done before drawing is propagated to children. If the method returns true, the children will be redrawn; if false, the children will not be redrawn. The default method does nothing and returns true.
+</blockquote>
+
+<p>
+<tt>virtual void <b>OnEndPaint</b>(void)</tt>
+</p>
+<blockquote>
+Override this method to perform any drawing that must be done after drawing has finished propogating to children. The default method does nothing.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Activation events</b>
+<br>
+Subclasses may override these methods to respond to changes in activation. Specifically, if a component is activated-- that is, its state is changed from inactive to active as a result of being explicitly activated, or from activeStandby to active as a result of an ancestor being explicitly activated, then <tt>OnActivate()</tt> is called. If a component is deactivated-- that is, its state is changed from active to inactive as a result of being explicitly deactivated, or from active to activeStandby as a result of an ancestor being explicitly deactivated, then <tt>OnDeactivate()</tt> is called.
+</p>
+
+<blockquote>
+
+<p>
+<tt>virtual void <b>OnActivate</b>(void)</tt>
+</p>
+<blockquote>
+Override this method to perform any task in response to a component being activated. The default method does nothing.
+</blockquote>
+
+<p>
+<tt>virtual void <b>OnDeactivate</b>(void)</tt>
+</p>
+<blockquote>
+Override this method to perform any task in response to a component being deactivated. The default method does nothing.
+</blockquote>
+
+</blockquote>
+
+</blockquote>
+
+
+<hr size=2>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+
+<hr size=2>
+
+<p>
+<address>
+<a href="http://www.ugcs.caltech.edu/~dazuma/glow/">The GLOW Toolkit</a>
+</address>
+</p>
+
+
+</body>
+
+</html>

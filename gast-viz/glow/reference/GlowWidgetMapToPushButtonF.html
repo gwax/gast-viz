@@ -1,0 +1,260 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<html>
+
+<head>
+
+<title>
+GLOW Reference
+</title>
+
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3>
+GLOW API version 1.0 reference
+</h3>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+<hr>
+
+<h2>
+typedef GlowWidgetMapToPushButtonFilter
+</h2>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>General information</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>
+type: class
+<br>
+inherits: <tt><a href="GlowWidgetKeyboardFilter.html">GlowWidgetKeyboardFilter</a></tt>
+<br>
+module: <tt><a href="M_glowWidget.html">glowWidget</a></tt>
+</b>
+</p>
+<p>
+<tt>GlowWidgetMapToPushButtonFilter</tt> is a useful pre-built widget keyboard filter that intercepts configurable keyboard events and responds by hitting a specified push button. You can use this filter to map return and escape keypresses to hits of the OK and Cancel buttons of a dialog box.
+</p>
+<p>
+GLOW programs that use dialog boxes can benefit from adding a <tt>GlowWidgetTabFilter</tt> to their widget roots.
+</p>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Types</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Inherited types</b>
+<br>
+These types are inherited from <tt><a href="TReceiver.html">TReceiver</a>&lt;<a href="GlowWidgetKeyboardData.html">GlowWidgetKeyboardData</a>&&gt;</tt>.
+</p>
+
+<blockquote>
+
+<p>
+<tt>typedef <a href="GlowWidgetKeyboardData.html">GlowWidgetKeyboardData</a>& <b>MessageType</b></tt>
+</p>
+<blockquote>
+A synonym for the type of message.
+</blockquote>
+
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Methods</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Constructor</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt><b>GlowWidgetMapToPushButtonFilter</b>(<a href="GlowPushButtonWidget.html">GlowPushButtonWidget</a>* widget, <a href="Glow.html">Glow</a>::KeyCode key, <a href="Glow.html">Glow</a>::Modifiers modifiers = <a href="Glow.html">Glow</a>::noModifier)</tt>
+</p>
+<blockquote>
+Constructs a filter that maps the specified key code and modifier to the specified push button widget.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Filter settingns</b>
+<br>
+Use these methods to modify the settings of this filter.
+</p>
+
+<blockquote>
+
+<p>
+<tt><a href="GlowPushButtonWidget.html">GlowPushButtonWidget</a>* <b>GetPushButton</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the pushbutton that should be hit by the filter.
+</blockquote>
+
+<p>
+<tt>void <b>SetPushButton</b>(<a href="GlowPushButtonWidget.html">GlowPushButtonWidget</a>* widget)</tt>
+</p>
+<blockquote>
+Sets the pushbutton that should be hit by the filter.
+</blockquote>
+
+<p>
+<tt><a href="Glow.html">Glow</a>::KeyCode <b>GetKeyCode</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the key code that should trigger the filter.
+</blockquote>
+
+<p>
+<tt>void <b>SetKeyCode</b>(<a href="Glow.html">Glow</a>::KeyCode key)</tt>
+</p>
+<blockquote>
+Sets the key code that should trigger the filter.
+</blockquote>
+
+<p>
+<tt><a href="Glow.html">Glow</a>::Modifiers <b>GetModifiers</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the modifiers that must be down to trigger the filter.
+</blockquote>
+
+<p>
+<tt>void <b>SetModifiers</b>(<a href="Glow.html">Glow</a>::Modifiers modifiers)</tt>
+</p>
+<blockquote>
+Sets the modifiers that must be down to trigger the filter.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Inherited methods</b>
+<br>
+These methods are inherited from <tt><a href="TReceiver.html">TReceiver</a>&lt;<a href="GlowWidgetKeyboardData.html">GlowWidgetKeyboardData</a>&&gt;</tt>.
+</p>
+
+<blockquote>
+
+<p>
+<tt>unsigned int <b>NumSenders</b>(void)</tt>
+</p>
+
+<p>
+<tt>unsigned int <b>NumTrackers</b>(void)</tt>
+</p>
+
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Overrideable methods</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Inherited methods</b>
+<br>
+These methods are inherited from <tt><a href="GlowWidgetKeyboardFilter.html">GlowWidgetKeyboardFilter</a></tt>.
+</p>
+
+<blockquote>
+
+<p>
+<tt>virtual bool <b>OnFilter</b>(<a href="GlowWidgetKeyboardData.html">GlowWidgetKeyboardData</a>& message) = 0</tt>
+</p>
+<blockquote>
+This method is overridden by <tt>GlowWidgetMapToPushButtonFilter</tt> and should not be overridden again.
+</blockquote>
+
+</blockquote>
+
+<p>
+<b>Inherited methods</b>
+<br>
+These methods are inherited from <tt><a href="TReceiver.html">TReceiver</a>&lt;<a href="GlowWidgetKeyboardData.html">GlowWidgetKeyboardData</a>&&gt;</tt>.
+</p>
+
+<blockquote>
+
+<p>
+<tt>virtual void <b>OnMessage</b>(<a href="GlowWidgetKeyboardData.html">GlowWidgetKeyboardData</a>& message) = 0</tt>
+</p>
+<blockquote>
+This method is overridden by <tt><a href="GlowWidgetKeyboardFilter.html">GlowWidgetKeyboardFilter</a></tt> and should not be overridden again.
+</blockquote>
+
+</blockquote>
+
+</blockquote>
+
+
+<hr size=2>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+
+<hr size=2>
+
+<p>
+<address>
+<a href="http://www.ugcs.caltech.edu/~dazuma/glow/">The GLOW Toolkit</a>
+</address>
+</p>
+
+
+</body>
+
+</html>

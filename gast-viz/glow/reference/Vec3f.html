@@ -1,0 +1,419 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<html>
+
+<head>
+
+<title>
+GLOW Reference
+</title>
+
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3>
+GLOW API version 1.0 reference
+</h3>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+<hr>
+
+<h2>
+class Vec3f
+</h2>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>General information</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>
+type: class
+<br>
+inherits: (none)
+<br>
+module: <tt><a href="M_glowVectorAlgebra.html">glowVectorAlgebra</a></tt>
+</b>
+</p>
+<p>
+<tt>Vec3f</tt> represents a 3-vector of floats. It is used internally by the 3D view transform classes.
+</p>
+<p>
+Most GLOW programs will not need to use <tt>Vec3f</tt> directly; however, it may be useful for customizing or manipulating the 3D view transform components.
+</p>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Methods</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Constructors</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt><b>Vec3f</b>(void)</tt>
+</p>
+<blockquote>
+Creates a new vector with the value set to the origin (0,0,0).
+</blockquote>
+
+<p>
+<tt><b>Vec3f</b>(GLfloat xval, GLfloat yval, GLfloat zval)</tt>
+</p>
+<blockquote>
+Creates a new vector with the given coordinates.
+</blockquote>
+
+<p>
+<tt><b>Vec3f</b>(const GLfloat* vals)</tt>
+</p>
+<blockquote>
+Creates a new vector, copying the given array of coordinates.
+</blockquote>
+
+<p>
+<tt><b>Vec3f</b>(const Vec3f& v)</tt>
+</p>
+<blockquote>
+Copy constructor.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Setters</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>void <b>Set</b>(GLfloat xval, GLfloat yval, GLfloat zval)</tt>
+</p>
+<blockquote>
+Sets the vector to the specified coordinates.
+</blockquote>
+
+<p>
+<tt>void <b>Set</b>(const GLfloat* vals)</tt>
+</p>
+<blockquote>
+Sets the vector to the specified array of coordinates.
+</blockquote>
+
+<p>
+<tt>Vec3f& <b>operator=</b>(const Vec3f& v)</tt>
+</p>
+<blockquote>
+Copies the given vector.
+</blockquote>
+
+<p>
+<tt>Vec3f& <b>operator=</b>(const GLfloat* vals)</tt>
+</p>
+<blockquote>
+Sets the vector to the specified array of coordinates.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Member access</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>GLfloat <b>GetX</b>(void) const</tt>
+</p>
+
+<p>
+<tt>GLfloat <b>GetY</b>(void) const</tt>
+</p>
+
+<p>
+<tt>GLfloat <b>GetZ</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>SetX</b>(GLfloat val)</tt>
+</p>
+
+<p>
+<tt>void <b>SetY</b>(GLfloat val)</tt>
+</p>
+
+<p>
+<tt>void <b>SetZ</b>(GLfloat val)</tt>
+</p>
+
+<p>
+<tt>GLfloat& <b>X</b>(void)</tt>
+</p>
+
+<p>
+<tt>GLfloat <b>X</b>(void) const</tt>
+</p>
+
+<p>
+<tt>GLfloat& <b>Y</b>(void)</tt>
+</p>
+
+<p>
+<tt>GLfloat <b>Y</b>(void) const</tt>
+</p>
+
+<p>
+<tt>GLfloat& <b>Z</b>(void)</tt>
+</p>
+
+<p>
+<tt>GLfloat <b>Z</b>(void) const</tt>
+</p>
+
+</blockquote>
+
+
+<p>
+<b>Indexed member access</b>
+<br>
+You can access members by index. index 0 is the x-coordinate, and index 2 is the z-coordinate. Specifying an index outside those bounds will raise an assertion.
+</p>
+
+<blockquote>
+
+<p>
+<tt>GLfloat <b>GetVal</b>(std::ptrdiff_t i) const</tt>
+</p>
+
+<p>
+<tt>void <b>SetVal</b>(std::ptrdiff_t i, GLfloat val)</tt>
+</p>
+
+<p>
+<tt>GLfloat& <b>operator[]</b>(std::ptrdiff_t i)</tt>
+</p>
+
+<p>
+<tt>GLfloat <b>operator[]</b>(std::ptrdiff_t i) const</tt>
+</p>
+
+</blockquote>
+
+
+<p>
+<b>Misc access</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>void <b>SetZero</b>(void)</tt>
+</p>
+<blockquote>
+Sets the vector to the origin (0,0,0).
+</blockquote>
+
+<p>
+<tt>bool <b>IsZero</b>(void) const</tt>
+</p>
+<blockquote>
+Is the vector set to the origin (0,0,0)?
+</blockquote>
+
+<p>
+<tt><b>operator const GLfloat*</b>(void) const</tt>
+</p>
+<blockquote>
+You can cast a <tt>Vec3f</tt> directly to a <tt>const GLfloat*</tt>. This lets you do things like <tt>glVertex3fv(myVec3f);</tt>.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Special operations</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>void <b>Negate</b>(void)</tt>
+</p>
+<blockquote>
+Negates the vector.
+</blockquote>
+
+<p>
+<tt>GLfloat <b>Norm</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the norm of the vector.
+</blockquote>
+
+<p>
+<tt>GLfloat <b>NormSquared</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the square of the norm of the vector. This is faster than <tt>Norm()*Norm()</tt>.
+</blockquote>
+
+<p>
+<tt>GLfloat <b>Normalize</b>(void)</tt>
+</p>
+<blockquote>
+Normalizes the vector in place.
+</blockquote>
+
+<p>
+<tt>Quatf <b>Normalized</b>(void) const</tt>
+</p>
+<blockquote>
+Returns a normalized version of the vector, but leaves the original untouched.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Arithmetic operations</b>
+<br>
+<tt>Vec3f</tt> provides a full set of arithmetic operations on 3-vectors.
+</p>
+
+<blockquote>
+
+<p>
+<dl>
+<dt>
+<tt><b>Vec3f == Vec3f</b> ---> bool</tt>
+<dd>
+vector equality
+<dt>
+<tt><b>Vec3f != Vec3f</b> ---> bool</tt>
+<dd>
+vector inequality
+</dl>
+</p>
+<p>
+<dl>
+<dt>
+<tt><b>- Vec3f</b> ---> Vec3f</tt>
+<dd>
+vector negation
+</dl>
+</p>
+<p>
+<dl>
+<dt>
+<tt><b>Vec3f * GLfloat</b> ---> Vec3f</tt>
+<dd>
+scalar multiplication
+<dt>
+<tt><b>GLfloat * Vec3f</b> ---> Vec3f</tt>
+<dd>
+scalar multiplication
+<dt>
+<tt><b>Vec3f / GLfloat</b> ---> Vec3f</tt>
+<dd>
+scalar division
+<dt>
+<tt><b>Vec3f *= GLfloat</b></tt>
+<dd>
+in-place scalar multiplication
+<dt>
+<tt><b>Vec3f /= GLfloat</b></tt>
+<dd>
+in-place scalar division
+</dl>
+</p>
+<p>
+<dl>
+<dt>
+<tt><b>Vec3f + Vec3f</b> ---> Vec3f</tt>
+<dd>
+vector addition
+<dt>
+<tt><b>Vec3f - Vec3f</b> ---> Vec3f</tt>
+<dd>
+vector subtraction
+<dt>
+<tt><b>Vec3f * Vec3f</b> ---> GLfloat</tt>
+<dd>
+dot product
+<dt>
+<tt><b>Vec3f % Vec3f</b> ---> Vec3f</tt>
+<dd>
+cross product
+<dt>
+<tt><b>Vec3f += Vec3f</b></tt>
+<dd>
+in-place vector addition
+<dt>
+<tt><b>Vec3f -= Vec3f</b></tt>
+<dd>
+in-place vector subtraction
+<dt>
+<tt><b>Vec3f %= Vec3f</b></tt>
+<dd>
+in-place cross product
+</dl>
+</p>
+
+</blockquote>
+
+</blockquote>
+
+
+<hr size=2>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+
+<hr size=2>
+
+<p>
+<address>
+<a href="http://www.ugcs.caltech.edu/~dazuma/glow/">The GLOW Toolkit</a>
+</address>
+</p>
+
+
+</body>
+
+</html>

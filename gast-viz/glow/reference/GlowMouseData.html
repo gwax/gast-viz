@@ -1,0 +1,178 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<html>
+
+<head>
+
+<title>
+GLOW Reference
+</title>
+
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3>
+GLOW API version 1.0 reference
+</h3>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+<hr>
+
+<h2>
+class GlowMouseData
+</h2>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>General information</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>
+type: struct
+<br>
+inherits: (none)
+<br>
+module: <tt><a href="M_glow.html">glow</a></tt>
+</b>
+</p>
+<p>
+<tt>GlowMouseData</tt> encloses data sent to a <tt><a href="GlowMouseFilter.html">GlowMouseFilter</a></tt> to allow it to filter keyboard events.
+</p>
+<p>
+GLOW programs that need to filter keyboard events will need to use <tt>GlowMouseData</tt>.
+</p>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Constants</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Types of mouse events</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>enum GlowMouseData::EventType <b>mouseDown</b></tt>
+</p>
+<blockquote>
+Mouse down event.
+</blockquote>
+
+<p>
+<tt>enum GlowMouseData::EventType <b>mouseUp</b></tt>
+</p>
+<blockquote>
+Mouse up event.
+</blockquote>
+
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Data</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Event data</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt><a href="GlowSubwindow.html">GlowSubwindow</a>* <b>subwindow</b></tt>
+</p>
+<blockquote>
+The subwindow receiving the event.
+</blockquote>
+<p>
+<tt>GlowMouseData::EventType <b>type</b></tt>
+</p>
+<blockquote>
+The type of event.
+</blockquote>
+<p>
+<tt><a href="Glow.html">Glow</a>::MouseButton <b>button</b></tt>
+</p>
+<blockquote>
+The mouse button pressed.
+</blockquote>
+<p>
+<tt>int <b>x</b></tt>
+</p>
+<blockquote>
+The x position of the mouse pointer when the event occurred.
+</blockquote>
+<p>
+<tt>int <b>y</b></tt>
+</p>
+<blockquote>
+The y position of the mouse pointer when the event occurred.
+</blockquote>
+<p>
+<tt><a href="Glow.html">Glow</a>::Modifiers <b>modifiers</b></tt>
+</p>
+<blockquote>
+The modifier keys that were down when the event occurred.
+</blockquote>
+
+</blockquote>
+
+</blockquote>
+
+
+<hr size=2>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+
+<hr size=2>
+
+<p>
+<address>
+<a href="http://www.ugcs.caltech.edu/~dazuma/glow/">The GLOW Toolkit</a>
+</address>
+</p>
+
+
+</body>
+
+</html>

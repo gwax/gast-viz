@@ -1,0 +1,203 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<html>
+
+<head>
+
+<title>
+GLOW Reference
+</title>
+
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3>
+GLOW API version 1.0 reference
+</h3>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+<hr>
+
+<h2>
+class GlowSubwindowParams
+</h2>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>General information</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>
+type: struct
+<br>
+inherits: (none)
+<br>
+module: <tt><a href="M_glow.html">glow</a></tt>
+</b>
+</p>
+<p>
+<tt>GlowSubwindowParams</tt> encloses parameters for construction of a <tt><a href="GlowSubwindow.html">GlowSubwindow</a></tt>.
+</p>
+<p>
+Most GLOW programs that use subwindows will need to use <tt>GlowSubwindowParams</tt>.
+</p>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Data</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Parameter data</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>int <b>width</b></tt>
+</p>
+<blockquote>
+Width of the subwindow. Initial default is <tt><a href="GlowSubwindow.html">GlowSubwindow</a>::parentWindowSize</tt>.
+</blockquote>
+<p>
+<tt>int <b>height</b></tt>
+</p>
+<blockquote>
+Height of the subwindow. Initial default is <tt><a href="GlowSubwindow.html">GlowSubwindow</a>::parentWindowSize</tt>.
+</blockquote>
+<p>
+<tt>int <b>x</b></tt>
+</p>
+<blockquote>
+X location of the upper left of the subwindow, in pixel coordinates of the parent window. Initial default is 0.
+</blockquote>
+<p>
+<tt>int <b>y</b></tt>
+</p>
+<blockquote>
+Ylocation of the upper left of the subwindow, in pixel coordinates of the parent window. Initial default is 0.
+</blockquote>
+<p>
+<tt><a href="Glow.html">Glow</a>::EventMask <b>eventMask</b></tt>
+</p>
+<blockquote>
+Active event mask for the subwindow. Initial default is <tt><a href="Glow.html">Glow</a>::noEvents</tt>.
+</blockquote>
+<p>
+<tt><a href="Glow.html">Glow</a>::EventMask <b>inactiveEventMask</b></tt>
+</p>
+<blockquote>
+Inactive event mask for the subwindow. Initial default is <tt><a href="Glow.html">Glow</a>::noEvents</tt>.
+</blockquote>
+<p>
+<tt><a href="Glow.html">Glow</a>::BufferType <b>mode</b></tt>
+</p>
+<blockquote>
+Buffer mode for the subwindow. Initial default is <tt><a href="Glow.html">Glow</a>::rgbBuffer | <a href="Glow.html">Glow</a>::doubleBuffer</tt>.
+</blockquote>
+
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Static Data</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Defaults</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>static GlowSubwindowParams <b>defaults</b></tt>
+</p>
+<blockquote>
+Default parameters. These are copied every time a new GlowSubwindowParams is constructed.
+</blockquote>
+
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Methods</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Constructor</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt><b>GlowSubwindowParams</b>(void)</tt>
+</p>
+<blockquote>
+Constructs a new parameter block, copying <tt>defaults</tt>
+</blockquote>
+
+</blockquote>
+
+</blockquote>
+
+
+<hr size=2>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+
+<hr size=2>
+
+<p>
+<address>
+<a href="http://www.ugcs.caltech.edu/~dazuma/glow/">The GLOW Toolkit</a>
+</address>
+</p>
+
+
+</body>
+
+</html>

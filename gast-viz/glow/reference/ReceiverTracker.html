@@ -1,0 +1,223 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<html>
+
+<head>
+
+<title>
+GLOW Reference
+</title>
+
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3>
+GLOW API version 1.0 reference
+</h3>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+<hr>
+
+<h2>
+class ReceiverTracker
+</h2>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>General information</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>
+type: class
+<br>
+inherits: (none)
+<br>
+module: <tt><a href="M_glowSenderReceiver.html">glowSenderReceiver</a></tt>
+</b>
+</p>
+<p>
+<tt>ReceiverTracker</tt> is a class that keeps track of <tt><a href="TReceiver.html">TReceiver</a></tt>s, receiving endpoints of object communcation lines. The tracker can optionally delete all receivers it is tracking when it is deleted. This can be useful to prevent memory leaks when you have a set of receivers associated with a GLOW object that serve no purpose other than to listen for that object's messages. If that object is deleted, a corresponding <tt>ReceiverTracker</tt> can delete the associated receivers automatically.
+</p>
+<p>
+You should use <tt>ReceiverTracker</tt> if you want to set up some automatic tracking and/or deletion of receiver objects.
+</p>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Constants</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Deleting options</b>
+<br>
+Options for auto-deletion of receivers
+</p>
+
+<blockquote>
+
+<p>
+<tt>enum ReceiverTracker::DeletingOptions <b>neverDelete</b></tt>
+</p>
+<blockquote>
+Never auto-delete receivers
+</blockquote>
+
+<p>
+<tt>enum ReceiverTracker::DeletingOptions <b>alwaysDelete</b></tt>
+</p>
+<blockquote>
+Always auto-delete receivers when unbound or when the ReceiverTracker is destructed.
+</blockquote>
+
+<p>
+<tt>enum ReceiverTracker::DeletingOptions <b>referenceCountDelete</b></tt>
+</p>
+<blockquote>
+Auto-delete receivers when unbound or when the ReceiverTracker is destructed, but only if no other trackers are tracking the receiver.
+</blockquote>
+
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Methods</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Destructor</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt><b>~ReceiverTracker</b>(void)</tt>
+</p>
+<blockquote>
+If auto-deleting is active, the destructor deletes all receivers tracked by this <tt>ReceiverTracker</tt>.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Managing the receiver list</b>
+<br>
+Manage the list of receivers tracked using these methods.
+</p>
+
+<blockquote>
+
+<p>
+<tt>void <b>Bind</b>(<a href="TReceiver.html">TReceiver</a>&lt;&gt;* receiver)</tt>
+</p>
+<blockquote>
+Binds to the given receiver. The receiver may be templated on any type. Throws an assertion if the tracker is already bound to this receiver.
+</blockquote>
+
+<p>
+<tt>bool <b>IsBoundTo</b>(<a href="TReceiver.html">TReceiver</a>&lt;&gt;* receiver) const</tt>
+</p>
+<blockquote>
+Returns true if and only if this tracker is bound to the given receiver. The receiver may be templated on any type.
+</blockquote>
+
+<p>
+<tt>unsigned int <b>NumReceivers</b>(void)</tt>
+</p>
+<blockquote>
+Returns the number of receivers bound to this tracker.
+</blockquote>
+
+<p>
+<tt>void <b>Unbind</b>(<a href="TReceiver.html">TReceiver</a>&lt;&gt;* receiver)</tt>
+</p>
+<blockquote>
+Unbinds from the given receiver. The receiver may be templated on any type. May also delete the receiver, according to the current DeletingOptions. Throws an assertion if the tracker is not bound to this receiver.
+</blockquote>
+
+<p>
+<tt>void <b>UnbindAll</b>(void)</tt>
+</p>
+<blockquote>
+Unbinds this tracker from all receivers. May also delete them, according to the current DeletingOptions.
+</blockquote>
+
+<p>
+<tt>void <b>DeleteAllReceivers</b>(void)</tt>
+</p>
+<blockquote>
+Deletes all bound receivers, regardless of their reference count.
+</blockquote>
+
+<p>
+<tt>void <b>SetAutoDeletingOptions</b>(ReceiverTracker::DeletingOptions options)</tt>
+</p>
+<blockquote>
+Sets up automatic deleting options of receivers on unbinding or tracker destruction.
+</blockquote>
+
+<p>
+<tt>ReceiverTracker::DeletingOptions <b>GetAutoDeletingOptions</b>(void) const</tt>
+</p>
+<blockquote>
+Returns current automatic deleting options of receivers on unbinding or tracker destruction.
+</blockquote>
+
+</blockquote>
+
+</blockquote>
+
+
+<hr size=2>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+<hr size=2>
+
+<p>
+<address>
+<a href="http://www.ugcs.caltech.edu/~dazuma/glow/">The GLOW Toolkit</a>
+</address>
+</p>
+
+
+</body>
+
+</html>

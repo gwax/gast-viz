@@ -1,0 +1,938 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<html>
+
+<head>
+
+<title>
+GLOW Reference
+</title>
+
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3>
+GLOW API version 1.0 reference
+</h3>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+<hr>
+
+<h2>
+class GlowLabeledHiddenTextFieldWidget
+</h2>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>General information</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>
+type: class
+<br>
+inherits: <tt><a href="GlowHiddenTextFieldWidget.html">GlowHiddenTextFieldWidget</a></tt>, <tt><a href="GlowWidgetLabelHelper.html">GlowWidgetLabelHelper</a></tt>
+<br>
+module: <tt><a href="M_glowTextFieldWidget.html">glowTextFieldWidget</a></tt>
+</b>
+</p>
+<p>
+<tt>GlowLabeledHiddenTextFieldWidget</tt> is an editable text field whose contents are hidden. It also includes a label and adjusts packing accordingly.
+</p>
+<p>
+GLOW programs that require text fields with masked entry, such as password fields, should use this class.
+</p>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Constants</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Positioning constants</b>
+<br>
+These constants are inherited from <tt><a href="GlowWidgetLabelHelper.html">GlowWidgetLabelHelper</a></tt>.
+</p>
+
+<blockquote>
+
+<p>
+<tt>enum <a href="GlowWidgetLabelHelper.html">GlowWidgetLabelHelper</a>::LabelPosition <b>defaultLabelPosition</b></tt>
+<br>
+<tt>enum <a href="GlowWidgetLabelHelper.html">GlowWidgetLabelHelper</a>::LabelPosition <b>leftLabelPosition</b></tt>
+<br>
+<tt>enum <a href="GlowWidgetLabelHelper.html">GlowWidgetLabelHelper</a>::LabelPosition <b>rightLabelPosition</b></tt>
+<br>
+<tt>enum <a href="GlowWidgetLabelHelper.html">GlowWidgetLabelHelper</a>::LabelPosition <b>topLabelPosition</b></tt>
+<br>
+<tt>enum <a href="GlowWidgetLabelHelper.html">GlowWidgetLabelHelper</a>::LabelPosition <b>bottomLabelPosition</b></tt>
+</p>
+
+</blockquote>
+
+
+<p>
+<b>Inherited constants</b>
+<br>
+These constants are inherited from <tt><a href="GlowTextFieldWidget.html">GlowTextFieldWidget</a></tt>.
+</p>
+
+<blockquote>
+
+<p>
+<tt>enum <a href="GlowTextFieldWidget.html">GlowTextFieldWidget</a>::Style <b>plainStyle</b></tt>
+<br>
+<tt>enum <a href="GlowTextFieldWidget.html">GlowTextFieldWidget</a>::Style <b>etchedStyle</b></tt>
+<br>
+<tt>enum <a href="GlowTextFieldWidget.html">GlowTextFieldWidget</a>::Style <b>raisedStyle</b></tt>
+<br>
+<tt>enum <a href="GlowTextFieldWidget.html">GlowTextFieldWidget</a>::Style <b>loweredStyle</b></tt>
+</p>
+
+</blockquote>
+
+
+<p>
+<b>Inherited constants</b>
+<br>
+These constants are inherited from <tt><a href="GlowWidget.html">GlowWidget</a></tt>.
+</p>
+
+<blockquote>
+
+<p>
+<tt>enum <a href="GlowWidget.html">GlowWidget</a>::AutoPackError <b>noAutoPackError</b></tt>
+<br>
+<tt>enum <a href="GlowWidget.html">GlowWidget</a>::AutoPackError <b>hAutoPackError</b></tt>
+<br>
+<tt>enum <a href="GlowWidget.html">GlowWidget</a>::AutoPackError <b>vAutoPackError</b></tt>
+</p>
+
+<p>
+<tt>enum <a href="GlowWidget.html">GlowWidget</a>::AutoPackOptions <b>noReshape</b></tt>
+<br>
+<tt>enum <a href="GlowWidget.html">GlowWidget</a>::AutoPackOptions <b>preferredSize</b></tt>
+<br>
+<tt>enum <a href="GlowWidget.html">GlowWidget</a>::AutoPackOptions <b>expandPreferredSize</b></tt>
+<br>
+<tt>enum <a href="GlowWidget.html">GlowWidget</a>::AutoPackOptions <b>forcedSize</b></tt>
+<br>
+<tt>enum <a href="GlowWidget.html">GlowWidget</a>::AutoPackOptions <b>noMove</b></tt>
+<br>
+<tt>enum <a href="GlowWidget.html">GlowWidget</a>::AutoPackOptions <b>leftPos</b></tt>
+<br>
+<tt>enum <a href="GlowWidget.html">GlowWidget</a>::AutoPackOptions <b>rightPos</b></tt>
+<br>
+<tt>enum <a href="GlowWidget.html">GlowWidget</a>::AutoPackOptions <b>topPos</b></tt>
+<br>
+<tt>enum <a href="GlowWidget.html">GlowWidget</a>::AutoPackOptions <b>bottomPos</b></tt>
+<br>
+<tt>enum <a href="GlowWidget.html">GlowWidget</a>::AutoPackOptions <b>centerPos</b></tt>
+</p>
+
+<p>
+<tt>enum { <b>unspecifiedSize</b> }</tt>
+<br>
+<tt>enum { <b>unspecifiedPos</b> }</tt>
+</p>
+
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Methods</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Constructors and destructor</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt><b>GlowLabeledHiddenTextFieldWidget</b>(<a href="GlowWidget.html">GlowWidget</a>* parent, const <a href="GlowLabeledTextFieldParams.html">GlowLabeledTextFieldParams</a>& params, char hideCharacter = '#')</tt>
+</p>
+<blockquote>
+Creates a new <tt>GlowLabeledHiddenTextFieldWidget</tt> using the given <tt>params</tt> and adds it to <tt>parent</tt>'s children.
+</blockquote>
+
+<p>
+<tt><b>GlowLabeledHiddenTextFieldWidget</b>(<a href="GlowWidgetRoot.html">GlowWidgetRoot</a>* root, const <a href="GlowLabeledTextFieldParams.html">GlowLabeledTextFieldParams</a>& params, char hideCharacter = '#')</tt>
+</p>
+<blockquote>
+Creates a new <tt>GlowLabeledHiddenTextFieldWidget</tt> using the given <tt>params</tt> and adds it to the top level under <tt>root</tt>.
+</blockquote>
+
+<p>
+<tt><b>GlowLabeledHiddenTextFieldWidget</b>(void)</tt>
+</p>
+<blockquote>
+Creates a new <tt>GlowLabeledHiddenTextFieldWidget</tt> but does not initialize it. A text field created in this way may not be used until its <tt>Init()</tt> method is called.
+</blockquote>
+
+<p>
+<tt>void <b>Init</b>(<a href="GlowWidget.html">GlowWidget</a>* parent, const <a href="GlowLabeledTextFieldParams.html">GlowLabeledTextFieldParams</a>& params, char hideCharacter = '#')</tt>
+</p>
+<blockquote>
+Initializes a new <tt>GlowLabeledHiddenTextFieldWidget</tt> using the given <tt>params</tt> and adds it to <tt>parent</tt>'s children.
+</blockquote>
+
+<p>
+<tt>void <b>Init</b>(<a href="GlowWidgetRoot.html">GlowWidgetRoot</a>* root, const <a href="GlowLabeledTextFieldParams.html">GlowLabeledTextFieldParams</a>& params, char hideCharacter = '#')</tt>
+</p>
+<blockquote>
+Initializes a new <tt>GlowLabeledHiddenTextFieldWidget</tt> using the given <tt>params</tt> and adds it to the top level under <tt>root</tt>.
+</blockquote>
+
+<p>
+<tt>virtual <b>~GlowLabeledHiddenTextFieldWidget</b>(void)</tt>
+</p>
+
+</blockquote>
+
+
+<p>
+<b>Inherited methods</b>
+<br>
+These methods are inherited from <tt><a href="GlowWidgetLabelHelper.html">GlowWidgetLabelHelper</a></tt>.
+</p>
+
+<blockquote>
+
+<p>
+<tt>int <b>GetLabelSpacing</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>SetLabelSpacing</b>(int spacing)</tt>
+</p>
+
+<p>
+<tt>int <b>GetLabelPosition</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>SetLabelPosition</b>(int position)</tt>
+</p>
+
+<p>
+<tt>int <b>GetLabelWidth</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>SetLabelWidth</b>(int width)</tt>
+</p>
+
+<p>
+<tt>int <b>GetLabelHeight</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>SetLabelHeight</b>(int height)</tt>
+</p>
+
+<p>
+<tt>const char* <b>GetLabelText</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>SetLabelText</b>(const char* text)</tt>
+</p>
+
+<p>
+<tt><a href="GlowFont.html">GlowFont</a> <b>GetLabelFont</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>SetLabelFont</b>(<a href="GlowFont.html">GlowFont</a> font)</tt>
+</p>
+
+<p>
+<tt><a href="GlowColor.html">GlowColor</a> <b>GetLabelTextColor</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>SetLabelTextColor</b>(<a href="GlowColor.html">GlowColor</a> font)</tt>
+</p>
+
+<p>
+<tt><a href="GlowColor.html">GlowColor</a> <b>GetLabelDisableTextColor</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>SetLabelDisableTextColor</b>(<a href="GlowColor.html">GlowColor</a> font)</tt>
+</p>
+
+</blockquote>
+
+
+<p>
+<b>Inherited methods</b>
+<br>
+These methods are inherited from <tt><a href="GlowHiddenTextFieldWidget.html">GlowHiddenTextFieldWidget</a></tt>.
+</p>
+
+<blockquote>
+
+<p>
+<tt>const char* <b>GetTextChars</b>(void) const</tt>
+</p>
+
+<p>
+<tt>const std::string& <b>GetTextString</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>SetText</b>(const char* text)</tt>
+</p>
+
+<p>
+<tt>void <b>SetText</b>(const std::string& str)</tt>
+</p>
+
+<p>
+<tt>std::string <b>GetSelectionString</b>(void) const</tt>
+</p>
+
+<p>
+<tt>char <b>GetHideCharacter</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>SetHideCharacter</b>(char ch)</tt>
+</p>
+
+</blockquote>
+
+
+<p>
+<b>Inherited methods</b>
+<br>
+These methods are inherited from <tt><a href="GlowTextFieldWidget.html">GlowTextFieldWidget</a></tt>.
+</p>
+
+<blockquote>
+
+<p>
+<tt>int <b>GetStyle</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>SetStyle</b>(int style)</tt>
+</p>
+
+<p>
+<tt><a href="GlowFont.html">GlowFont</a> <b>GetFont</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>SetFont</b>(<a href="GlowFont.html">GlowFont</a> font)</tt>
+</p>
+
+<p>
+<tt>int <b>GetBlinkInterval</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>SetBlinkInterval</b>(int interval)</tt>
+</p>
+
+<p>
+<tt>int <b>GetAutoScrollInterval</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>SetAutoScrollInterval</b>(int interval)</tt>
+</p>
+
+<p>
+<tt>int <b>GetSelectionLength</b>(void) const</tt>
+</p>
+
+<p>
+<tt>int <b>GetSelectionStart</b>(void) const</tt>
+</p>
+
+<p>
+<tt>int <b>GetSelectionEnd</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>SetSelection</b>(int start, int end)</tt>
+</p>
+
+<p>
+<tt>void <b>SetSelection</b>(int position)</tt>
+</p>
+
+<p>
+<tt>void <b>ReplaceSelectionWith</b>(const char* text)</tt>
+</p>
+
+<p>
+<tt>void <b>ReplaceSelectionWith</b>(const std::string& str)</tt>
+</p>
+
+<p>
+<tt><a href="GlowColor.html">GlowColor</a> <b>GetBackColor</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>SetBackColor</b>(<a href="GlowColor.html">GlowColor</a> c)</tt>
+</p>
+
+<p>
+<tt><a href="GlowColor.html">GlowColor</a> <b>GetTextColor</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>SetTextColor</b>(<a href="GlowColor.html">GlowColor</a> c)</tt>
+</p>
+
+<p>
+<tt><a href="GlowColor.html">GlowColor</a> <b>GetCaretColor</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>SetCaretColor</b>(<a href="GlowColor.html">GlowColor</a> c)</tt>
+</p>
+
+<p>
+<tt><a href="GlowColor.html">GlowColor</a> <b>GetFocusBackColor</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>SetFocusBackColor</b>(<a href="GlowColor.html">GlowColor</a> c)</tt>
+</p>
+
+<p>
+<tt><a href="GlowColor.html">GlowColor</a> <b>GetFocusTextColor</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>SetFocusTextColor</b>(<a href="GlowColor.html">GlowColor</a> c)</tt>
+</p>
+
+<p>
+<tt><a href="GlowColor.html">GlowColor</a> <b>GetFocusCaretColor</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>SetFocusCaretColor</b>(<a href="GlowColor.html">GlowColor</a> c)</tt>
+</p>
+
+<p>
+<tt><a href="GlowColor.html">GlowColor</a> <b>GetHiliteBackColor</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>SetHiliteBackColor</b>(<a href="GlowColor.html">GlowColor</a> c)</tt>
+</p>
+
+<p>
+<tt><a href="GlowColor.html">GlowColor</a> <b>GetHiliteTextColor</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>SetHiliteTextColor</b>(<a href="GlowColor.html">GlowColor</a> c)</tt>
+</p>
+
+<p>
+<tt><a href="GlowColor.html">GlowColor</a> <b>GetDisableBackColor</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>SetDisableBackColor</b>(<a href="GlowColor.html">GlowColor</a> c)</tt>
+</p>
+
+<p>
+<tt><a href="GlowColor.html">GlowColor</a> <b>GetDisableTextColor</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>SetDisableTextColor</b>(<a href="GlowColor.html">GlowColor</a> c)</tt>
+</p>
+
+<p>
+<tt><a href="GlowColor.html">GlowColor</a> <b>GetDisableCaretColor</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>SetDisableCaretColor</b>(<a href="GlowColor.html">GlowColor</a> c)</tt>
+</p>
+
+<p>
+<tt><a href="GlowColor.html">GlowColor</a> <b>GetDisableOutlineColor</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>SetDisableOutlineColor</b>(<a href="GlowColor.html">GlowColor</a> c)</tt>
+</p>
+
+<p>
+<tt><a href="GlowColor.html">GlowColor</a> <b>GetLightBevelColor</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>SetLightBevelColor</b>(<a href="GlowColor.html">GlowColor</a> c)</tt>
+</p>
+
+<p>
+<tt><a href="GlowColor.html">GlowColor</a> <b>GetDarkBevelColor</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>SetDarkBevelColor</b>(<a href="GlowColor.html">GlowColor</a> c)</tt>
+</p>
+
+</blockquote>
+
+
+<p>
+<b>Inherited methods</b>
+<br>
+These methods are inherited from <tt><a href="GlowWidget.html">GlowWidget</a></tt>.
+</p>
+
+<blockquote>
+
+<p>
+<tt>void <b>Move</b>(int x, int y)</tt>
+</p>
+
+<p>
+<tt>int <b>PositionX</b>(void) const</tt>
+</p>
+
+<p>
+<tt>int <b>PositionY</b>(void) const</tt>
+</p>
+
+<p>
+<tt>int <b>RootPositionX</b>(void) const</tt>
+</p>
+
+<p>
+<tt>int <b>RootPositionY</b>(void) const</tt>
+</p>
+
+<p>
+<tt>int <b>GlobalPositionX</b>(void) const</tt>
+</p>
+
+<p>
+<tt>int <b>GlobalPositionY</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>Reshape</b>(int width, int height)</tt>
+</p>
+
+<p>
+<tt>int <b>Width</b>(void) const</tt>
+</p>
+
+<p>
+<tt>int <b>Height</b>(void) const</tt>
+</p>
+
+<p>
+<tt><a href="GlowWidget.html">GlowWidget</a>::AutoPackError <b>AutoPack</b>(int leftLimit, int rightLimit, int topLimit, int bottomLimit, <a href="GlowWidget.html">GlowWidget</a>::AutoPackOptions hOption, <a href="GlowWidget.html">GlowWidget</a>::AutoPackOptions vOption, int& leftMargin, int& rightMargin, int& topMargin, int& bottomMargin)</tt>
+<br>
+<tt><a href="GlowWidget.html">GlowWidget</a>::AutoPackError <b>AutoPack</b>(int leftLimit, int rightLimit, int topLimit, int bottomLimit, <a href="GlowWidget.html">GlowWidget</a>::AutoPackOptions hOption, <a href="GlowWidget.html">GlowWidget</a>::AutoPackOptions vOption)</tt>
+</p>
+
+<p>
+<tt><a href="GlowWidget.html">GlowWidget</a>::AutoPackError <b>AutoReshape</b>(int& leftMargin, int& rightMargin, int& topMargin, int& bottomMargin)</tt>
+<br>
+<tt><a href="GlowWidget.html">GlowWidget</a>::AutoPackError <b>AutoReshape</b>()</tt>
+</p>
+
+<p>
+<tt>void <b>Hide</b>(void)</tt>
+</p>
+
+<p>
+<tt>void <b>Show</b>(void)</tt>
+</p>
+
+<p>
+<tt>bool <b>IsVisible</b>(void) const</tt>
+</p>
+
+<p>
+<tt>bool <b>IsInvisible</b>(void) const</tt>
+</p>
+
+<p>
+<tt>bool <b>IsVisibleMasked</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>Refresh</b>(void)</tt>
+</p>
+
+<p>
+<tt>void <b>SetRefreshEnabled</b>(bool enabled)</tt>
+</p>
+
+<p>
+<tt>bool <b>IsRefreshEnabled</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>SetClipping</b>(bool clip)</tt>
+</p>
+
+<p>
+<tt>bool <b>IsClipping</b>(void)</tt>
+</p>
+
+<p>
+<tt>void <b>GrabKeyboardFocus</b>(void)</tt>
+</p>
+
+<p>
+<tt>void <b>RelinquishKeyboardFocus</b>(void)</tt>
+</p>
+
+<p>
+<tt>bool <b>HasKeyboardFocus</b>(void)</tt>
+</p>
+
+<p>
+<tt><a href="GlowWidgetRoot.html">GlowWidgetRoot</a>* <b>Root</b>(void)</tt>
+</p>
+
+<p>
+<tt>void <b>SetRefCon</b>(long refcon)</tt>
+</p>
+
+<p>
+<tt>long <b>GetRefCon</b>(void)</tt>
+</p>
+
+</blockquote>
+
+
+<p>
+<b>Inherited methods</b>
+<br>
+These methods are inherited from <tt><a href="GlowComponent.html">GlowComponent</a></tt>.
+</p>
+
+<blockquote>
+
+<p>
+<tt>void <b>Close</b>(void)</tt>
+</p>
+
+<p>
+<tt><a href="GlowComponent.html">GlowComponent</a>* <b>Parent</b>(void) const</tt>
+</p>
+
+<p>
+<tt><a href="GlowSubwindow.html">GlowSubwindow</a>* <b>WhichWindow</b>(void)</tt>
+</p>
+
+<p>
+<tt><a href="GlowSubwindow.html">GlowSubwindow</a>* <b>ParentWindow</b>(void) const</tt>
+</p>
+
+<p>
+<tt><a href="GlowWindow.html">GlowWindow</a>* <b>ToplevelWindow</b>(void)</tt>
+</p>
+
+<p>
+<tt>bool <b>IsToplevel</b>(void) const</tt>
+</p>
+
+<p>
+<tt><a href="GlowComponent.html">GlowComponent</a>* <b>Next</b>(void) const</tt>
+</p>
+
+<p>
+<tt><a href="GlowComponent.html">GlowComponent</a>* <b>Prev</b>(void) const</tt>
+</p>
+
+<p>
+<tt>int <b>NumChildren</b>(void) const</tt>
+</p>
+
+<p>
+<tt><a href="GlowComponent.html">GlowComponent</a>* <b>FirstChild</b>(void) const</tt>
+</p>
+
+<p>
+<tt><a href="GlowComponent.html">GlowComponent</a>* <b>LastChild</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>ReorderChild</b>(<a href="GlowComponent.html">GlowComponent</a>* child, <a href="GlowComponent.html">GlowComponent</a>* pos)</tt>
+</p>
+
+<p>
+<tt>void <b>KillChildren</b>(void)</tt>
+</p>
+
+<p>
+<tt>void <b>Activate</b>(void)</tt>
+</p>
+
+<p>
+<tt>void <b>Deactivate</b>(void)</tt>
+</p>
+
+<p>
+<tt>bool <b>IsActive</b>(void)</tt>
+</p>
+
+<p>
+<tt>bool <b>IsInactive</b>(void)</tt>
+</p>
+
+<p>
+<tt>bool <b>IsActiveStandby</b>(void)</tt>
+</p>
+
+<p>
+<tt>void <b>Paint</b>(void)</tt>
+</p>
+
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Protected methods for subclasses</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Initialization</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>void <b>Init</b>(<a href="GlowWidgetRoot.html">GlowWidgetRoot</a>* root, <a href="GlowWidget.html">GlowWidget</a>* parent, const <a href="GlowLabeledTextFieldParams.html">GlowLabeledTextFieldParams</a>& params, char hideCharacter)</tt>
+</p>
+<blockquote>
+Initializes a new <tt>GlowLabeledHiddenTextFieldWidget</tt> using the given <tt>params</tt> and adds it to <tt>root</tt>'s hierarchy under <tt>parent</tt>. <tt>parent</tt> must be present in <tt>root</tt>'s hierarchy.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Inherited methods</b>
+<br>
+These methods are inherited from <tt><a href="GlowWidget.html">GlowWidget</a></tt>.
+</p>
+
+<blockquote>
+
+<p>
+<tt>void <b>NormalizeCoordinates</b>(int x, int y, GLfloat& xn, GLfloat& yn) const</tt>
+</p>
+
+<p>
+<tt>void <b>RegisterMouseEvents</b>(void)</tt>
+</p>
+
+<p>
+<tt>void <b>RegisterKeyboardEvents</b>(void)</tt>
+</p>
+
+<p>
+<tt>void <b>UnegisterMouseEvents</b>(void)</tt>
+</p>
+
+<p>
+<tt>void <b>UnregisterKeyboardEvents</b>(void)</tt>
+</p>
+
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Overrideable methods</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Inherited methods</b>
+<br>
+These methods are inherited from <tt><a href="GlowWidget.html">GlowWidget</a></tt>.
+</p>
+
+<blockquote>
+
+<p>
+<tt>virtual void <b>OnWidgetPaint</b>(void)</tt>
+</p>
+<blockquote>
+<tt>GlowTextFieldWidget</tt> overrides this method to draw the text field. You should not override it again unless a subclass needs to modify how text fields are drawn.
+</blockquote>
+
+<p>
+<tt>virtual void <b>OnWidgetMouseDown</b>(<a href="Glow.html">Glow</a>::MouseButton mouseButton, int x, int y, <a href="Glow.html">Glow</a>::Modifiers modifiers)</tt>
+</p>
+<blockquote>
+<tt>GlowTextFieldWidget</tt> overrides this method to handle mouse events. You should not override it again unless a subclass needs to modify how events are handled.
+</blockquote>
+
+<p>
+<tt>virtual void <b>OnWidgetMouseUp</b>(<a href="Glow.html">Glow</a>::MouseButton mouseButton, int x, int y, <a href="Glow.html">Glow</a>::Modifiers modifiers)</tt>
+</p>
+<blockquote>
+<tt>GlowTextFieldWidget</tt> overrides this method to handle mouse events. You should not override it again unless a subclass needs to modify how events are handled.
+</blockquote>
+
+<p>
+<tt>virtual void <b>OnWidgetMouseDrag</b>(int x, int y)</tt>
+</p>
+<blockquote>
+<tt>GlowTextFieldWidget</tt> overrides this method to handle mouse events. You should not override it again unless a subclass needs to modify how events are handled.
+</blockquote>
+
+<p>
+<tt>virtual void <b>OnWidgetKeyboard</b>(<a href="Glow.html">Glow</a>::KeyCode key, int x, int y, <a href="Glow.html">Glow</a>::Modifiers modifiers)</tt>
+</p>
+<blockquote>
+<tt>GlowHiddenTextFieldWidget</tt> overrides this method to intercept keyboard events and mask characters. You should not override it again unless a subclass needs to modify how events are handled.
+</blockquote>
+
+<p>
+<tt>virtual void <b>OnWidgetMove</b>(int x, int y)</tt>
+</p>
+
+<p>
+<tt>virtual void <b>OnWidgetReshape</b>(int width, int height)</tt>
+</p>
+
+<p>
+<tt>virtual void <b>OnWidgetInvisible</b>(void)</tt>
+</p>
+
+<p>
+<tt>virtual void <b>OnWidgetVisible</b>(void)</tt>
+</p>
+
+<p>
+<tt>virtual void <b>OnWidgetDeactivate</b>(void)</tt>
+</p>
+
+<p>
+<tt>virtual void <b>OnWidgetActivate</b>(void)</tt>
+</p>
+
+<p>
+<tt>virtual void <b>OnGotKeyboardFocus</b>(void)</tt>
+</p>
+
+<p>
+<tt>virtual void <b>OnLostKeyboardFocus</b>(void)</tt>
+</p>
+
+<p>
+<tt>virtual <a href="GlowWidget.html">GlowWidget</a>::AutoPackError <b>OnAutoPack</b>(int hSize, int vSize, <a href="GlowWidget.html">GlowWidget</a>::AutoPackOptions hOption, <a href="GlowWidget.html">GlowWidget</a>::AutoPackOptions vOption, int& leftMargin, int& rightMargin, int& topMargin, int& bottomMargin)</tt>
+</p>
+<blockquote>
+<tt>GlowLabeledHiddenTextFieldWidget</tt> implements this method to pack a labeled text field. Override it if a subclass requires different packing.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Inherited methods</b>
+<br>
+These methods are inherited from <tt><a href="GlowComponent.html">GlowComponent</a></tt>, but are used by <tt><a href="GlowWidget.html">GlowWidget</a></tt> and should not be overridden again.
+</p>
+
+<blockquote>
+
+<p>
+<tt>virtual void <b>OnActivate</b>(void)</tt>
+</p>
+
+<p>
+<tt>virtual void <b>OnDeactivate</b>(void)</tt>
+</p>
+
+<p>
+<tt>virtual void <b>OnBeginPaint</b>(void)</tt>
+</p>
+
+<p>
+<tt>virtual void <b>OnEndPaint</b>(void)</tt>
+</p>
+
+</blockquote>
+
+</blockquote>
+
+
+<hr size=2>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+
+<hr size=2>
+
+<p>
+<address>
+<a href="http://www.ugcs.caltech.edu/~dazuma/glow/">The GLOW Toolkit</a>
+</address>
+</p>
+
+
+</body>
+
+</html>

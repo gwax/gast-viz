@@ -1,0 +1,304 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<html>
+
+<head>
+
+<title>
+GLOW Reference
+</title>
+
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3>
+GLOW API version 1.0 reference
+</h3>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+<hr>
+
+<h2>
+class GlowScrollBarParams
+</h2>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>General information</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>
+type: struct
+<br>
+inherits: <tt><a href="GlowWidgetParams.html">GlowWidgetParams</a></tt>
+<br>
+module: <tt><a href="M_glowScrollBarWidget.html">glowScrollBarWidget</a></tt>
+</b>
+</p>
+<p>
+<tt>GlowScrollBarParams</tt> encloses parameters for construction of a <tt><a href="GlowScrollBarWidget.html">GlowScrollBarWidget</a></tt>.
+</p>
+<p>
+GLOW programs which use scroll bars may need to use <tt>GlowScrollBarParams</tt> to construct a scroll bar.
+</p>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Data</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>General widget parameter data</b>
+<br>
+These fields are inherited from <tt><a href="GlowWidgetParams.html">GlowWidgetParams</a></tt>. Note that their default values may be different from the generic widget parameters.
+</p>
+
+<blockquote>
+
+<p>
+<tt>int <b>width</b></tt>
+</p>
+<blockquote>
+Width of the widget. Initial default is 120.
+</blockquote>
+<p>
+<tt>int <b>height</b></tt>
+</p>
+<blockquote>
+Height of the widget. Initial default is 20.
+</blockquote>
+<p>
+<tt>int <b>x</b></tt>
+</p>
+<blockquote>
+X location of the upper left of the widget, in pixel coordinates of the parent widget. Initial default is 0.
+</blockquote>
+<p>
+<tt>int <b>y</b></tt>
+</p>
+<blockquote>
+Y location of the upper left of the widget, in pixel coordinates of the parent widget. Initial default is 0.
+</blockquote>
+<p>
+<tt>long <b>refcon</b></tt>
+</p>
+<blockquote>
+Reference constant for this widget. Initial default 0.
+</blockquote>
+<p>
+<tt>bool <b>clipping</b></tt>
+</p>
+<blockquote>
+Should the widget clip to its rectangle when drawing children. Initial default is false.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Parameter data specific to scroll bars</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>long <b>min</b></tt>
+</p>
+<blockquote>
+Initial minimum value. Default is 0.
+</blockquote>
+<p>
+<tt>long <b>max</b></tt>
+</p>
+<blockquote>
+Initial maximum value. Default is 1.
+</blockquote>
+<p>
+<tt>long <b>span</b></tt>
+</p>
+<blockquote>
+Initial indicator span. Default is 1.
+</blockquote>
+<p>
+<tt>long <b>initialTop</b></tt>
+</p>
+<blockquote>
+Initial top value. Default is 0.
+</blockquote>
+<p>
+<tt>int <b>firstDelay</b></tt>
+</p>
+<blockquote>
+Delay in milliseconds between the first and second "hit" on a button or part region. Default is 400.
+</blockquote>
+<p>
+<tt>int <b>firstDelay</b></tt>
+</p>
+<blockquote>
+Delay in milliseconds between subsequent "hits" on a button or part region. Default is 50.
+</blockquote>
+<p>
+<tt>long <b>arrowStep</b></tt>
+</p>
+<blockquote>
+Amount to change value when button is depressed. Default is 1.
+</blockquote>
+<p>
+<tt>long <b>pageStep</b></tt>
+</p>
+<blockquote>
+Amount to change value when page region is depressed. Default is <tt><a href="GlowScrollBarWidget.html">GlowScrollBarWidget</a>::spanPageStep</tt>.
+</blockquote>
+<p>
+<tt><a href="GlowScrollBarReceiver.html">GlowScrollBarReceiver</a>* <b>receiver</b></tt>
+</p>
+<blockquote>
+Receiver for scroll bar events. Initial default is 0.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Color parameter data</b>
+</p>
+
+<blockquote>
+
+<tt><a href="GlowColor.html">GlowColor</a> <b>stripColor</b></tt>
+<br>
+<tt><a href="GlowColor.html">GlowColor</a> <b>indicatorColor</b></tt>
+<br>
+<tt><a href="GlowColor.html">GlowColor</a> <b>shadowColor</b></tt>
+<br>
+<tt><a href="GlowColor.html">GlowColor</a> <b>buttonColor</b></tt>
+<br>
+<tt><a href="GlowColor.html">GlowColor</a> <b>buttonIconColor</b></tt>
+<br>
+<tt><a href="GlowColor.html">GlowColor</a> <b>hiliteStripColor</b></tt>
+<br>
+<tt><a href="GlowColor.html">GlowColor</a> <b>hiliteIndicatorColor</b></tt>
+<br>
+<tt><a href="GlowColor.html">GlowColor</a> <b>hiliteButtonColor</b></tt>
+<br>
+<tt><a href="GlowColor.html">GlowColor</a> <b>hiliteButtonIconColor</b></tt>
+<br>
+<tt><a href="GlowColor.html">GlowColor</a> <b>disableStripColor</b></tt>
+<br>
+<tt><a href="GlowColor.html">GlowColor</a> <b>disableIndicatorColor</b></tt>
+<br>
+<tt><a href="GlowColor.html">GlowColor</a> <b>disableButtonColor</b></tt>
+<br>
+<tt><a href="GlowColor.html">GlowColor</a> <b>disableButtonIconColor</b></tt>
+<br>
+<tt><a href="GlowColor.html">GlowColor</a> <b>disableOutlineColor</b></tt>
+<br>
+<tt><a href="GlowColor.html">GlowColor</a> <b>lightBevelColor</b></tt>
+<br>
+<tt><a href="GlowColor.html">GlowColor</a> <b>darkBevelColor</b></tt>
+
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Static Data</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Defaults</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>static GlowScrollBarParams <b>defaults</b></tt>
+</p>
+<blockquote>
+Default parameters. These are copied every time a new <tt>GlowScrollBarParams</tt> is constructed.
+</blockquote>
+
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Methods</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Constructor</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt><b>GlowScrollBarParams</b>(void)</tt>
+</p>
+<blockquote>
+Constructs a new parameter block, copying <tt>defaults</tt>
+</blockquote>
+
+</blockquote>
+
+</blockquote>
+
+
+<hr size=2>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+
+<hr size=2>
+
+<p>
+<address>
+<a href="http://www.ugcs.caltech.edu/~dazuma/glow/">The GLOW Toolkit</a>
+</address>
+</p>
+
+
+</body>
+
+</html>

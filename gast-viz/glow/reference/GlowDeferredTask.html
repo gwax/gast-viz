@@ -1,0 +1,209 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<html>
+
+<head>
+
+<title>
+GLOW Reference
+</title>
+
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3>
+GLOW API version 1.0 reference
+</h3>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+<hr>
+
+<h2>
+abstract GlowDeferredTask
+</h2>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>General information</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>
+type: abstract
+<br>
+inherits: <tt><a href="GlowTimerReceiver.html">GlowTimerReceiver</a></tt>
+<br>
+module: <tt><a href="M_glowUtilities.html">glowUtilities</a></tt>
+</b>
+</p>
+<p>
+<tt>GlowDeferredTask</tt> is a convenience API for <tt><a href="GlowTimerReceiver.html">GlowTimerReceiver</a></tt>. It allows you to construct a single task, and schedule it for a certain time in the future. You may also query the task to determine if it has already been executed.
+</p>
+<p>
+Some GLOW programs may wish to use the deferred task API for scheduling periodic or background tasks.
+</p>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Methods</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Destructor</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt><b>~GlowDeferredTask</b>(void)</tt>
+</p>
+<blockquote>
+Automatically unschedules the task.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Scheduling information</b>
+<br>
+You can schedule a task, unschedule it, or query it to see if it is pending.
+</p>
+
+<blockquote>
+
+<p>
+<tt>void <b>Schedule</b>(int msecs)</tt>
+</p>
+<blockquote>
+Schedules a task for the given number of milliseconds in the future. It will be executed as soon as possible after the specified time period. If the task is already scheduled, the method first unschedules the original instance.
+</blockquote>
+
+<p>
+<tt>void <b>Unschedule</b>(void)</tt>
+</p>
+<blockquote>
+Unschedules the task. Has no effect if the task is not already scheduled.
+</blockquote>
+
+<p>
+<tt>bool <b>IsScheduled</b>(void)</tt>
+</p>
+<blockquote>
+Returns true if and only if the task is currently pending.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Inherited methods</b>
+<br>
+These methods are inherited from <tt><a href="GlowTimerReceiver.html">GlowTimerReceiver</a></tt>. Normally you should not call them.
+</p>
+
+<blockquote>
+
+<p>
+<tt>int <b>NumSenders</b>(void)</tt>
+</p>
+<blockquote>
+Returns the number of senders bound to this receiver. Should be equal to 1 if the task is scheduled, or 0 if it is not scheduled.
+</blockquote>
+
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Overrideable methods</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Executing the task</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>virtual void <b>Task</b>(void) = 0</tt>
+</p>
+<blockquote>
+This is a pure virtual method that must be overridden by a subclass. It is called when the task is to be executed.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Inherited methods</b>
+<br>
+These methods are inherited from <tt><a href="GlowTimerReceiver.html">GlowTimerReceiver</a></tt>.
+</p>
+
+<blockquote>
+
+<p>
+<tt>virtual void <b>OnMessage</b>(int id)</tt>
+</p>
+<blockquote>
+This method receives the timer event and executes the task. It is implemented by <tt>GlowDeferredTask</tt> and should not normally be overridden.
+</blockquote>
+
+</blockquote>
+
+</blockquote>
+
+
+<hr size=2>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+
+<hr size=2>
+
+<p>
+<address>
+<a href="http://www.ugcs.caltech.edu/~dazuma/glow/">The GLOW Toolkit</a>
+</address>
+</p>
+
+
+</body>
+
+</html>

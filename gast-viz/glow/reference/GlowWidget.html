@@ -1,0 +1,897 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<html>
+
+<head>
+
+<title>
+GLOW Reference
+</title>
+
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3>
+GLOW API version 1.0 reference
+</h3>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+<hr>
+
+<h2>
+class GlowWidget
+</h2>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>General information</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>
+type: class
+<br>
+inherits: <tt><a href="GlowComponent.html">GlowComponent</a></tt>
+<br>
+module: <tt><a href="M_glowWidget.html">glowWidget</a></tt>
+</b>
+</p>
+<p>
+<tt>GlowWidget</tt> is the base class of all GLOW widgets. Note that it inherits from <tt><a href="GlowComponent.html">GlowComponent</a></tt> rather than <tt><a href="GlowSubwindow.html">GlowSubwindow</a></tt>. Although it understands many of the same concepts as a subwindow, there are some subwindow methods not understood by a widget. Implementation-wise, a widget does not correspond to a GLUT subwindow. Normally, you do not create a <tt>GlowWidget</tt> directly, but instead use a subclass.
+</p>
+<p>
+Like a subwindow, a widget defines two coordinate systems: a pixel coordinate system, and a drawing coordinate system. The pixel coordinate system is measured in pixels, with (0,0) at the upper left, increasing down and to the right. This coordinate system is used to position subwindows within the subwindow, and to locate events such as mouse clicks. Drawing coordinates operate similarly to but not the same as subwindows. Because a widget does not use a true subwindow, you should not rely on <tt>glViewport()</tt> when drawing a widget. Instead, set the view frustum and use scissoring. Many of the methods on widgets operate in the pixel coordinate system.
+</p>
+<p>
+Widgets are components and occupy places in a component hierarchy. Because they are not subwindows, however, you cannot find the parent widget using <tt>ParentWindow()</tt>. Instead, the parent widget is assumed to be the immediate parent component, found using the <tt>Parent()</tt> method. Many methods of <tt>GlowWidget</tt>, such as those involving position of the widget, operate in the pixel coordinates of the parent widget.
+</p>
+<p>
+At the top of a widget hierarchy is a widget root, represented by a <tt><a href="GlowWidgetRoot.html">GlowWidgetRoot</a></tt>. This is a special subwindow that manages the widgets underneath it and routes events.
+</p>
+<p>
+All GLOW programs that use widgets will need to deal with the <tt>GlowWidget</tt> API.
+</p>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Constants</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>AutoPack error codes</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>enum GlowWidget::AutoPackError <b>noAutoPackError</b></tt>
+</p>
+<blockquote>
+AutoPack completed successfully
+</blockquote>
+<p>
+<tt>enum GlowWidget::AutoPackError <b>hAutoPackError</b></tt>
+</p>
+<blockquote>
+AutoPack encountered an error packing horizontally.
+</blockquote>
+<p>
+<tt>enum GlowWidget::AutoPackError <b>vAutoPackError</b></tt>
+</p>
+<blockquote>
+AutoPack encountered an error packing vertically.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>AutoPack sizing and positioning options</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>enum GlowWidget::AutoPackOptions <b>noReshape</b></tt>
+</p>
+<blockquote>
+Don't reshape the widget
+</blockquote>
+<p>
+<tt>enum GlowWidget::AutoPackOptions <b>preferredSize</b></tt>
+</p>
+<blockquote>
+Use widget's preferred size.
+</blockquote>
+<p>
+<tt>enum GlowWidget::AutoPackOptions <b>expandPreferredSize</b></tt>
+</p>
+<blockquote>
+Use widget's preferred size, but request that it expand to fill the space.
+</blockquote>
+<p>
+<tt>enum GlowWidget::AutoPackOptions <b>forcedSize</b></tt>
+</p>
+<blockquote>
+Attempt to force the widget to fill the space.
+</blockquote>
+<p>
+<tt>enum GlowWidget::AutoPackOptions <b>noMove</b></tt>
+</p>
+<blockquote>
+Don't move the widget
+</blockquote>
+<p>
+<tt>enum GlowWidget::AutoPackOptions <b>leftPos</b></tt>
+</p>
+<blockquote>
+Align the widget with the left limit.
+</blockquote>
+<p>
+<tt>enum GlowWidget::AutoPackOptions <b>rightPos</b></tt>
+</p>
+<blockquote>
+Align the widget with the right limit.
+</blockquote>
+<p>
+<tt>enum GlowWidget::AutoPackOptions <b>topPos</b></tt>
+</p>
+<blockquote>
+Align the widget with the top limit.
+</blockquote>
+<p>
+<tt>enum GlowWidget::AutoPackOptions <b>bottomPos</b></tt>
+</p>
+<blockquote>
+Align the widget with the bottom limit.
+</blockquote>
+<p>
+<tt>enum GlowWidget::AutoPackOptions <b>centerPos</b></tt>
+</p>
+<blockquote>
+Center the widget between or around the limits.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Special AutoPack positioning and sizing values</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>enum { <b>unspecifiedSize</b> }</tt>
+</p>
+<blockquote>
+Constant passed to <tt>OnAutoPack()</tt> to indicate that no size limit is imposed.
+</blockquote>
+<p>
+<tt>enum { <b>unspecifiedPos</b> }</tt>
+</p>
+<blockquote>
+Indicates that one of the limits given to <tt>AutoPack()</tt> is unspecified.
+</blockquote>
+
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Methods</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Constructors and destructor</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt><b>GlowWidget</b>(GlowWidget* parent, const <a href="GlowWidgetParams.html">GlowWidgetParams</a>& params)</tt>
+</p>
+<blockquote>
+Creates a new <tt>GlowWidget</tt> using the given <tt>params</tt> and adds it to <tt>parent</tt>'s children. The new widget now lives underneath <tt>parent</tt> in the hierarchy.
+</blockquote>
+
+<p>
+<tt><b>GlowWidget</b>(<a href="GlowWidgetRoot.html">GlowWidgetRoot</a>* root, const <a href="GlowWidgetParams.html">GlowWidgetParams</a>& params)</tt>
+</p>
+<blockquote>
+Creates a new <tt>GlowWidget</tt> using the given <tt>params</tt> and adds it to the top level under <tt>root</tt>.
+</blockquote>
+
+<p>
+<tt><b>GlowWidget</b>(void)</tt>
+</p>
+<blockquote>
+Creates a new <tt>GlowWidget</tt> but does not initialize it. A widget created in this way may not be used until its <tt>Init()</tt> method is called.
+</blockquote>
+
+<p>
+<tt>void <b>Init</b>(GlowWidget* parent, const <a href="GlowWidgetParams.html">GlowWidgetParams</a>& params)</tt>
+</p>
+<blockquote>
+Initializes a new <tt>GlowWidget</tt> using the given <tt>params</tt> and adds it to <tt>parent</tt>'s children. The new widget now lives underneath <tt>parent</tt> in the hierarchy.
+</blockquote>
+
+<p>
+<tt>void <b>Init</b>(<a href="GlowWidgetRoot.html">GlowWidgetRoot</a>* root, const <a href="GlowWidgetParams.html">GlowWidgetParams</a>& params)</tt>
+</p>
+<blockquote>
+Initializes a new <tt>GlowWidget</tt> using the given <tt>params</tt> and adds it to the top level under <tt>root</tt>.
+</blockquote>
+
+<p>
+<tt>virtual <b>~GlowWidget</b>(void)</tt>
+</p>
+<blockquote>
+The destructor for <tt>GlowWidget</tt> also recursively deletes the widget's children in the hierarchy.
+</blockquote>
+
+</blockquote>
+
+<p>
+<b>Methods involving position</b>
+<br>
+Widgets occupy a specific area of the screen. You can set and query the position information using these methods. These methods also may cause widget move events, described below, to be raised; however, those events are not raised immediately. Instead, they are queued and then raised when control is given back to the GLOW system. (This is similar to the mechanism employed by GLUT.) This allows GLOW to combine or eliminate events where possible; e.g. if a component is moved twice in succession before GLOW regains control, only one event is sent with the final position. However, the widget state as reported by methods like <tt>PositionX()</tt> and <tt>PositionY()</tt> will reflect changes immediately.
+</p>
+
+<blockquote>
+
+<p>
+<tt>void <b>Move</b>(int x, int y)</tt>
+</p>
+<blockquote>
+Moves a widget so that its upper left corner lands at the given pixel coordinates in its parent widget's coordinate system.
+</blockquote>
+
+<p>
+<tt>int <b>PositionX</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the pixel position of the left edge of the widget, in the coordinates of the parent widget.
+</blockquote>
+
+<p>
+<tt>int <b>PositionY</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the pixel position of the top edge of the widget, in the coordinates of the parent widget.
+</blockquote>
+
+<p>
+<tt>int <b>RootPositionX</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the pixel position of the left edge of the widget, in the coordinates of the widget root.
+</blockquote>
+
+<p>
+<tt>int <b>RootPositionY</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the pixel position of the top edge of the widget, in the coordinates of the widget root.
+</blockquote>
+
+<p>
+<tt>int <b>GlobalPositionX</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the pixel position of the left edge of the widget, in screen coordinates.
+</blockquote>
+
+<p>
+<tt>int <b>GlobalPositionY</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the pixel position of the top edge of the widget, in screen coordinates.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Methods involving size</b>
+<br>
+Widgets occupy a specific area of the screen. You can set and query the size information using these methods. These methods also may cause widget reshape events, described below, to be raised; however, those events are not raised immediately. Instead, they are queued and then raised when control is given back to the GLOW system. (This is similar to the mechanism employed by GLUT.) This allows GLOW to combine or eliminate events where possible; e.g. if a component is resized twice in succession before GLOW regains control, only one event is sent with the final size. However, the widget state as reported by methods like <tt>Width()</tt> and <tt>Height()</tt> will reflect changes immediately.
+</p>
+
+<blockquote>
+
+<p>
+<tt>void <b>Reshape</b>(int width, int height)</tt>
+</p>
+<blockquote>
+Resizes a widget.
+</blockquote>
+
+<p>
+<tt>int <b>Width</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the width of the widget.
+</blockquote>
+
+<p>
+<tt>int <b>Height</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the height of the widget.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Methods involving autopacking</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>GlowWidget::AutoPackError <b>AutoPack</b>(int leftLimit, int rightLimit, int topLimit, int bottomLimit, GlowWidget::AutoPackOptions hOption, GlowWidget::AutoPackOptions vOption, int& leftMargin, int& rightMargin, int& topMargin, int& bottomMargin)</tt>
+<br>
+<tt>GlowWidget::AutoPackError <b>AutoPack</b>(int leftLimit, int rightLimit, int topLimit, int bottomLimit, GlowWidget::AutoPackOptions hOption, GlowWidget::AutoPackOptions vOption)</tt>
+</p>
+<blockquote>
+Causes a widget to attempt to move and resize itself to fit within the given limits. The exact behavior is defined by the widget's <tt>OnAutoPack()</tt> method. Some widgets may also resize and rearrange their children in the process. This is often useful for systems that automatically lay out widgets in a window, such as the <tt><a href="GlowQuickPalette.html">GlowQuickPalette</a></tt> API. <tt>hOption</tt> and <tt>vOption</tt> give the packing policy to use. There are two sets of constants from <tt><a href="GlowWidget.html">GlowWidget</a></tt> that should be or'ed together to form the policy. The following are the sizing constants. <tt>noReshape</tt> indicates do not reshape in the given direction. <tt>forcedSize</tt> indicates attempt to force the widget to fit snugly in the given limits. <tt>preferredSize</tt> indicates to allow the widget to choose a preferred size for itself, as long as it does not exceed the given limits. <tt>expandPreferredSize</tt> is the same as <tt>preferredSize</tt>, but also requests that the widget expand itself to fill the given limits. A widget may or may not choose to honor the request. The following are the positioning constants. <tt>noMove</tt> indicates do not move in the given direction. <tt>topPos</tt> indicates align the widget with the top of the given vertical limits. <tt>bottomPos</tt> indicates align the widget with the bottom of the given vertical limits. <tt>leftPos</tt> indicates align the widget with the left side of the given horizontal limits. <tt>rightPos</tt> indicates align the widget with the right side of the given horizontal limits. <tt>centerPos</tt> indicates center the widget within the given limits. In this last case, passing <tt>unspecifiedPos</tt> for the second limit (right or bottom) will cause the widget to be centered around the first limit. The method will return an error code, also defined in <tt>GlowWidget</tt>, indicating success or failure. The first version of the overloaded method also returns information about how much margin the widget chose to keep around itself while packing. Normally, these values are 0, but they may be nonzero in labeled widgets such as <tt><a href="GlowLabeledPopupMenuWidget.html">GlowLabeledPopupMenuWidget</a></tt>. You may pass <tt>unspecifiedPos</tt> in the limits fields, as long as there is enough information for <tt>AutoPack()</tt> to execute. For example, if you specify <tt>leftPos</tt> to align left but give <tt>unspecifiedPos</tt> for the left limit, <tt>AutoPack()</tt> will throw an assertion.
+</blockquote>
+
+<p>
+<tt>GlowWidget::AutoPackError <b>AutoReshape</b>(int& leftMargin, int& rightMargin, int& topMargin, int& bottomMargin)</tt>
+<br>
+<tt>GlowWidget::AutoPackError <b>AutoReshape</b>()</tt>
+</p>
+<blockquote>
+Causes a widget to attempt to resize itself to its preferred size. Does not move the widget. Equivalent to calling AutoPack with <tt>unspecifiedPos</tt> for all four limits, and <tt>preferredSize | noMove</tt> for both options.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Methods involving visibility</b>
+<br>
+You can show and hide widgets, and test for visibility using these methods. These methods also may cause widget visibility events, described below, to be raised; however, those events are not raised immediately. Instead, they are queued and then raised when control is given back to the GLOW system. (This is similar to the mechanism employed by GLUT.) This allows GLOW to combine or eliminate events where possible; e.g. if a component is made invisible and then re-made visible before GLOW regains control, no event is sent. However, the widget state as reported by methods like <tt>IsVisible()</tt> will reflect changes immediately.
+</p>
+
+<blockquote>
+
+<p>
+<tt>void <b>Hide</b>(void)</tt>
+</p>
+<blockquote>
+Hides the widget if it is visible. Note that this also hides any widgets under this one in the hierarchy. Execution is deferred.
+</blockquote>
+
+<p>
+<tt>void <b>Show</b>(void)</tt>
+</p>
+<blockquote>
+Shows the widget if it is invisible. Execution is deferred.
+</blockquote>
+
+<p>
+<tt>bool <b>IsVisible</b>(void) const</tt>
+</p>
+<blockquote>
+Returns true if and only if the widget is visible.
+</blockquote>
+
+<p>
+<tt>bool <b>IsInvisible</b>(void) const</tt>
+</p>
+<blockquote>
+Returns true if and only if the widget has been explicitly hidden.
+</blockquote>
+
+<p>
+<tt>bool <b>IsVisibleMasked</b>(void) const</tt>
+</p>
+<blockquote>
+Returns true if and only if the widget has not been explicitly hidden but is invisible because one of its ancestors has been hidden.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Methods involving drawing</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>void <b>Refresh</b>(void)</tt>
+</p>
+<blockquote>
+Notifies GLOW that the widget needs to be redrawn. This causes the entire widget root subwindow to redraw. The actual redraw is queued and will be initiated by GLOW once the system has control. Note that multiple <tt>Refresh()</tt> calls can be issued without harm; the widget root will only be redrawn once, regardless of the number of requests in the queue.
+</blockquote>
+
+<p>
+<tt>void <b>SetRefreshEnabled</b>(bool enabled)</tt>
+</p>
+<blockquote>
+Sets whether refresh is currently enabled for this widget. If refresh is not enabled, calls to <tt>Refresh()</tt> will have no effect. Normally, this should be left set at true, but it may be useful to disable refresh temporarily in special cases, such as if you need to change the state of a widget during a redraw callback (which would otherwise cause a second refresh request to be queued.)
+</blockquote>
+
+<p>
+<tt>bool <b>IsRefreshEnabled</b>(void) const</tt>
+</p>
+<blockquote>
+Returns whether refresh is currently enabled for this widget. If refresh is not enabled, calls to <tt>Refresh()</tt> will have no effect.
+</blockquote>
+
+<p>
+<tt>void <b>SetClipping</b>(bool clip)</tt>
+</p>
+<blockquote>
+Sets the clipping attribute. If clipping is on, the scissor rectangle will be intersected with the widget's rectangle prior to drawing. This will cause the widget, and any of its children, to be clipped to its rectangle.
+</blockquote>
+
+<p>
+<tt>bool <b>IsClipping</b>(void)</tt>
+</p>
+<blockquote>
+Returns the current clipping attribute.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Methods involving keyboard focus</b>
+<br>
+Widgets may receive keyboard events. Keyboard events occurring within the entire widget root are routed to a single widget, which is said to have the keyboard focus. A widget may request or relinquish the keyboard focus.
+</p>
+
+<blockquote>
+
+<p>
+<tt>void <b>GrabKeyboardFocus</b>(void)</tt>
+</p>
+<blockquote>
+Attempts to grab the keyboard focus for this widget root.
+</blockquote>
+
+<p>
+<tt>void <b>RelinquishKeyboardFocus</b>(void)</tt>
+</p>
+<blockquote>
+Relinquishes the keyboard focus for this widget root. The focus will shift to the next widget under the current root which can accept keyboard focus.
+</blockquote>
+
+<p>
+<tt>bool <b>HasKeyboardFocus</b>(void)</tt>
+</p>
+<blockquote>
+Returns true if and only if this widget has the keyboard focus.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Other information</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt><a href="GlowWidgetRoot.html">GlowWidgetRoot</a>* <b>Root</b>(void)</tt>
+</p>
+<blockquote>
+Returns a pointer to the widget root containing this widget.
+</blockquote>
+
+<p>
+<tt>void <b>SetRefCon</b>(long refcon)</tt>
+</p>
+<blockquote>
+Sets a reference constant for this widget. The reference constant may be used by your application.
+</blockquote>
+
+<p>
+<tt>long <b>GetRefCon</b>(void)</tt>
+</p>
+<blockquote>
+Returns the reference constant for this widget.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Inherited methods</b>
+<br>
+These methods are inherited from <tt><a href="GlowComponent.html">GlowComponent</a></tt>.
+</p>
+
+<blockquote>
+
+<p>
+<tt>void <b>Close</b>(void)</tt>
+</p>
+
+<p>
+<tt><a href="GlowComponent.html">GlowComponent</a>* <b>Parent</b>(void) const</tt>
+</p>
+
+<p>
+<tt><a href="GlowSubwindow.html">GlowSubwindow</a>* <b>WhichWindow</b>(void)</tt>
+</p>
+
+<p>
+<tt><a href="GlowSubwindow.html">GlowSubwindow</a>* <b>ParentWindow</b>(void) const</tt>
+</p>
+
+<p>
+<tt><a href="GlowWindow.html">GlowWindow</a>* <b>ToplevelWindow</b>(void)</tt>
+</p>
+
+<p>
+<tt>bool <b>IsToplevel</b>(void) const</tt>
+</p>
+
+<p>
+<tt><a href="GlowComponent.html">GlowComponent</a>* <b>Next</b>(void) const</tt>
+</p>
+
+<p>
+<tt><a href="GlowComponent.html">GlowComponent</a>* <b>Prev</b>(void) const</tt>
+</p>
+
+<p>
+<tt>int <b>NumChildren</b>(void) const</tt>
+</p>
+
+<p>
+<tt><a href="GlowComponent.html">GlowComponent</a>* <b>FirstChild</b>(void) const</tt>
+</p>
+
+<p>
+<tt><a href="GlowComponent.html">GlowComponent</a>* <b>LastChild</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>ReorderChild</b>(<a href="GlowComponent.html">GlowComponent</a>* child, <a href="GlowComponent.html">GlowComponent</a>* pos)</tt>
+</p>
+
+<p>
+<tt>void <b>KillChildren</b>(void)</tt>
+</p>
+
+<p>
+<tt>void <b>Activate</b>(void)</tt>
+</p>
+
+<p>
+<tt>void <b>Deactivate</b>(void)</tt>
+</p>
+
+<p>
+<tt>bool <b>IsActive</b>(void)</tt>
+</p>
+
+<p>
+<tt>bool <b>IsInactive</b>(void)</tt>
+</p>
+
+<p>
+<tt>bool <b>IsActiveStandby</b>(void)</tt>
+</p>
+
+<p>
+<tt>void <b>Paint</b>(void)</tt>
+</p>
+
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Protected methods for subclasses</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Initialization</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>void <b>Init</b>(<a href="GlowWidgetRoot.html">GlowWidgetRoot</a>* root, GlowWidget* parent, const <a href="GlowWidgetParams.html">GlowWidgetParams</a>& params)</tt>
+</p>
+<blockquote>
+Initializes a new <tt>GlowWidget</tt> using the given <tt>params</tt> and adds it to <tt>root</tt>'s hierarchy under <tt>parent</tt>. <tt>parent</tt> must be present in <tt>root</tt>'s hierarchy.
+</blockquote>
+
+</blockquote>
+
+<p>
+<b>Drawing tools</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>void <b>NormalizeCoordinates</b>(int x, int y, GLfloat& xn, GLfloat& yn) const</tt>
+</p>
+<blockquote>
+Translates pixel coordinates into normalized drawing coordinates, in which (0,0) is at the center of the widget rectangle, and the edges are all +/-1. Often useful during drawing.
+</blockquote>
+
+</blockquote>
+
+<p>
+<b>Registering to receive events</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>void <b>RegisterMouseEvents</b>(void)</tt>
+</p>
+<blockquote>
+Informs the root that this widget wants to receive widget mouse events.
+</blockquote>
+
+<p>
+<tt>void <b>RegisterKeyboardEvents</b>(void)</tt>
+</p>
+<blockquote>
+Informs the root that this widget wants to receive widget keyboard events. The widget will be made eligible to get keyboard focus.
+</blockquote>
+
+<p>
+<tt>void <b>UnegisterMouseEvents</b>(void)</tt>
+</p>
+<blockquote>
+Informs the root that this widget no longer wants to receive widget mouse events.
+</blockquote>
+
+<p>
+<tt>void <b>UnregisterKeyboardEvents</b>(void)</tt>
+</p>
+<blockquote>
+Informs the root that this widget no longer wants to receive widget keyboard events. The widget will be made ineligible to get keyboard focus. If it has the keyboard focus already, it will automatically relinquish it.
+</blockquote>
+
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Overrideable methods</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Drawing methods</b>
+<br>
+Subclasses should override this method to perform drawing.
+</p>
+
+<blockquote>
+
+<p>
+<tt>virtual void <b>OnWidgetPaint</b>(void)</tt>
+</p>
+<blockquote>
+Override this method to draw a widget. It is called whenever this widget needs to be redrawn.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>User interface events</b>
+<br>
+Subclasses should override these methods to respond to user interface events such as mouse clicks or keypresses. Remember that you must also be sure to notify GLOW that the subwindow wishes to receive such events by setting the event mask appropriately. If you do not set the event mask, you may still override these methods, but they will not be called.
+</p>
+
+<blockquote>
+
+<p>
+<tt>virtual void <b>OnWidgetMouseDown</b>(<a href="Glow.html">Glow</a>::MouseButton mouseButton, int x, int y, <a href="Glow.html">Glow</a>::Modifiers modifiers)</tt>
+</p>
+<blockquote>
+Override this method to respond to a mouse button press. When the method is called, <tt>button</tt> is set to the mouse button involved, <tt>x</tt> and <tt>y</tt> are set to the location of the click in the widget's pixel coordinates, and <tt>modifiers</tt> is set to the keyboard modifiers that are down at the time of the event. See the constants in <tt><a href="Glow.html">Glow</a></tt> for values for these parameters. The default method does nothing.
+</blockquote>
+
+<p>
+<tt>virtual void <b>OnWidgetMouseUp</b>(<a href="Glow.html">Glow</a>::MouseButton mouseButton, int x, int y, <a href="Glow.html">Glow</a>::Modifiers modifiers)</tt>
+</p>
+<blockquote>
+Override this method to respond to a mouse button release. When the method is called, <tt>button</tt> is set to the mouse button involved, <tt>x</tt> and <tt>y</tt> are set to the location of the release in the widget's pixel coordinates, and <tt>modifiers</tt> is set to the keyboard modifiers that are down at the time of the event. See the constants in <tt><a href="Glow.html">Glow</a></tt> for values for these parameters. The default method does nothing.
+</blockquote>
+
+<p>
+<tt>virtual void <b>OnWidgetMouseDrag</b>(int x, int y)</tt>
+</p>
+<blockquote>
+Override this method to respond to a mouse move while a button is depressed. When the method is called, <tt>x</tt> and <tt>y</tt> are set to the location of the pointer in the widget's pixel coordinates. This location may be outside the widget if the button was initially pressed inside the widget but was dragged outside. The default method does nothing.
+</blockquote>
+
+<p>
+<tt>virtual void <b>OnWidgetKeyboard</b>(<a href="Glow.html">Glow</a>::KeyCode key, int x, int y, <a href="Glow.html">Glow</a>::Modifiers modifiers)</tt>
+</p>
+<blockquote>
+Override this method to respond to the a key being pressed. <tt>key</tt> contains the character hit, as a value between 0 and 255. If the value of <tt>key</tt> is greater than <tt><a href="Glow.html">Glow</a>::specialKeyOffset</tt>, then it will be one of the non-ascii keyboard codes defined in <tt><a href="Glow.html">Glow</a></tt>. <tt>modifiers</tt> specifies keyboard modifiers that were down during the event. See the constants in <tt><a href="Glow.html">Glow</a></tt> for modifier flags. <tt>x</tt> and <tt>y</tt> give the x and y coordinates of the pointer in widget pixel coordinates at the time of the event. The default method does nothing.
+</blockquote>
+
+</blockquote>
+
+<p>
+<b>Other events</b>
+<br>
+Subclasses should override these methods to respond to other events such as resizing, keyboard focus and activation. These events may be raised because of window manager activity, or activity further up the hierarchy (for example, moving a parent widget causes its children to receive widget move events). Normally, widgets do not need to do anything, because typical widgets only need to be redrawn in such cases, which happens automatically. However, if a widget needs to perform special processing such as manipulating an embedded subwindow, it should override the appropriate methods to receive these events.
+</p>
+
+<blockquote>
+
+<p>
+<tt>virtual void <b>OnWidgetMove</b>(int x, int y)</tt>
+</p>
+<blockquote>
+Override this method to respond to a widget move. The default method does nothing.
+</blockquote>
+
+<p>
+<tt>virtual void <b>OnWidgetReshape</b>(int width, int height)</tt>
+</p>
+<blockquote>
+Override this method to respond to a widget reshape. The default method does nothing.
+</blockquote>
+
+<p>
+<tt>virtual void <b>OnWidgetInvisible</b>(void)</tt>
+</p>
+<blockquote>
+Override this method to respond to a widget being made invisible, either because it has been made invisible, or because an ancestor widget was hidden. The default method does nothing.
+</blockquote>
+
+<p>
+<tt>virtual void <b>OnWidgetVisible</b>(void)</tt>
+</p>
+<blockquote>
+Override this method to respond to a widget being made visible. The default method does nothing.
+</blockquote>
+
+<p>
+<tt>virtual void <b>OnWidgetDeactivate</b>(void)</tt>
+</p>
+<blockquote>
+Override this method to respond to a widget being made inactive, either because it has been deactivated, or because an ancestor widget was deactivated. The default method does nothing. Use this method instead of <tt><a href="GlowComponent.html">GlowComponent</a>::OnDeactivate()</tt>.
+</blockquote>
+
+<p>
+<tt>virtual void <b>OnWidgetActivate</b>(void)</tt>
+</p>
+<blockquote>
+Override this method to respond to a widget being activated. The default method does nothing. Use this method instead of <tt><a href="GlowComponent.html">GlowComponent</a>::OnActivate()</tt>.
+</blockquote>
+
+<p>
+<tt>virtual void <b>OnGotKeyboardFocus</b>(void)</tt>
+</p>
+<blockquote>
+Override this method to respond to a widget receiving the keyboard focus. The default method does nothing.
+</blockquote>
+
+<p>
+<tt>virtual void <b>OnLostKeyboardFocus</b>(void)</tt>
+</p>
+<blockquote>
+Override this method to respond to a widget losing the keyboard focus. The default method does nothing.
+</blockquote>
+
+</blockquote>
+
+<p>
+<b>Miscellaneous</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>virtual GlowWidget::AutoPackError <b>OnAutoPack</b>(int hSize, int vSize, GlowWidget::AutoPackOptions hOption, GlowWidget::AutoPackOptions vOption, int& leftMargin, int& rightMargin, int& topMargin, int& bottomMargin)</tt>
+</p>
+<blockquote>
+Override this method to provide a preferred behavior for the <tt>AutoPack()</tt> system. A subclass should override this method to allow widgets to be automatically sized and positioned. <tt>hOption</tt> and <tt>vOption</tt> give the sizing option to use. <tt><a href="GlowWidget.html">GlowWidget</a>::noReshape</tt> means leave the size alone. <tt><a href="GlowWidget.html">GlowWidget</a>::forcedSize</tt> means attempt to force the size to the given <tt>hSize</tt> or <tt>vSize</tt>. If the given size is unacceptable to the widget, the method should return an error. <tt><a href="GlowWidget.html">GlowWidget</a>::preferredSize</tt> means to use the widget's preferred size. In this case, <tt>hSize</tt>/<tt>vSize</tt> will give a maximum allowed size. If the given size is not <tt><a href="GlowWidget.html">GlowWidget</a>::unspecifiedSize</tt>, and it is too small for the preferred size to fit, the method should return an error. <tt><a href="GlowWidget.html">GlowWidget</a>::expandPreferredSize</tt> means to use the widget's preferred size, but issues a request to expand the size to fill the given maximum allowed size <tt>hSize</tt>/<tt>vSize</tt>. The widget may choose whether or not to honor the request. Again, if the given maximum size is too small, the method should return an error. Error codes to return are <tt><a href="GlowWidget.html">GlowWidget</a>::hAutoPackError</tt> for a problem with horizontal packing, <tt><a href="GlowWidget.html">GlowWidget</a>::vAutoPackError</tt> for a problem with vertical packing, or <tt><a href="GlowWidget.html">GlowWidget</a>::noAutoPackError</tt> for successful packing.
+</blockquote>
+
+</blockquote>
+
+<p>
+<b>Inherited methods</b>
+<br>
+These methods are inherited from <tt><a href="GlowComponent.html">GlowComponent</a></tt>, but are used by <tt>GlowWidget</tt> and should not be overridden again.
+</p>
+
+<blockquote>
+
+<p>
+<tt>virtual void <b>OnActivate</b>(void)</tt>
+</p>
+
+<p>
+<tt>virtual void <b>OnDeactivate</b>(void)</tt>
+</p>
+
+<p>
+<tt>virtual void <b>OnBeginPaint</b>(void)</tt>
+</p>
+
+<p>
+<tt>virtual void <b>OnEndPaint</b>(void)</tt>
+</p>
+
+</blockquote>
+
+</blockquote>
+
+
+<hr size=2>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+
+<hr size=2>
+
+<p>
+<address>
+<a href="http://www.ugcs.caltech.edu/~dazuma/glow/">The GLOW Toolkit</a>
+</address>
+</p>
+
+
+</body>
+
+</html>

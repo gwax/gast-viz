@@ -1,0 +1,257 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<html>
+
+<head>
+
+<title>
+GLOW Reference
+</title>
+
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3>
+GLOW API version 1.0 reference
+</h3>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+<hr>
+
+<h2>
+class GlowColor
+</h2>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>General information</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>
+type: class
+<br>
+inherits: (none)
+<br>
+module: <tt><a href="M_glowAux.html">glowAux</a></tt>
+</b>
+</p>
+<p>
+<tt>GlowColor</tt> encapsulates a GLOW RGB color specification. It is used heavily in widgets to specify colors for different widget parts.
+</p>
+<p>
+Any GLOW program that handles widgets may need to use GlowColor objects. They are also generally useful for drawing normal GLOW components.
+</p>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Constants</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Useful colors</b>
+<br>
+These are a few generally useful colors.
+</p>
+
+<blockquote>
+
+<tt>static const GlowColor <b>black</b></tt>
+<br>
+<tt>static const GlowColor <b>blue</b></tt>
+<br>
+<tt>static const GlowColor <b>green</b></tt>
+<br>
+<tt>static const GlowColor <b>cyan</b></tt>
+<br>
+<tt>static const GlowColor <b>red</b></tt>
+<br>
+<tt>static const GlowColor <b>magenta</b></tt>
+<br>
+<tt>static const GlowColor <b>yellow</b></tt>
+<br>
+<tt>static const GlowColor <b>white</b></tt>
+<br>
+<tt>static const GlowColor <b>gray</b></tt>
+
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Methods</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Constructors and setters</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>explicit <b>GlowColor</b>(GLubyte rgbval = 0, GLubyte aval = 255)</tt>
+</p>
+<blockquote>
+Creates a new grayscale color using the given integer rgb and alpha values in the range [0,255].
+</blockquote>
+
+<p>
+<tt>explicit <b>GlowColor</b>(GLubyte r, GLubyte g, GLubyte b, GLubyte a = 255)</tt>
+</p>
+<blockquote>
+Creates a new color using the given integer rgb and alpha values in the range [0,255].
+</blockquote>
+
+<p>
+<tt>explicit <b>GlowColor</b>(GLfloat r, GLfloat g, GLfloat b, GLfloat a = 1.0f)</tt>
+</p>
+<blockquote>
+Creates a new color using the given single-precision floating point rgb and alpha values in the range [0,1].
+</blockquote>
+
+<p>
+<tt>explicit <b>GlowColor</b>(GLdouble r, GLdouble g, GLdouble b, GLdouble a = 1.0)</tt>
+</p>
+<blockquote>
+Creates a new color using the given double-precision floating point rgb and alpha values in the range [0,1].
+</blockquote>
+
+<p>
+<tt>void <b>Set</b>(GLubyte rgbval = 0, GLubyte aval = 255)</tt>
+</p>
+<blockquote>
+Sets a grayscale color using the given integer rgb and alpha values in the range [0,255].
+</blockquote>
+
+<p>
+<tt>void <b>Set</b>(GLubyte r, GLubyte g, GLubyte b, GLubyte a = 255)</tt>
+</p>
+<blockquote>
+Sets a color using the given integer rgb and alpha values in the range [0,255].
+</blockquote>
+
+<p>
+<tt>void <b>Set</b>(GLfloat r, GLfloat g, GLfloat b, GLfloat a = 1.0f)</tt>
+</p>
+<blockquote>
+Sets a color using the given single-precision floating point rgb and alpha values in the range [0,1].
+</blockquote>
+
+<p>
+<tt>void <b>Set</b>(GLdouble r, GLdouble g, GLdouble b, GLdouble a = 1.0)</tt>
+</p>
+<blockquote>
+Sets a color using the given double-precision floating point rgb and alpha values in the range [0,1].
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Conversions and accessors</b>
+<br>
+These methods and operators allow provide access to color data, and also convert to <tt>unsigned char*</tt> for use in OpenGL functions.
+</p>
+
+<blockquote>
+
+<p>
+<tt><b>operator GLubyte*</b>(void)</tt>
+</p>
+<blockquote>
+Converts to GLubyte*. The result may be used in <tt>glColor4ubv()</tt> for example.
+</blockquote>
+
+<p>
+<tt><b>operator const GLubyte*</b>(void) const</tt>
+</p>
+<blockquote>
+Converts to const GLubyte*. The result may be used in <tt>glColor4ubv()</tt> for example.
+</blockquote>
+
+<p>
+<tt>GLubyte& <b>operator[]</b>(int index)</tt>
+</p>
+<blockquote>
+Access to color values via array syntax. Index 0 is red, 3 is alpha.
+</blockquote>
+
+<p>
+<tt>const GLubyte& <b>operator[]</b>(int index) const</tt>
+</p>
+<blockquote>
+Access to color values via array syntax. Index 0 is red, 3 is alpha.
+</blockquote>
+
+</blockquote>
+
+<p>
+<b>Other convenience methods</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>void <b>Apply</b>(void)</tt>
+</p>
+<blockquote>
+Calls glColor with this color.
+</blockquote>
+
+</blockquote>
+
+</blockquote>
+
+
+<hr size=2>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+
+<hr size=2>
+
+<p>
+<address>
+<a href="http://www.ugcs.caltech.edu/~dazuma/glow/">The GLOW Toolkit</a>
+</address>
+</p>
+
+
+</body>
+
+</html>

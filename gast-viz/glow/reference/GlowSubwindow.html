@@ -1,0 +1,704 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<html>
+
+<head>
+
+<title>
+GLOW Reference
+</title>
+
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3>
+GLOW API version 1.0 reference
+</h3>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+<hr>
+
+<h2>
+class GlowSubwindow
+</h2>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>General information</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>
+type: class
+<br>
+inherits: <tt><a href="GlowComponent.html">GlowComponent</a></tt>
+<br>
+module: <tt><a href="M_glow.html">glow</a></tt>
+</b>
+</p>
+<p>
+<tt>GlowSubwindow</tt> is the base class of all window and subwindow objects. It extends <tt><a href="GlowComponent.html">GlowComponent</a></tt> by adding the concepts of size and location on the screen, user and window manager events, and associated cursors and contextual menus. Objects of this class represent GLUT windows and subwindows.
+</p>
+<p>
+A subwindow defines two coordinate systems: a pixel coordinate system, and a drawing coordinate system. The pixel coordinate system is measured in pixels, with (0,0) at the upper left, increasing down and to the right. This coordinate system is used to position subwindows within the subwindow, and to locate events such as mouse clicks. The drawing coordinate system is the OpenGL coordinate system and is defined by calls to <tt>glViewport()</tt> and setting of the view frustum. Normally, x and y increase up and to the right in this coordinate system. Many of the methods on subwindows operate in the pixel coordinate system.
+</p>
+<p>
+Subwindows are components and occupy places in a component hierarchy. Note that the component hierarchy also defines the GLUT subwindow hierarchy. A subwindow which is a descendant of another subwindow in the component hierarchy will also be contained within that subwindow in the window manager. Many methods of <tt>GlowSubwindow</tt>, such as those involving position of the subwindow, operate in the pixel coordinates of the parent window in the window hierarchy. This window can be found by calling <tt>ParentWindow()</tt>.
+</p>
+<p>
+All GLOW programs must make use of subwindows, or at least toplevel windows, which inherit from subwindows.
+</p>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Constants</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Special subwindow size</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>enum { <b>parentWindowSize</b> }</tt>
+</p>
+<blockquote>
+Use the width or height of the parent window.
+</blockquote>
+
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Methods</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Constructors and destructor</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt><b>GlowSubwindow</b>(<a href="GlowComponent.html">GlowComponent</a>* parent, const <a href="GlowSubwindowParams.html">GlowSubwindowParams</a>& params)</tt>
+</p>
+<blockquote>
+Creates a new <tt>GlowSubwindow</tt> with options specified by the given params, and adds it to <tt>parent</tt>'s children. Also creates the corresponding GLUT subwindow.
+</blockquote>
+
+<p>
+<tt><b>GlowSubwindow</b>(<a href="GlowComponent.html">GlowComponent</a>* parent, int x, int y, int width, int height, <a href="Glow.html">Glow</a>::BufferType mode, <a href="Glow.html">Glow</a>::EventMask eventMask)</tt>
+</p>
+<blockquote>
+Creates a new <tt>GlowSubwindow</tt> with options specified by the given params, and adds it to <tt>parent</tt>'s children. <tt>x</tt> and <tt>y</tt> denote the pixel location of the top left corner of the subwindow, in its parent window's coordinates. <tt>width</tt> and <tt>height</tt> specify the width and height in pixels. The constant <tt>GlowSubwindow::parentWindowSize</tt> may be used instead to specify the same size as the parent window. <tt>mode</tt> describes the type of frame buffer to use. <tt>eventMask</tt> specifies which events the subwindow wishes to receive when active. Use the event constants described in <tt><a href="Glow.html">Glow</a></tt> for the event mask.
+</blockquote>
+
+<p>
+<tt><b>GlowSubwindow</b>(void)</tt>
+</p>
+<blockquote>
+Creates a new <tt>GlowSubwindow</tt> but does not initialize it. A subwindow created in this way may not be used until its <tt>Init()</tt> method is called.
+</blockquote>
+
+<p>
+<tt>void <b>Init</b>(<a href="GlowComponent.html">GlowComponent</a>* parent, const <a href="GlowSubwindowParams.html">GlowSubwindowParams</a>& params)</tt>
+</p>
+<blockquote>
+Initializes the <tt>GlowSubwindow</tt> with options specified by the given params, and adds it to <tt>parent</tt>'s children.
+</blockquote>
+
+<p>
+<tt>void <b>Init</b>(<a href="GlowComponent.html">GlowComponent</a>* parent, int x, int y, int width, int height, <a href="Glow.html">Glow</a>::BufferType mode, <a href="Glow.html">Glow</a>::EventMask eventMask)</tt>
+</p>
+<blockquote>
+Initializes the <tt>GlowSubwindow</tt> with options specified by the given params, and adds it to <tt>parent</tt>'s children. <tt>x</tt> and <tt>y</tt> denote the pixel location of the top left corner of the subwindow, in its parent window's coordinates. <tt>width</tt> and <tt>height</tt> specify the width and height in pixels. The constant <tt>GlowSubwindow::parentWindowSize</tt> may be used instead to specify the same size as the parent window. <tt>mode</tt> describes the type of frame buffer to use. <tt>eventMask</tt> specifies which events the subwindow wishes to receive when active. Use the event constants described in <tt><a href="Glow.html">Glow</a></tt> for the event mask.
+</blockquote>
+
+<p>
+<tt>virtual <b>~GlowSubwindow</b>(void)</tt>
+</p>
+<blockquote>
+The destructor for <tt>GlowSubwindow</tt> removes the GLUT subwindow and recursively deletes its children in the hierarchy.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Position and size information</b>
+<br>
+Subwindows occupy a specific area of the screen. You can query this information using these methods.
+</p>
+
+<blockquote>
+
+<p>
+<tt>int <b>PositionX</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the pixel position of the left edge of the subwindow, in the coordinates of <tt>ParentWindow()</tt>.
+</blockquote>
+
+<p>
+<tt>int <b>PositionY</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the pixel position of the top edge of the subwindow, in the coordinates of <tt>ParentWindow()</tt>.
+</blockquote>
+
+<p>
+<tt>int <b>GlobalPositionX</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the pixel position of the left edge of the subwindow, in screen coordinates.
+</blockquote>
+
+<p>
+<tt>int <b>GlobalPositionY</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the pixel position of the top edge of the subwindow, in screen coordinates.
+</blockquote>
+
+<p>
+<tt>int <b>Width</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the width of the subwindow.
+</blockquote>
+
+<p>
+<tt>int <b>Height</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the height of the subwindow.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Setting position and size</b>
+<br>
+You can set the position, size, stacking and visibility of a subwindow using these methods. Note that these methods do not typically affect the window's appearance immediately; instead, the task is queued and executed when control is given back to the GLOW system. (This is similar to the mechanism employed by GLUT.) This allows GLOW to combine operations and perform them simultaneously; i.e. the window will be redisplayed just once, and only one refresh and/or visibility event will be issued. However, the window state as reported by methods like <tt>Width()</tt> and <tt>Height()</tt> will reflect the change immediately.
+</p>
+
+<blockquote>
+
+<p>
+<tt>void <b>Move</b>(int x, int y)</tt>
+</p>
+<blockquote>
+Moves a subwindow so that its upper left corner lands at the given pixel coordinates in <tt>ParentWindow()</tt>'s coordinate system.
+</blockquote>
+
+<p>
+<tt>void <b>Reshape</b>(int width, int height)</tt>
+</p>
+<blockquote>
+Resizes a subwindow.
+</blockquote>
+
+<p>
+<tt>void <b>Raise</b>(void)</tt>
+</p>
+<blockquote>
+Brings the subwindow to the front in stacking order.
+</blockquote>
+
+<p>
+<tt>void <b>Lower</b>(void)</tt>
+</p>
+<blockquote>
+Sends the subwindow to the back in stacking order.
+</blockquote>
+
+<p>
+<tt>void <b>Hide</b>(void)</tt>
+</p>
+<blockquote>
+Hides the subwindow if it is visible. Note that this also hides any components and subwindows under this subwindow in the component hierarchy.
+</blockquote>
+
+<p>
+<tt>void <b>Show</b>(void)</tt>
+</p>
+<blockquote>
+Shows the subwindow if it is invisible.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Calls involving drawing</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>void <b>Refresh</b>(void)</tt>
+</p>
+<blockquote>
+Notifies GLOW that the subwindow needs to be redrawn. The actual redraw is queued and will be initiated by GLOW once the system has control. Note that multiple <tt>Refresh()</tt> calls can be issued without harm; the subwindow will only be redrawn once, regardless of the number of requests in the queue. Again, this is the same mechanism employed by GLUT.
+</blockquote>
+
+<p>
+<tt>void <b>SetRefreshEnabled</b>(bool enabled)</tt>
+</p>
+<blockquote>
+Sets whether refresh is currently enabled for this subwindow. If refresh is not enabled, calls to <tt>Refresh()</tt> will have no effect. Normally, this should be left set at true, but it may be useful to disable refresh temporarily in special cases, such as if you need to perform an operation, during a redraw callback, that would otherwise cause a second refresh request to be queued.
+</blockquote>
+
+<p>
+<tt>bool <b>IsRefreshEnabled</b>(void) const</tt>
+</p>
+<blockquote>
+Returns whether refresh is currently enabled for this subwindow. If refresh is not enabled, calls to <tt>Refresh()</tt> will have no effect.
+</blockquote>
+
+<p>
+<tt>void <b>SetAutoSwapBuffersEnabled</b>(bool enabled)</tt>
+</p>
+<blockquote>
+Sets whether automatic swapping of buffers is currently enabled for this subwindow. If this setting is false, GLOW will not automatically swap buffers after finishing drawing to a double-buffered subwindow. In that case, you'll need to do it manually by calling <tt><a href="Glow.html">Glow</a>::SwapBuffers()</tt>. Normally, this should be left set at true. Has no effect if the window is single buffered (but the default setting is still true).
+</blockquote>
+
+<p>
+<tt>bool <b>IsAutoSwapBuffersEnabled</b>(void) const</tt>
+</p>
+<blockquote>
+Returns whether automatic swapping of buffers is currently enabled for this subwindow.
+</blockquote>
+
+<p>
+<tt>void <b>NormalizeCoordinates</b>(int x, int y, GLfloat& xn, GLfloat& yn) const</tt>
+</p>
+<blockquote>
+Translates pixel coordinates into normalized drawing coordinates, in which (0,0) is at the center of the subwindow, and the edges are all +/-1. Often useful durings drawing.
+</blockquote>
+
+<p>
+<tt><a href="Glow.html">Glow</a>::BufferType <b>GetBufferType</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the buffer type used by this subwindow. This is for your information only; you cannot change the buffer type once the window has been created.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Calls involving menus and cursors</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt><a href="GlowMenu.html">GlowMenu</a>* <b>GetMenu</b>(<a href="Glow.html">Glow</a>::MouseButton mouseButton) const</tt>
+</p>
+<blockquote>
+Returns a pointer to the menu attached to the specified mouse button. If no menu is attached to that button, returns 0. Use the button constants described in <tt><a href="Glow.html">Glow</a></tt> to specify the button.
+</blockquote>
+
+<p>
+<tt>void <b>SetMenu</b>(<a href="Glow.html">Glow</a>::MouseButton mouseButton, <a href="GlowMenu.html">GlowMenu</a>* menu = 0)</tt>
+</p>
+<blockquote>
+Attaches the given menu to the specified mouse button. Pressing that button will pop up the menu as a contextual menu. Pass 0 for the menu to return the button to normal behavior. Use the button constants described in <tt><a href="Glow.html">Glow</a></tt> to specify the button.
+</blockquote>
+
+<p>
+<tt>void <b>UnsetMenu</b>(<a href="Glow.html">Glow</a>::MouseButton mouseButton)</tt>
+</p>
+<blockquote>
+Returns the specified button to normal behavior (no menus). Identical to calling <tt>SetMenu()</tt> with <tt>menu</tt> set to 0. Use the button constants described in <tt><a href="Glow.html">Glow</a></tt> to specify the button.
+</blockquote>
+
+<p>
+<tt>int <b>GetCursor</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the GLUT cursor associated with this subwindow.
+</blockquote>
+
+<p>
+<tt>void <b>SetCursor</b>(int cursor)</tt>
+</p>
+<blockquote>
+Associates the given GLUT cursor with this subwindow.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Examining and changing the event masks</b>
+<br>
+The event masks denote which events the subwindow wants to receive. For best performance, you should set these masks to describe only those events in which your subwindow is interested. This will cut down on the number of GLUT callbacks that are registered for the subwindow. Normally, you specify these masks when you create the window, but you can change them at any time. The constants used are given in the class <tt><a href="Glow.html">Glow</a></tt>.
+</p>
+
+<blockquote>
+
+<p>
+<tt><a href="Glow.html">Glow</a>::EventMask <b>GetEventMask</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the event mask used when the subwindow is active.
+</blockquote>
+
+<p>
+<tt><a href="Glow.html">Glow</a>::EventMask <b>GetInactiveEventMask</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the event mask used when the subwindow is inactive.
+</blockquote>
+
+<p>
+<tt>void <b>SetEventMask</b>(<a href="Glow.html">Glow</a>::EventMask mask)</tt>
+</p>
+<blockquote>
+Sets the event mask to be used when the subwindow is active.
+</blockquote>
+
+<p>
+<tt>void <b>SetInactiveEventMask</b>(<a href="Glow.html">Glow</a>::EventMask mask)</tt>
+</p>
+<blockquote>
+Sets the event mask to be used when the subwindow is inactive.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Interfacing with GLUT</b>
+<br>
+These advanced routines are for occasions when you need to interface with the underlying GLUT window.
+</p>
+
+<blockquote>
+
+<p>
+<tt>int <b>GlutWindowNum</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the GLUT window number associated with this window.
+</blockquote>
+
+<p>
+<tt>void <b>MakeCurGlutWindow</b>(void)</tt>
+</p>
+<blockquote>
+Makes this window the current GLUT window.
+</blockquote>
+
+<p>
+<tt>int <b>GlutInfo</b>(int whichInfo) const</tt>
+</p>
+<blockquote>
+Returns GLUT info about this window gotten using <tt>glutGet()</tt>.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Inherited methods</b>
+<br>
+These methods are inherited from <tt><a href="GlowComponent.html">GlowComponent</a></tt>.
+</p>
+
+<blockquote>
+
+<p>
+<tt>void <b>Close</b>(void)</tt>
+</p>
+
+<p>
+<tt><a href="GlowComponent.html">GlowComponent</a>* <b>Parent</b>(void) const</tt>
+</p>
+
+<p>
+<tt>GlowSubwindow* <b>WhichWindow</b>(void)</tt>
+</p>
+<blockquote>
+Note: For a subwindow, <tt>WhichWindow()</tt> returns <tt>this</tt>.
+</blockquote>
+
+<p>
+<tt>GlowSubwindow* <b>ParentWindow</b>(void) const</tt>
+</p>
+
+<p>
+<tt><a href="GlowWindow.html">GlowWindow</a>* <b>ToplevelWindow</b>(void)</tt>
+</p>
+
+<p>
+<tt>bool <b>IsToplevel</b>(void) const</tt>
+</p>
+
+<p>
+<tt><a href="GlowComponent.html">GlowComponent</a>* <b>Next</b>(void) const</tt>
+</p>
+
+<p>
+<tt><a href="GlowComponent.html">GlowComponent</a>* <b>Prev</b>(void) const</tt>
+</p>
+
+<p>
+<tt>int <b>NumChildren</b>(void) const</tt>
+</p>
+
+<p>
+<tt><a href="GlowComponent.html">GlowComponent</a>* <b>FirstChild</b>(void) const</tt>
+</p>
+
+<p>
+<tt><a href="GlowComponent.html">GlowComponent</a>* <b>LastChild</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>ReorderChild</b>(<a href="GlowComponent.html">GlowComponent</a>* child, <a href="GlowComponent.html">GlowComponent</a>* pos)</tt>
+</p>
+
+<p>
+<tt>void <b>KillChildren</b>(void)</tt>
+</p>
+
+<p>
+<tt>void <b>Activate</b>(void)</tt>
+</p>
+
+<p>
+<tt>void <b>Deactivate</b>(void)</tt>
+</p>
+
+<p>
+<tt>bool <b>IsActive</b>(void)</tt>
+</p>
+
+<p>
+<tt>bool <b>IsInactive</b>(void)</tt>
+</p>
+
+<p>
+<tt>bool <b>IsActiveStandby</b>(void)</tt>
+</p>
+
+<p>
+<tt>void <b>Paint</b>(void)</tt>
+</p>
+
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Overrideable methods</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>User interface events</b>
+<br>
+Subclasses should override these methods to respond to user interface events such as mouse clicks or keypresses. Remember that you must also be sure to notify GLOW that the subwindow wishes to receive such events by setting the event mask appropriately. If you do not set the event mask, you may still override these methods, but they will not be called.
+</p>
+
+<blockquote>
+
+<p>
+<tt>virtual void <b>OnMouseDown</b>(<a href="Glow.html">Glow</a>::MouseButton mouseButton, int x, int y, <a href="Glow.html">Glow</a>::Modifiers modifiers)</tt>
+</p>
+<blockquote>
+Override this method to respond to a mouse button press. When the method is called, <tt>button</tt> is set to the mouse button involved, <tt>x</tt> and <tt>y</tt> are set to the location of the click in the subwindow's pixel coordinates, and <tt>modifiers</tt> is set to the keyboard modifiers that are down at the time of the event. See the constants in <tt><a href="Glow.html">Glow</a></tt> for values for these parameters. The default method does nothing.
+</blockquote>
+
+<p>
+<tt>virtual void <b>OnMouseUp</b>(<a href="Glow.html">Glow</a>::MouseButton mouseButton, int x, int y, <a href="Glow.html">Glow</a>::Modifiers modifiers)</tt>
+</p>
+<blockquote>
+Override this method to respond to a mouse button release. When the method is called, <tt>button</tt> is set to the mouse button involved, <tt>x</tt> and <tt>y</tt> are set to the location of the release in the subwindow's pixel coordinates, and <tt>modifiers</tt> is set to the keyboard modifiers that are down at the time of the event. See the constants in <tt><a href="Glow.html">Glow</a></tt> for values for these parameters. The default method does nothing.
+</blockquote>
+
+<p>
+<tt>virtual void <b>OnMenuDown</b>(int x, int y)</tt>
+</p>
+<blockquote>
+Override this method to respond to a click using a button with an attached menu. When the method is called, <tt>x</tt> and <tt>y</tt> are set to the location of the click in the subwindow's pixel coordinates. Note that the menu is considered "in use" at the time of this callback, so you may not modify the menu or attempt to reassign a different menu to the button. The default method does nothing.
+</blockquote>
+
+<p>
+<tt>virtual void <b>OnMenuUp</b>()</tt>
+</p>
+<blockquote>
+Override this method to respond to a release of the contextual menu. The default method does nothing.
+</blockquote>
+
+<p>
+<tt>virtual void <b>OnMouseMotion</b>(int x, int y)</tt>
+</p>
+<blockquote>
+Override this method to respond to a mouse move inside a subwindow while no buttons are depressed. When the method is called, <tt>x</tt> and <tt>y</tt> are set to the location of the pointer in the subwindow's pixel coordinates. The default method does nothing.
+</blockquote>
+
+<p>
+<tt>virtual void <b>OnMouseDrag</b>(int x, int y)</tt>
+</p>
+<blockquote>
+Override this method to respond to a mouse move while a button is depressed. When the method is called, <tt>x</tt> and <tt>y</tt> are set to the location of the pointer in the subwindow's pixel coordinates. This location may be outside the subwindow if the button was initially pressed inside the subwindow but was dragged outside. The default method does nothing.
+</blockquote>
+
+<p>
+<tt>virtual void <b>OnMouseEnter</b>(void)</tt>
+</p>
+<blockquote>
+Override this method to respond to the pointer entering the subwindow. Under some windowing systems, this also has the effect of the subwindow gaining keyboard focus. The default method does nothing. Note that this callback is window system dependent. It is guaranteed to work under the X window system, but not under all window systems.
+</blockquote>
+
+<p>
+<tt>virtual void <b>OnMouseExit</b>(void)</tt>
+</p>
+<blockquote>
+Override this method to respond to the pointer exiting the subwindow. Under some windowing systems, this also has the effect of the subwindow losing keyboard focus. The default method does nothing. Note that this callback is window system dependent. It is guaranteed to work under the X window system, but not under all window systems.
+</blockquote>
+
+<p>
+<tt>virtual void <b>OnKeyboard</b>(<a href="Glow.html">Glow</a>::KeyCode key, int x, int y, <a href="Glow.html">Glow</a>::Modifiers modifiers)</tt>
+</p>
+<blockquote>
+Override this method to respond to the a key being pressed. <tt>key</tt> contains the character hit, as a value between 0 and 255. If the value of <tt>key</tt> is greater than <tt><a href="Glow.html">Glow</a>::specialKeyOffset</tt>, then it will be one of the non-ascii keyboard codes defined in <tt><a href="Glow.html">Glow</a></tt>. <tt>modifiers</tt> specifies keyboard modifiers that were down during the event. See the constants in <tt><a href="Glow.html">Glow</a></tt> for modifier flags. <tt>x</tt> and <tt>y</tt> give the x and y coordinates of the pointer in subwindow pixel coordinates at the time of the event. The default method does nothing.
+</blockquote>
+
+<p>
+<tt>virtual void <b>OnDirectMenuHit</b>(const <a href="GlowMenuMessage.html">GlowMenuMessage</a>& message)</tt>
+</p>
+<blockquote>
+Override this method to respond to a chosen menu item from a contextual menu attached to this subwindow. A <tt><a href="GlowMenu.html">GlowMenu</a></tt> object can be configured to notify its supporting subwindow of a choice made. If this configuration is made, the subwindow will receive this event. The default method does nothing.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Window manager events</b>
+<br>
+Subclasses should override these methods to respond to window manager events such as resizing. These events may be raised because the user explicitly manipulated a window through the window manager, or because a call to one of the window manipulation methods such as <tt>Reshape()</tt> caused a change in the window's state.
+</p>
+
+<blockquote>
+
+<p>
+<tt>virtual void <b>OnReshape</b>(int width, int height)</tt>
+</p>
+<blockquote>
+Override this method to respond to a window reshape. Normally, you should respond by adjusting the <tt>glViewPort</tt> for the window, or otherwise dealing with a new window size. The default method does nothing.
+</blockquote>
+
+<p>
+<tt>virtual void <b>OnInvisible</b>(void)</tt>
+</p>
+<blockquote>
+Override this method to respond to a window being made invisible, often because it has been hidden, iconified, or moved completely under another window. It is often a good idea to set a flag indicating that the contents do not need to be drawn. The default method does nothing.
+</blockquote>
+
+<p>
+<tt>virtual void <b>OnVisible</b>(void)</tt>
+</p>
+<blockquote>
+Override this method to respond to a window being made visible, often because it has been shown, deiconified, or moved out from under another window. It is often a good idea to clear any flag set during <tt>OnInvisible()</tt>. The default method does nothing.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Inherited methods</b>
+<br>
+These overrideable methods are inherited from <tt><a href="GlowComponent.html">GlowComponent</a></tt>. One has changed default behavior
+</p>
+
+<blockquote>
+
+<p>
+<tt>virtual bool <b>OnBeginPaint</b>(void)</tt>
+</p>
+<blockquote>
+For a subwindow, the default method clears the subwindow to black.
+</blockquote>
+
+<p>
+<tt>virtual void <b>OnEndPaint</b>(void)</tt>
+</p>
+
+<p>
+<tt>virtual void <b>OnActivate</b>(void)</tt>
+</p>
+
+<p>
+<tt>virtual void <b>OnDeactivate</b>(void)</tt>
+</p>
+
+</blockquote>
+
+</blockquote>
+
+
+<hr size=2>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+
+<hr size=2>
+
+<p>
+<address>
+<a href="http://www.ugcs.caltech.edu/~dazuma/glow/">The GLOW Toolkit</a>
+</address>
+</p>
+
+
+</body>
+
+</html>

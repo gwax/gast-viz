@@ -1,0 +1,323 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<html>
+
+<head>
+
+<title>
+GLOW Reference
+</title>
+
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3>
+GLOW API version 1.0 reference
+</h3>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+<hr>
+
+<h2>
+class GlowReceiverTrackerComponent
+</h2>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>General information</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>
+type: class
+<br>
+inherits: <tt><a href="GlowComponent.html">GlowComponent</a></tt>, <tt><a href="ReceiverTracker.html">ReceiverTracker</a></tt>
+<br>
+module: <tt><a href="M_glowUtilities.html">glowUtilities</a></tt>
+</b>
+</p>
+<p>
+<tt>GlowReceiverTrackerComponent</tt> is a simple component that contains a ReceiverTracker. One use for this component is to manage standalone receivers that are associated with a window, widget or other GLOW component object. By creating this component underneath the component object, you can set up those receivers to be automatically deleted when the component is destructed.
+</p>
+<p>
+GLOW programs may use <tt>GlowReceiverTrackerComponent</tt> to manage automatic tracking or deletion of dependent receivers.
+</p>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Constants</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Deleting options</b>
+<br>
+These constants are inherited from <tt><a href="ReceiverTracker.html">ReceiverTracker</a></tt>.
+</p>
+
+<blockquote>
+
+<p>
+<tt>enum ReceiverTracker::DeletingOptions <b>neverDelete</b></tt>
+<br>
+<tt>enum ReceiverTracker::DeletingOptions <b>alwaysDelete</b></tt>
+<br>
+<tt>enum ReceiverTracker::DeletingOptions <b>referenceCountDelete</b></tt>
+</p>
+
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Methods</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Constructors and destructor</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt><b>GlowReceiverTrackerComponent</b>(<a href="GlowComponent.html">GlowComponent</a>* parent)</tt>
+</p>
+<blockquote>
+Creates a new <tt>GlowReceiverTrackerComponent</tt> underneath <tt>parent</tt> in the component hierarchy.
+</blockquote>
+
+<p>
+<tt><b>GlowReceiverTrackerComponent</b>(void)</tt>
+</p>
+<blockquote>
+Creates a new <tt>GlowRenderSwitch</tt> but does not initialize it. A render switch created in this way may not be used until its <tt>Init()</tt> method is called.
+</blockquote>
+
+<p>
+<tt>void <b>Init</b>(<a href="GlowComponent.html">GlowComponent</a>* parent)</tt>
+</p>
+<blockquote>
+Initializes a new <tt>GlowReceiverTrackerComponent</tt> and places it underneath <tt>parent</tt> in the component hierarchy.
+</blockquote>
+
+</blockquote>
+
+<p>
+<b>Inherited methods</b>
+<br>
+These methods are inherited from <tt><a href="ReceiverTracker.html">ReceiverTracker</a></tt>.
+</p>
+
+<blockquote>
+
+<p>
+<tt>void <b>Bind</b>(<a href="TReceiver.html">TReceiver</a>&lt;&gt;* receiver)</tt>
+</p>
+
+<p>
+<tt>bool <b>IsBoundTo</b>(<a href="TReceiver.html">TReceiver</a>&lt;&gt;* receiver) const</tt>
+</p>
+
+<p>
+<tt>unsigned int <b>NumReceivers</b>(void)</tt>
+</p>
+
+<p>
+<tt>void <b>Unbind</b>(<a href="TReceiver.html">TReceiver</a>&lt;&gt;* receiver)</tt>
+</p>
+
+<p>
+<tt>void <b>UnbindAll</b>(void)</tt>
+</p>
+
+<p>
+<tt>void <b>DeleteAllReceivers</b>(void)</tt>
+</p>
+
+<p>
+<tt>void <b>SetAutoDeletingOptions</b>(<a href="ReceiverTracker.html">ReceiverTracker</a>::DeletingOptions options)</tt>
+</p>
+
+<p>
+<tt><a href="ReceiverTracker.html">ReceiverTracker</a>::DeletingOptions <b>GetAutoDeletingOptions</b>(void) const</tt>
+</p>
+
+</blockquote>
+
+<p>
+<b>Inherited methods</b>
+<br>
+These methods are inherited from <tt><a href="GlowComponent.html">GlowComponent</a></tt>.
+</p>
+
+<blockquote>
+
+<p>
+<tt>void <b>Close</b>(void)</tt>
+</p>
+
+<p>
+<tt><a href="GlowComponent.html">GlowComponent</a>* <b>Parent</b>(void) const</tt>
+</p>
+
+<p>
+<tt><a href="GlowSubwindow.html">GlowSubwindow</a>* <b>WhichWindow</b>(void)</tt>
+</p>
+
+<p>
+<tt><a href="GlowSubwindow.html">GlowSubwindow</a>* <b>ParentWindow</b>(void) const</tt>
+</p>
+
+<p>
+<tt><a href="GlowWindow.html">GlowWindow</a>* <b>ToplevelWindow</b>(void)</tt>
+</p>
+
+<p>
+<tt>bool <b>IsToplevel</b>(void) const</tt>
+</p>
+
+<p>
+<tt><a href="GlowComponent.html">GlowComponent</a>* <b>Next</b>(void) const</tt>
+</p>
+
+<p>
+<tt><a href="GlowComponent.html">GlowComponent</a>* <b>Prev</b>(void) const</tt>
+</p>
+
+<p>
+<tt>int <b>NumChildren</b>(void) const</tt>
+</p>
+
+<p>
+<tt><a href="GlowComponent.html">GlowComponent</a>* <b>FirstChild</b>(void) const</tt>
+</p>
+
+<p>
+<tt><a href="GlowComponent.html">GlowComponent</a>* <b>LastChild</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>ReorderChild</b>(<a href="GlowComponent.html">GlowComponent</a>* child, <a href="GlowComponent.html">GlowComponent</a>* pos)</tt>
+</p>
+
+<p>
+<tt>void <b>KillChildren</b>(void)</tt>
+</p>
+
+<p>
+<tt>void <b>Activate</b>(void)</tt>
+</p>
+
+<p>
+<tt>void <b>Deactivate</b>(void)</tt>
+</p>
+
+<p>
+<tt>bool <b>IsActive</b>(void)</tt>
+</p>
+
+<p>
+<tt>bool <b>IsInactive</b>(void)</tt>
+</p>
+
+<p>
+<tt>bool <b>IsActiveStandby</b>(void)</tt>
+</p>
+
+<p>
+<tt>void <b>Paint</b>(void)</tt>
+</p>
+
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Overrideable methods</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Inherited methods</b>
+<br>
+These methods are inherited from <tt><a href="GlowComponent.html">GlowComponent</a></tt>. You should not normally need to override them.
+</p>
+
+<blockquote>
+
+<p>
+<tt>virtual void <b>OnActivate</b>(void)</tt>
+</p>
+
+<p>
+<tt>virtual void <b>OnDeactivate</b>(void)</tt>
+</p>
+
+<p>
+<tt>virtual void <b>OnBeginPaint</b>(void)</tt>
+</p>
+
+<p>
+<tt>virtual void <b>OnEndPaint</b>(void)</tt>
+</p>
+
+</blockquote>
+
+</blockquote>
+
+
+<hr size=2>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+
+<hr size=2>
+
+<p>
+<address>
+<a href="http://www.ugcs.caltech.edu/~dazuma/glow/">The GLOW Toolkit</a>
+</address>
+</p>
+
+
+</body>
+
+</html>

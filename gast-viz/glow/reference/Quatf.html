@@ -1,0 +1,552 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<html>
+
+<head>
+
+<title>
+GLOW Reference
+</title>
+
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3>
+GLOW API version 1.0 reference
+</h3>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+<hr>
+
+<h2>
+class Quatf
+</h2>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>General information</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>
+type: class
+<br>
+inherits: (none)
+<br>
+module: <tt><a href="M_glowVectorAlgebra.html">glowVectorAlgebra</a></tt>
+</b>
+</p>
+<p>
+<tt>Quatf</tt> represents a quaternion of floats. It is used internally by the 3D view transform classes.
+</p>
+<p>
+Most GLOW programs will not need to use <tt>Quatf</tt> directly; however, it may be useful for customizing or manipulating the 3D view transform components.
+</p>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Methods</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Constructors</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt><b>Quatf</b>(void)</tt>
+</p>
+<blockquote>
+Creates a new quaternion with the value set to the identity rotation (1,0,0,0).
+</blockquote>
+
+<p>
+<tt><b>Quatf</b>(GLfloat w, GLfloat x, GLfloat y, GLfloat z)</tt>
+</p>
+<blockquote>
+Creates a new quaternion with the given values. Note that the order is wxyz rather than xyzw.
+</blockquote>
+
+<p>
+<tt><b>Quatf</b>(const GLfloat* vals)</tt>
+</p>
+<blockquote>
+Creates a new quaternion, copying the given array of values in wxyz order.
+</blockquote>
+
+<p>
+<tt><b>Quatf</b>(const <a href="Vec3f.html">Vec3f</a>& vec)</tt>
+</p>
+<blockquote>
+Creates a new quaternion with w set to 0 and xyz set to the given vector.
+</blockquote>
+
+<p>
+<tt><b>Quatf</b>(const <a href="Vec3f.html">Vec3f</a>& axis, GLfloat angle)</tt>
+</p>
+<blockquote>
+Creates a new quaternion representing the given rotation. The angle should be given in radians.
+</blockquote>
+
+<p>
+<tt><b>Quatf</b>(const Quatf& q)</tt>
+</p>
+<blockquote>
+Copy constructor.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Setters</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>void <b>Set</b>(GLfloat w, GLfloat x, GLfloat y, GLfloat z)</tt>
+</p>
+<blockquote>
+Sets the quaternion to the specified values.
+</blockquote>
+
+<p>
+<tt>void <b>Set</b>(const GLfloat* vals)</tt>
+</p>
+<blockquote>
+Sets the quaternion to the specified array of values in wxyz order.
+</blockquote>
+
+<p>
+<tt>Quatf& <b>operator=</b>(const Quatf& q)</tt>
+</p>
+<blockquote>
+Copies the given quaternion.
+</blockquote>
+
+<p>
+<tt>Quatf& <b>operator=</b>(const GLfloat* vals)</tt>
+</p>
+<blockquote>
+Sets the quaternion to the specified array of values in wxyz order.
+</blockquote>
+
+<p>
+<tt>Quatf& <b>operator=</b>(const <a href="Vec3f.html">Vec3f</a>& vec)</tt>
+</p>
+<blockquote>
+Sets w to 0 and xyz to the given vector.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Member access</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>GLfloat <b>GetW</b>(void) const</tt>
+</p>
+
+<p>
+<tt>GLfloat <b>GetX</b>(void) const</tt>
+</p>
+
+<p>
+<tt>GLfloat <b>GetY</b>(void) const</tt>
+</p>
+
+<p>
+<tt>GLfloat <b>GetZ</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>SetW</b>(GLfloat val)</tt>
+</p>
+
+<p>
+<tt>void <b>SetX</b>(GLfloat val)</tt>
+</p>
+
+<p>
+<tt>void <b>SetY</b>(GLfloat val)</tt>
+</p>
+
+<p>
+<tt>void <b>SetZ</b>(GLfloat val)</tt>
+</p>
+
+<p>
+<tt>GLfloat& <b>W</b>(void)</tt>
+</p>
+
+<p>
+<tt>GLfloat <b>W</b>(void) const</tt>
+</p>
+
+<p>
+<tt>GLfloat& <b>X</b>(void)</tt>
+</p>
+
+<p>
+<tt>GLfloat <b>X</b>(void) const</tt>
+</p>
+
+<p>
+<tt>GLfloat& <b>Y</b>(void)</tt>
+</p>
+
+<p>
+<tt>GLfloat <b>Y</b>(void) const</tt>
+</p>
+
+<p>
+<tt>GLfloat& <b>Z</b>(void)</tt>
+</p>
+
+<p>
+<tt>GLfloat <b>Z</b>(void) const</tt>
+</p>
+
+</blockquote>
+
+
+<p>
+<b>Indexed member access</b>
+<br>
+You can access members by index. index 0 is the w-coordinate, and index 3 is the z-coordinate. Specifying an index outside those bounds will raise an assertion.
+</p>
+
+<blockquote>
+
+<p>
+<tt>GLfloat <b>GetVal</b>(std::ptrdiff_t i) const</tt>
+</p>
+
+<p>
+<tt>void <b>SetVal</b>(std::ptrdiff_t i, GLfloat val)</tt>
+</p>
+
+<p>
+<tt>GLfloat& <b>operator[]</b>(std::ptrdiff_t i)</tt>
+</p>
+
+<p>
+<tt>GLfloat <b>operator[]</b>(std::ptrdiff_t i) const</tt>
+</p>
+
+</blockquote>
+
+
+<p>
+<b>Misc access</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>void <b>SetZero</b>(void)</tt>
+</p>
+<blockquote>
+Sets the quaternion to the zero quaternion (0,0,0,0).
+</blockquote>
+
+<p>
+<tt>bool <b>IsZero</b>(void) const</tt>
+</p>
+<blockquote>
+Is the quaternion set to the zero quaternion (0,0,0,0)?
+</blockquote>
+
+<p>
+<tt>void <b>SetIdentity</b>(void)</tt>
+</p>
+<blockquote>
+Sets the quaternion to the identity rotation (1,0,0,0).
+</blockquote>
+
+<p>
+<tt>bool <b>IsIdentity</b>(void) const</tt>
+</p>
+<blockquote>
+Is the quaternion set to the identity rotation (1,0,0,0)?
+</blockquote>
+
+<p>
+<tt>void <b>SetImaginary</b>(const <a href="Vec3f.html">Vec3f</a>& vec)</tt>
+</p>
+<blockquote>
+Sets w to 0 and xyz to the given vector.
+</blockquote>
+
+<p>
+<tt>void <b>SetImaginary</b>(GLfloat x, GLfloat y, GLfloat z)</tt>
+</p>
+<blockquote>
+Sets w to 0 and xyz to the given vector.
+</blockquote>
+
+<p>
+<tt>const <a href="Vec3f.html">Vec3f</a> <b>GetImaginary</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the imaginary part (xyz) of this quaterion.
+</blockquote>
+
+<p>
+<tt><b>operator const GLfloat*</b>(void) const</tt>
+</p>
+<blockquote>
+You can cast a <tt>Quatf</tt> directly to a <tt>const GLfloat*</tt>. In the resulting array, index 0 corresponds to the w-coordinate and index 3 corresponds to the z-coordinate.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Rotation operations</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>void <b>SetRotation</b>(GLfloat axisx, GLfloat axisy, GLfloat axisz, GLfloat angle)</tt>
+<br>
+<tt>void <b>SetRotation</b>(const <a href="Vec3f.html">Vec3f</a>& axis, GLfloat angle)</tt>
+</p>
+<blockquote>
+Sets this quaternion to represent the given rotation. The angle should be given in radians, and the axis should be normalized.
+</blockquote>
+
+<p>
+<tt>void <b>GetRotation</b>(<a href="Vec3f.html">Vec3f</a>& axis, GLfloat& angle) const</tt>
+</p>
+<blockquote>
+Returns the rotation represented by this quaternion. The angle is returned in radians. For best results, make sure the quaternion is sufficiently normalized before calling this method.
+</blockquote>
+
+<p>
+<tt><a href="Vec3f.html">Vec3f</a> <b>GetAxis</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the axis of the rotation represented by this quaternion. For best results, make sure the quaternion is sufficiently normalized before calling this method.
+</blockquote>
+
+<p>
+<tt>GLfloat <b>GetAngle</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the angle of the rotation represented by this quaternion, in radians. For best results, make sure the quaternion is sufficiently normalized before calling this method.
+</blockquote>
+
+<p>
+<tt>void <b>ScaleRotation</b>(GLfloat factor)</tt>
+</p>
+<blockquote>
+Scales the angle of the rotation represented by this quaternion. For best results, make sure the quaternion is sufficiently normalized before calling this method.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Special operations</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>const Quatf <b>Conjugate</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the conjugate of the quaternion.
+</blockquote>
+
+<p>
+<tt>void <b>Negate</b>(void)</tt>
+</p>
+<blockquote>
+Negates the quaternion.
+</blockquote>
+
+<p>
+<tt>GLfloat <b>Norm</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the norm of the quaternion.
+</blockquote>
+
+<p>
+<tt>GLfloat <b>NormSquared</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the square of the norm of the quaternion. This is faster than <tt>Norm()*Norm()</tt>.
+</blockquote>
+
+<p>
+<tt>GLfloat <b>Normalize</b>(void)</tt>
+</p>
+<blockquote>
+Normalizes the quaternion in place.
+</blockquote>
+
+<p>
+<tt>Vec3f <b>Normalized</b>(void) const</tt>
+</p>
+<blockquote>
+Returns a normalized version of the quaternion, but leaves the original untouched.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Arithmetic operations</b>
+<br>
+<tt>Quatf</tt> provides a full set of arithmetic operations on quaternions.
+</p>
+
+<blockquote>
+
+<p>
+<dl>
+<dt>
+<tt><b>Quatf == Quatf</b> ---> bool</tt>
+<dd>
+quaternion equality
+<dt>
+<tt><b>Quatf != Quatf</b> ---> bool</tt>
+<dd>
+quaternion inequality
+</dl>
+</p>
+<p>
+<dl>
+<dt>
+<tt><b>- Quatf</b> ---> Quatf</tt>
+<dd>
+quaternion negation
+</dl>
+</p>
+<p>
+<dl>
+<dt>
+<tt><b>Quatf * GLfloat</b> ---> Quatf</tt>
+<dd>
+scalar multiplication
+<dt>
+<tt><b>GLfloat * Quatf</b> ---> Quatf</tt>
+<dd>
+scalar multiplication
+<dt>
+<tt><b>Quatf / GLfloat</b> ---> Quatf</tt>
+<dd>
+scalar division
+<dt>
+<tt><b>Quatf *= GLfloat</b></tt>
+<dd>
+in-place scalar multiplication
+<dt>
+<tt><b>Quatf /= GLfloat</b></tt>
+<dd>
+in-place scalar division
+</dl>
+</p>
+<p>
+<dl>
+<dt>
+<tt><b>Quatf + Quatf</b> ---> Quatf</tt>
+<dd>
+quaternion addition
+<dt>
+<tt><b>Quatf - Quatf</b> ---> Quatf</tt>
+<dd>
+quaternion subtraction
+<dt>
+<tt><b>Quatf * Quatf</b> ---> GLfloat</tt>
+<dd>
+dot product
+<dt>
+<tt><b>Quatf % Quatf</b> ---> Quatf</tt>
+<dd>
+cross product (quaternion product)
+<dt>
+<tt><b>Quatf += Quatf</b></tt>
+<dd>
+in-place quaternion addition
+<dt>
+<tt><b>Quatf -= Quatf</b></tt>
+<dd>
+in-place quaternion subtraction
+<dt>
+<tt><b>Quatf %= Quatf</b></tt>
+<dd>
+in-place cross product
+</dl>
+</p>
+<p>
+<dl>
+<dt>
+<tt><b>Quatf * Vec3f</b> ---> Vec3f</tt>
+<dd>
+application of quaternion to vector
+</dl>
+</p>
+
+</blockquote>
+
+</blockquote>
+
+
+<hr size=2>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+
+<hr size=2>
+
+<p>
+<address>
+<a href="http://www.ugcs.caltech.edu/~dazuma/glow/">The GLOW Toolkit</a>
+</address>
+</p>
+
+
+</body>
+
+</html>

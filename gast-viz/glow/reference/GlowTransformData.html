@@ -1,0 +1,322 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<html>
+
+<head>
+
+<title>
+GLOW Reference
+</title>
+
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3>
+GLOW API version 1.0 reference
+</h3>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+<hr>
+
+<h2>
+class GlowTransformData
+</h2>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>General information</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>
+type: class
+<br>
+inherits: (none)
+<br>
+module: <tt><a href="M_glowViewTransform.html">glowViewTransform</a></tt>
+</b>
+</p>
+<p>
+<tt>GlowTransformData</tt> stores the actual transform data used by <a href="GlowViewTransform.html">GlowViewTransform</a> and <a href="GlowViewManipulator.html">GlowViewManipulator</a>. You can connect multiple transforms and manipulators to the same transform data object if you want them to move in concert.
+</p>
+<p>
+GLOW programs that render 3D scenes may find <tt>GlowTransformData</tt> useful for managing 3D transforms.
+</p>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Methods</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Constructors and destructor</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt><b>GlowTransformData</b>(bool persistent = true)</tt>
+</p>
+<blockquote>
+Creates a new <tt>GlowTransformData</tt>, given a persistence setting. The transform is set to the identity.
+</blockquote>
+
+<p>
+<tt><b>GlowTransformData</b>(const Vec3f& trans, const Quatf& rot, GLfloat scale, bool persistent = true)</tt>
+</p>
+<blockquote>
+Creates a new <tt>GlowTransformData</tt>, given an initial transform and a persistence setting.
+</blockquote>
+
+<p>
+<tt>virtual <b>~GlowTransformData</b>(void)</tt>
+</p>
+
+</blockquote>
+
+
+<p>
+<b>Transform data methods</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>void <b>Set</b>(const Vec3f& trans, const Quatf& rot, GLfloat scale)</tt>
+</p>
+<blockquote>
+Sets the current transform.
+</blockquote>
+
+<p>
+<tt>void <b>SetTranslation</b>(const Vec3f& trans)</tt>
+</p>
+<blockquote>
+Sets the current translation vector.
+</blockquote>
+
+<p>
+<tt>void <b>SetRotation</b>(const Quatf& rot)</tt>
+</p>
+<blockquote>
+Sets the current rotation quaternion.
+</blockquote>
+
+<p>
+<tt>void <b>SetScale</b>(GLfloat scale)</tt>
+</p>
+<blockquote>
+Sets the current scale factor.
+</blockquote>
+
+<p>
+<tt>void <b>SetIdentity</b>(void)</tt>
+</p>
+<blockquote>
+Sets the transform to the identity transform.
+</blockquote>
+
+<p>
+<tt>void <b>AddTranslation</b>(const Vec3f& trans)</tt>
+</p>
+<blockquote>
+Adds the given translation vector to the data.
+</blockquote>
+
+<p>
+<tt>void <b>AddRotation</b>(const Quatf& rot)</tt>
+</p>
+<blockquote>
+Adds the given rotation quaternion to the data.
+</blockquote>
+
+<p>
+<tt>void <b>AddScale</b>(GLfloat scale)</tt>
+</p>
+<blockquote>
+Adds the given scale factor to the data.
+</blockquote>
+
+<p>
+<tt>const Vec3f& <b>GetTranslation</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the current translation vector.
+</blockquote>
+
+<p>
+<tt>const Quatf& <b>GetRotation</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the current rotation quaternion.
+</blockquote>
+
+<p>
+<tt>GLfloat <b>GetScale</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the current scale factor.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Applying the transform</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>Vec3f <b>Apply</b>(const Vec3f& vec) const</tt>
+</p>
+<blockquote>
+Returns the result of applying the current transform to the given vector.
+</blockquote>
+
+<p>
+<tt>Vec3f <b>ApplyInverse</b>(const Vec3f& vec) const</tt>
+</p>
+<blockquote>
+Returns the result of applying the inverse of the current transform to the given vector.
+</blockquote>
+
+<p>
+<tt>void <b>ApplyToGLMatrix</b>(void) const</tt>
+</p>
+<blockquote>
+Multiplies the current OpenGL matrix by the current transform.
+</blockquote>
+
+<p>
+<tt>void <b>ApplyInverseToGLMatrix</b>(void) const</tt>
+</p>
+<blockquote>
+Multiplies the current OpenGL matrix by the inverse of the current transform.
+</blockquote>
+
+<p>
+<tt>void <b>GetGLMatrixf</b>(GLfloat* matrix) const</tt>
+</p>
+<blockquote>
+Sets <tt>matrix[0]</tt> through <tt>matrix[15]</tt> to the matrix representing the current transform, in OpenGL (column-major) order.
+</blockquote>
+
+<p>
+<tt>void <b>GetMatrix</b>(Mat4f& matrix) const</tt>
+</p>
+<blockquote>
+Sets <tt>matrix</tt> to the matrix representing the current transform.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Other methods</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>bool <b>IsSpinning</b>(void) const</tt>
+</p>
+<blockquote>
+Returns true if the transform data is currently spinning.
+</blockquote>
+
+<p>
+<tt>void <b>StartSpinning</b>(const Quatf& spin)</tt>
+</p>
+<blockquote>
+Starts the transform spinning, using the given quaternion as the delta rotation.
+</blockquote>
+
+<p>
+<tt>void <b>StopSpinning</b>(void)</tt>
+</p>
+<blockquote>
+Stops spinning.
+</blockquote>
+
+<p>
+<tt>void <b>StepSpin</b>(void)</tt>
+</p>
+<blockquote>
+Advances the spin one step. Normally this is called automatically during idle time when spinning is on, so you do not need to call it manually.
+</blockquote>
+
+<p>
+<tt>bool <b>IsPersistent</b>(void) const</tt>
+</p>
+<blockquote>
+Returns true if the transform data is persistent. This means the object will not auto-destruct when it is not referenced by any <tt><a href="GlowViewTransform.html">GlowViewTransform</a></tt> objects. Normally, transform data objects that are created automatically by view transforms are non-persistent. Transform data objects that you create manually should probably be persistent so you have control over when it gets deleted.
+</blockquote>
+
+<p>
+<tt>void <b>SetPersistent</b>(bool persist)</tt>
+</p>
+<blockquote>
+Sets the persistence.
+</blockquote>
+
+<p>
+<tt>void <b>RefreshAll</b>(void)</tt>
+</p>
+<blockquote>
+Refreshes every view transform component connected to this data.
+</blockquote>
+
+</blockquote>
+
+</blockquote>
+
+
+
+<hr size=2>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+
+<hr size=2>
+
+<p>
+<address>
+<a href="http://www.ugcs.caltech.edu/~dazuma/glow/">The GLOW Toolkit</a>
+</address>
+</p>
+
+
+</body>
+
+</html>

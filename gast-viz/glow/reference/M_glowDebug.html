@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<html>
+
+<head>
+
+<title>
+GLOW Reference
+</title>
+
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3>
+GLOW API version 1.0 reference
+</h3>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+<hr>
+
+<h2>
+module glowDebug
+</h2>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>General information</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+The glowDebug module contains debugging facilities provided and used internally by The GLOW Toolkit. You may also use them in your application. The facilities provided include support for assertions, catching signals, and tracing the call stack. The module includes several classes, but normally you should use the provided macros instead of referring to the classes directly, so that debugging can be turned on and off using the preprocessor symbol <tt>GLOW_OPTION_DEBUG</tt>.
+</p>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Macros</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<tt><b>GLOW_DEBUG</b>(expr, "message")</tt>
+</p>
+<blockquote>
+If expr is true, prints the message, the file name and line number, and the call stack, and aborts. Takes effect only if <tt>GLOW_OPTION_DEBUG</tt> is defined.
+</blockquote>
+
+<p>
+<tt><b>GLOW_WARNING</b>(expr, "message")</tt>
+</p>
+<blockquote>
+If expr is true, prints the message, the file name and line number, and the call stack, but does not abort. Takes effect only if <tt>GLOW_OPTION_DEBUG</tt> is defined.
+</blockquote>
+
+<p>
+<tt><b>GLOW_ASSERT</b>(expr)</tt>
+</p>
+<blockquote>
+If expr is false, prints out an assertion failure message, the file name and line number, and the call stack, and aborts. Takes effect only if <tt>GLOW_OPTION_DEBUG</tt> is defined.
+</blockquote>
+
+<p>
+<tt><b>GLOW_DEBUGSCOPE</b>("name")</tt>
+</p>
+<blockquote>
+Appends the given name to the call stack. The name will be removed when the current scope exits. Typically, you will want to insert this statement at the beginning of a function, and give the name of the function. Takes effect only if <tt>GLOW_OPTION_DEBUG</tt> is defined.
+</blockquote>
+
+<p>
+<tt><b>GLOW_DEBUGSIGNAL</b>(signal)</tt>
+</p>
+<blockquote>
+Causes GLOW to catch the given signal. If such a signal is thrown, GLOW will print out the signal number and the call stack, and abort. This statement should be located at the beginning of <tt>main()</tt>. Takes effect only if <tt>GLOW_OPTION_DEBUG</tt> is defined.
+</blockquote>
+
+</blockquote>
+
+
+<hr size=2>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+
+<hr size=2>
+
+<p>
+<address>
+<a href="http://www.ugcs.caltech.edu/~dazuma/glow/">The GLOW Toolkit</a>
+</address>
+</p>
+
+
+</body>
+
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<html>
+
+<head>
+
+<title>
+GLOW Reference
+</title>
+
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3>
+GLOW API version 1.0 reference
+</h3>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+<hr>
+
+<h2>
+typedef GlowMessageWindowReceiver
+</h2>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>General information</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>
+type: abstract
+<br>
+synonym: <tt><a href="TReceiver.html">TReceiver</a>&lt;const <a href="GlowMessageWindowMessage.html">GlowMessageWindowMessage</a>&&gt;</tt>
+<br>
+module: <tt><a href="M_glowMessageWindow.html">glowMessageWindow</a></tt>
+</b>
+</p>
+<p>
+<tt>GlowMessageWindowReceiver</tt> is the base class of receivers of message window events. Subclasses should override the <tt>OnMessage()</tt> method to handle an event.
+</p>
+<p>
+GLOW programs that use message windows may use <tt>GlowMessageWindowReceiver</tt>s to perform additional processing when a window is dismissed.
+</p>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Types</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Types</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>typedef const <a href="GlowMessageWindowMessage.html">GlowMessageWindowMessage</a>& <b>MessageType</b></tt>
+</p>
+<blockquote>
+A synonym for the type of message.
+</blockquote>
+
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Methods</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Destructor</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt><b>~GlowMessageWindowReceiver</b>(void)</tt>
+</p>
+<blockquote>
+Automatically informs any attached <tt><a href="GlowMessageWindow.html">GlowMessageWindow</a></tt>s that this receiver is going away.
+</blockquote>
+
+</blockquote>
+
+<p>
+<b>Information on senders</b>
+<br>
+A receiver can provide rudimentary information on which senders are bound to it.
+</p>
+
+<blockquote>
+
+<p>
+<tt>unsigned int <b>NumSenders</b>(void)</tt>
+</p>
+<blockquote>
+Returns the number of message windows bound to this receiver.
+</blockquote>
+
+<p>
+<tt>unsigned int <b>NumTrackers</b>(void)</tt>
+</p>
+<blockquote>
+Returns the number of trackers bound to this receiver.
+</blockquote>
+
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Overrideable methods</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Receiving messages</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>virtual void <b>OnMessage</b>(const <a href="GlowMessageWindowMessage.html">GlowMessageWindowMessage</a>& message) = 0</tt>
+</p>
+<blockquote>
+This is a pure virtual method that must be overridden by a subclass. It is called whenever the receiver receives an event.
+</blockquote>
+
+</blockquote>
+
+</blockquote>
+
+
+<hr size=2>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+
+<hr size=2>
+
+<p>
+<address>
+<a href="http://www.ugcs.caltech.edu/~dazuma/glow/">The GLOW Toolkit</a>
+</address>
+</p>
+
+
+</body>
+
+</html>

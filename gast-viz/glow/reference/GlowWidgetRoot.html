@@ -1,0 +1,292 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<html>
+
+<head>
+
+<title>
+GLOW Reference
+</title>
+
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3>
+GLOW API version 1.0 reference
+</h3>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+<hr>
+
+<h2>
+class GlowWidgetRoot
+</h2>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>General information</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>
+type: base
+<br>
+inherits: (none)
+<br>
+module: <tt><a href="M_glowWidget.html">glowWidget</a></tt>
+</b>
+</p>
+<p>
+<tt>GlowWidgetRoot</tt> occupies the root of a widget hierarchy. It manages event delivery, keyboard focus and other widget issues. You do not instantiate a <tt>GlowWidgetRoot</tt> directly, but instead use one of the classes derived from it, such as <tt><a href="GlowWidgetWindow.html">GlowWidgetWindow</a></tt>.
+</p>
+<p>
+To create a widget root class, you should generally inherit both from <tt>GlowWidgetRoot</tt> and from <tt><a href="GlowSubwindow.html">GlowSubwindow</a></tt> or one of its subclasses. The subwindow should come first, to ensure that the widget root is destructed before the subwindow. You'll also need to pass a pointer to the subwindow, to <tt>GlowWidgetRoot::Init()</tt>, and override the subwindow's mouse and keyboard methods to call the appropriate widget root methods.
+</p>
+<p>
+GLOW programs that use widgets must deal with <tt>GlowWidgetRoot</tt>s.
+</p>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Methods</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Destructor</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>virtual <b>~GlowWidgetRoot</b>(void)</tt>
+</p>
+<blockquote>
+The destructor for <tt>GlowWidgetRoot</tt> cleans up event delivery and keyboard focus information. The appropriate widgets should still exist, so make sure this destructor is called before any corresponding subwindow destructor deletes the widgets.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Widget root operations</b>
+<br>
+You can perform special widget root operations using these methods.
+</p>
+
+<blockquote>
+
+<p>
+<tt><a href="GlowSubwindow.html">GlowSubwindow</a>* <b>Subwindow</b>(void) const</tt>
+</p>
+<blockquote>
+Returns a pointer to the subwindow receiving events for this widget root.
+</blockquote>
+
+<p>
+<tt><a href="GlowColor.html">GlowColor</a> <b>GetBackColor</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the current background color for the widget root.
+</blockquote>
+
+<p>
+<tt>void <b>SetBackColor</b>(<a href="GlowColor.html">GlowColor</a> c)</tt>
+</p>
+<blockquote>
+Sets the current background color for the widget root.
+</blockquote>
+
+<p>
+<tt>void <b>SetKeyboardFocus</b>(<a href="GlowWidget.html">GlowWidget</a>* widget)</tt>
+</p>
+<blockquote>
+Sets the keyboard focus to the given widget. Throws an assertion if the given widget cannot accept keyboard focus.
+</blockquote>
+
+<p>
+<tt><a href="GlowWidget.html">GlowWidget</a>* <b>GetKeyboardFocus</b>(void)</tt>
+</p>
+<blockquote>
+Returns the widget with the keyboard focus, or 0 if no widget has keyboard focus.
+</blockquote>
+
+<p>
+<tt>void <b>AdvanceKeyboardFocus</b>(void)</tt>
+</p>
+<blockquote>
+Advances keyboard focus to the next eligible widget.
+</blockquote>
+
+<p>
+<tt><a href="GlowWidget.html">GlowWidget</a>* <b>FindWidget</b>(int& x, int& y)</tt>
+</p>
+<blockquote>
+Determines which widget owns the given coordinates in the widget root-- e.g., if the mouse were clicked in that point, which widget would be hit. Returns a pointer to the widget, or null if no widget is hit. Also modifies the passed parameters to give the point in that widget's local coordinates.
+</blockquote>
+
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Managing event filters</b>
+<br>
+Event filters can be set up to pre-filter keyboard events before they are delivered. They can modify the parameters of the event, or even handle the event themselves and consume the event so it is not passed on to the receiving widget.
+</p>
+
+<blockquote>
+
+<p>
+<tt>static void <b>RegisterFilter</b>(<a href="GlowWidgetKeyboardFilter.html">GlowWidgetKeyboardFilter</a>* filter)</tt>
+</p>
+<blockquote>
+Adds the given keyboard event filter to the list of filters. Has no effect if the filter is already registered.
+</blockquote>
+
+<p>
+<tt>static void <b>UnregisterFilter</b>(<a href="GlowWidgetKeyboardFilter.html">GlowWidgetKeyboardFilter</a>* filter)</tt>
+</p>
+<blockquote>
+Removes the given keyboard event filter from the list of filters. Has no effect if the filter is not registered.
+</blockquote>
+
+<p>
+<tt>static void <b>UnregisterAllFilters</b>(void)</tt>
+</p>
+<blockquote>
+Unregisters all keyboard event filters.
+</blockquote>
+
+<p>
+<tt>static unsigned int <b>NumRegisteredFilters</b>(void)</tt>
+</p>
+<blockquote>
+Returns the number of registered keyboard event filters.
+</blockquote>
+
+<p>
+<tt>static bool <b>IsFilterRegistered</b>(<a href="GlowWidgetKeyboardFilter.html">GlowWidgetKeyboardFilter</a>* filter)</tt>
+</p>
+<blockquote>
+Reports whether the given keyboard event filter is registered.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Methods for subclasses</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Constructor and initializer</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt><b>GlowWidgetRoot</b>(void)</tt>
+</p>
+<blockquote>
+Creates a new <tt>GlowWidgetRoot</tt> but does not initialize it. The widget root may not be used until its <tt>Init()</tt> method is called.
+</blockquote>
+
+<p>
+<tt>void <b>Init</b>(<a href="GlowSubwindow.html">GlowSubwindow</a>* subwindow, <a href="GlowColor.html">GlowColor</a> backColor)</tt>
+</p>
+<blockquote>
+Initializes a <tt>GlowWidgetRoot</tt> with options specified by the given params. <tt>subwindow</tt> specifies the subwindow that will enclose these widgets. <tt>backColor</tt> gives the color of the background for the widgets.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Event handlers</b>
+<br>
+These methods are analogous to the corresponding <tt><a href="GlowSubwindow.html">GlowSubwindow</a></tt> methods. For proper event delivery to widgets, the subwindow should override its event handling methods and call these.
+</p>
+
+<blockquote>
+
+<p>
+<tt>void <b>WRMouseDown</b>(<a href="Glow.html">Glow</a>::MouseButton mouseButton, int x, int y, <a href="Glow.html">Glow</a>::Modifiers modifiers)</tt>
+</p>
+
+<p>
+<tt>void <b>WRMouseUp</b>(<a href="Glow.html">Glow</a>::MouseButton mouseButton, int x, int y, <a href="Glow.html">Glow</a>::Modifiers modifiers)</tt>
+</p>
+
+<p>
+<tt>void <b>WRMouseDrag</b>(int x, int y)</tt>
+</p>
+
+<p>
+<tt>void <b>WRKeyboard</b>(<a href="Glow.html">Glow</a>::KeyCode key, int x, int y, <a href="Glow.html">Glow</a>::Modifiers modifiers)</tt>
+</p>
+
+<p>
+<tt>bool <b>WRBeginPaint</b>(void)</tt>
+</p>
+
+<p>
+<tt>void <b>WREndPaint</b>(void)</tt>
+</p>
+
+</blockquote>
+
+</blockquote>
+
+
+<hr size=2>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+
+<hr size=2>
+
+<p>
+<address>
+<a href="http://www.ugcs.caltech.edu/~dazuma/glow/">The GLOW Toolkit</a>
+</address>
+</p>
+
+
+</body>
+
+</html>

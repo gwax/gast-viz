@@ -1,0 +1,274 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<html>
+
+<head>
+
+<title>
+GLOW Reference
+</title>
+
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3>
+GLOW API version 1.0 reference
+</h3>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+<hr>
+
+<h2>
+class GlowSliderParams
+</h2>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>General information</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>
+type: struct
+<br>
+inherits: <tt><a href="GlowWidgetParams.html">GlowWidgetParams</a></tt>
+<br>
+module: <tt><a href="M_glowSliderWidget.html">glowSliderWidget</a></tt>
+</b>
+</p>
+<p>
+<tt>GlowSliderParams</tt> encloses parameters for construction of a <tt><a href="GlowSliderWidget.html">GlowSliderWidget</a></tt>.
+</p>
+<p>
+GLOW programs which use sliders may need to use <tt>GlowSliderParams</tt> to construct a slider.
+</p>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Data</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>General widget parameter data</b>
+<br>
+These fields are inherited from <tt><a href="GlowWidgetParams.html">GlowWidgetParams</a></tt>. Note that their default values may be different from the generic widget parameters.
+</p>
+
+<blockquote>
+
+<p>
+<tt>int <b>width</b></tt>
+</p>
+<blockquote>
+Width of the widget. Initial default is 130.
+</blockquote>
+<p>
+<tt>int <b>height</b></tt>
+</p>
+<blockquote>
+Height of the widget. Initial default is 30.
+</blockquote>
+<p>
+<tt>int <b>x</b></tt>
+</p>
+<blockquote>
+X location of the upper left of the widget, in pixel coordinates of the parent widget. Initial default is 0.
+</blockquote>
+<p>
+<tt>int <b>y</b></tt>
+</p>
+<blockquote>
+Y location of the upper left of the widget, in pixel coordinates of the parent widget. Initial default is 0.
+</blockquote>
+<p>
+<tt>long <b>refcon</b></tt>
+</p>
+<blockquote>
+Reference constant for this widget. Initial default 0.
+</blockquote>
+<p>
+<tt>bool <b>clipping</b></tt>
+</p>
+<blockquote>
+Should the widget clip to its rectangle when drawing children. Initial default is false.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Parameter data specific to sliders</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt><a href="GlowSliderWidget.html">GlowSliderWidget</a>::Options <b>options</b></tt>
+</p>
+<blockquote>
+Options. Default is <a href="GlowSliderWidget.html">GlowSliderWidget</a>::defaultOptions
+</blockquote>
+<p>
+<tt>double <b>min</b></tt>
+</p>
+<blockquote>
+Initial minimum value. Default is 0.0.
+</blockquote>
+<p>
+<tt>double <b>max</b></tt>
+</p>
+<blockquote>
+Initial maximum value. Default is 1.0.
+</blockquote>
+<p>
+<tt>double <b>initial</b></tt>
+</p>
+<blockquote>
+Initial value. Default is 0.0.
+</blockquote>
+<p>
+<tt>int <b>numTicks</b></tt>
+</p>
+<blockquote>
+Number of tick marks to draw. Initial default is 2.
+</blockquote>
+<p>
+<tt><a href="GlowSliderReceiver.html">GlowSliderReceiver</a>* <b>receiver</b></tt>
+</p>
+<blockquote>
+Receiver for indicator drag and release events. Initial default is 0.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Color parameter data</b>
+</p>
+
+<blockquote>
+
+<tt><a href="GlowColor.html">GlowColor</a> <b>stripColor</b></tt>
+<br>
+<tt><a href="GlowColor.html">GlowColor</a> <b>indicatorColor</b></tt>
+<br>
+<tt><a href="GlowColor.html">GlowColor</a> <b>tickMarkColor</b></tt>
+<br>
+<tt><a href="GlowColor.html">GlowColor</a> <b>hiliteIndicatorColor</b></tt>
+<br>
+<tt><a href="GlowColor.html">GlowColor</a> <b>disableStripColor</b></tt>
+<br>
+<tt><a href="GlowColor.html">GlowColor</a> <b>disableIndicatorColor</b></tt>
+<br>
+<tt><a href="GlowColor.html">GlowColor</a> <b>disableTickMarkColor</b></tt>
+<br>
+<tt><a href="GlowColor.html">GlowColor</a> <b>disableOutlineColor</b></tt>
+<br>
+<tt><a href="GlowColor.html">GlowColor</a> <b>lightBevelColor</b></tt>
+<br>
+<tt><a href="GlowColor.html">GlowColor</a> <b>darkBevelColor</b></tt>
+
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Static Data</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Defaults</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>static GlowSliderParams <b>defaults</b></tt>
+</p>
+<blockquote>
+Default parameters. These are copied every time a new <tt>GlowSliderParams</tt> is constructed.
+</blockquote>
+
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Methods</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Constructor</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt><b>GlowSliderParams</b>(void)</tt>
+</p>
+<blockquote>
+Constructs a new parameter block, copying <tt>defaults</tt>
+</blockquote>
+
+</blockquote>
+
+</blockquote>
+
+
+<hr size=2>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+
+<hr size=2>
+
+<p>
+<address>
+<a href="http://www.ugcs.caltech.edu/~dazuma/glow/">The GLOW Toolkit</a>
+</address>
+</p>
+
+
+</body>
+
+</html>

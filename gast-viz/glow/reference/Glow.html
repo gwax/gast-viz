@@ -1,0 +1,815 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<html>
+
+<head>
+
+<title>
+GLOW Reference
+</title>
+
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3>
+GLOW API version 1.0 reference
+</h3>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+<hr>
+
+<h2>
+class Glow
+</h2>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>General information</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>
+type: class
+<br>
+inherits: (none)
+<br>
+module: <tt><a href="M_glow.html">glow</a></tt>
+</b>
+</p>
+<p>
+<tt>Glow</tt> encapsulates general routines for GLOW programs, including initialization, machine state, event delivery, setup of idle and timer tasks, and other functions. It also includes some useful constants. All methods of <tt>Glow</tt> are static; you cannot instantiate <tt>Glow</tt>.
+</p>
+<p>
+All GLOW programs use <tt>Glow::Init()</tt> and <tt>Glow::MainLoop()</tt> to initialize and start the main event loop, respectively. Some programs may use the idle and timer functions. A few may use some of the advanced routines such as event simulation and resolution of GLUT window and menu IDs.
+</p>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Constants</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Event masks</b>
+<br>
+Tells a window which event types to report. Used during creation of a window or subwindow. These constants are defined as an enumeration of type <tt>Glow::EventMask</tt> and should be or'ed together.
+</p>
+
+<blockquote>
+
+<p>
+<tt>enum Glow::EventMask <b>noEvents</b></tt>
+</p>
+<blockquote>
+Report no events
+</blockquote>
+<p>
+<tt>enum Glow::EventMask <b>keyboardEvents</b></tt>
+</p>
+<blockquote>
+Report keypress events
+</blockquote>
+<p>
+<tt>enum Glow::EventMask <b>mouseEvents</b></tt>
+</p>
+<blockquote>
+Report mouse button events
+</blockquote>
+<p>
+<tt>enum Glow::EventMask <b>dragEvents</b></tt>
+</p>
+<blockquote>
+Report mouse motion while dragging events
+</blockquote>
+<p>
+<tt>enum Glow::EventMask <b>motionEvents</b></tt>
+</p>
+<blockquote>
+Report mouse motion while button is up events
+</blockquote>
+<p>
+<tt>enum Glow::EventMask <b>visibilityEvents</b></tt>
+</p>
+<blockquote>
+Report visible and invisible events
+</blockquote>
+<p>
+<tt>enum Glow::EventMask <b>focusEvents</b></tt>
+</p>
+<blockquote>
+Report got focus and lost focus events
+</blockquote>
+<p>
+<tt>enum Glow::EventMask <b>menuEvents</b></tt>
+</p>
+<blockquote>
+Report menu up and menu down events
+</blockquote>
+<p>
+<tt>enum Glow::EventMask <b>allEvents</b></tt>
+</p>
+<blockquote>
+Report all events
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Button ID</b>
+<br>
+Specifies which mouse button is affected. Used for various things such as attaching menus. Also passed back during mouse event callbacks. Defined as an enumeration of type <tt>Glow::MouseButton</tt>.
+</p>
+
+<blockquote>
+
+<p>
+<tt>enum Glow::MouseButton <b>leftButton</b></tt>
+</p>
+<blockquote>
+Left mouse button. Corresponds to <tt>GLUT_LEFT_BUTTON</tt>.
+</blockquote>
+<p>
+<tt>enum Glow::MouseButton <b>middleButton</b></tt>
+</p>
+<blockquote>
+Middle mouse button. Corresponds to <tt>GLUT_MIDDLE_BUTTON</tt>.
+</blockquote>
+<p>
+<tt>enum Glow::MouseButton <b>rightButton</b></tt>
+</p>
+<blockquote>
+Right mouse button. Corresponds to <tt>GLUT_RIGHT_BUTTON</tt>.
+</blockquote>
+
+</blockquote>
+
+<p>
+<b>Buffer type</b>
+<br>
+Specifies the type of frame buffer requested. Used in constructing a window or subwindow. These values should be or'ed together. Defined as an enumeration of type <tt>Glow::BufferType</tt>.
+</p>
+
+<blockquote>
+
+<p>
+<tt>enum Glow::BufferType <b>noBuffer</b></tt>
+</p>
+<blockquote>
+No buffers.
+</blockquote>
+<p>
+<tt>enum Glow::BufferType <b>rgbBuffer</b></tt>
+</p>
+<blockquote>
+RGB color buffer. Corresponds to <tt>GLUT_RGB</tt>.
+</blockquote>
+<p>
+<tt>enum Glow::BufferType <b>alphaBuffer</b></tt>
+</p>
+<blockquote>
+Alpha buffer. Corresponds to <tt>GLUT_ALPHA</tt>.
+</blockquote>
+<p>
+<tt>enum Glow::BufferType <b>rgbaBuffer</b></tt>
+</p>
+<blockquote>
+RGBA color buffer. Corresponds to <tt>rgbBuffer | alphaBuffer</tt>. Note that this is different from <tt>GLUT_RGBA</tt>, which is the same as <tt>GLUT_RGB</tt>.
+</blockquote>
+<p>
+<tt>enum Glow::BufferType <b>stencilBuffer</b></tt>
+</p>
+<blockquote>
+Stencil buffer. Corresponds to <tt>GLUT_STENCIL</tt>.
+</blockquote>
+<p>
+<tt>enum Glow::BufferType <b>depthBuffer</b></tt>
+</p>
+<blockquote>
+Depth (Z) buffer. Corresponds to <tt>GLUT_DEPTH</tt>.
+</blockquote>
+<p>
+<tt>enum Glow::BufferType <b>accumBuffer</b></tt>
+</p>
+<blockquote>
+Accumulation buffer. Corresponds to <tt>GLUT_ACCUM</tt>.
+</blockquote>
+<p>
+<tt>enum Glow::BufferType <b>doubleBuffer</b></tt>
+</p>
+<blockquote>
+Double buffer. Corresponds to <tt>GLUT_DOUBLE</tt>.
+</blockquote>
+<p>
+<tt>enum Glow::BufferType <b>stereoBuffer</b></tt>
+</p>
+<blockquote>
+Stereo buffer. Corresponds to <tt>GLUT_STEREO</tt>. Note that this buffer type is not commonly supported. Call <tt>IsBufferTypeSupported()</tt> to check before attempting to create a window with a stereo buffer.
+</blockquote>
+<p>
+<tt>enum Glow::BufferType <b>multisampleBuffer</b></tt>
+</p>
+<blockquote>
+Multisampling buffer. Corresponds to <tt>GLUT_MULTISAMPLE</tt>. Note that this buffer type is not commonly supported. Call <tt>IsBufferTypeSupported()</tt> to check before attempting to create a window with a multisampling  buffer.
+</blockquote>
+
+</blockquote>
+
+<p>
+<b>Keyboard modifiers</b>
+<br>
+Describes modifier keys associated with an event. Passed back during an event callback. Defined as an enumeration of type <tt>Glow::Modifiers</tt>.
+</p>
+
+<blockquote>
+
+<p>
+<tt>enum Glow::Modifiers <b>noModifier</b></tt>
+</p>
+<blockquote>
+No modifiers down.
+</blockquote>
+<tt>enum Glow::Modifiers <b>shiftModifier</b></tt>
+</p>
+<blockquote>
+Shift key down. Corresponds to <tt>GLUT_ACTIVE_SHIFT</tt>.
+</blockquote>
+<p>
+<tt>enum Glow::Modifiers <b>ctrlModifier</b></tt>
+</p>
+<blockquote>
+Ctrl key down. Corresponds to <tt>GLUT_ACTIVE_CTRL</tt>.
+</blockquote>
+<p>
+<tt>enum Glow::Modifiers <b>altModifier</b></tt>
+</p>
+<blockquote>
+Alt key down. Corresponds to <tt>GLUT_ACTIVE_ALT</tt>.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Keyboard constants</b>
+<br>
+Specifies the key pressed in a keyboard event. Keys with associated ASCII codes are represented by their corresponding ASCII code. Constants for keys without an associated ASCII code, as well as a few common but not well-known ASCII key codes, are also provided below. Defined as an enumeration of type <tt>Glow::KeyCode</tt>. The special constant <tt>specialKeyOffset</tt> serves to offset the non-ASCII constants from their corresponding GLUT constant. e.g. <tt>f1key == GLUT_KEY_F1 + specialKeyConstant</tt>.
+</p>
+
+<blockquote>
+
+<p>
+<tt>enum Glow::KeyCode <b>backspaceKey</b></tt>
+<br>
+<tt>enum Glow::KeyCode <b>tabKey</b></tt>
+<br>
+<tt>enum Glow::KeyCode <b>enterKey</b></tt>
+<br>
+<tt>enum Glow::KeyCode <b>escapeKey</b></tt>
+<br>
+<tt>enum Glow::KeyCode <b>deleteKey</b></tt>
+</p>
+<p>
+<tt>enum Glow::KeyCode <b>specialKeyOffset</b></tt>
+<br>
+<tt>enum Glow::KeyCode <b>f1Key</b></tt>
+<br>
+<tt>enum Glow::KeyCode <b>f2Key</b></tt>
+<br>
+<tt>enum Glow::KeyCode <b>f3Key</b></tt>
+<br>
+<tt>enum Glow::KeyCode <b>f4Key</b></tt>
+<br>
+<tt>enum Glow::KeyCode <b>f5Key</b></tt>
+<br>
+<tt>enum Glow::KeyCode <b>f6Key</b></tt>
+<br>
+<tt>enum Glow::KeyCode <b>f7Key</b></tt>
+<br>
+<tt>enum Glow::KeyCode <b>f8Key</b></tt>
+<br>
+<tt>enum Glow::KeyCode <b>f9Key</b></tt>
+<br>
+<tt>enum Glow::KeyCode <b>f10Key</b></tt>
+<br>
+<tt>enum Glow::KeyCode <b>f11Key</b></tt>
+<br>
+<tt>enum Glow::KeyCode <b>f12Key</b></tt>
+<br>
+<tt>enum Glow::KeyCode <b>leftArrowKey</b></tt>
+<br>
+<tt>enum Glow::KeyCode <b>upArrowKey</b></tt>
+<br>
+<tt>enum Glow::KeyCode <b>rightArrowKey</b></tt>
+<br>
+<tt>enum Glow::KeyCode <b>downArrowKey</b></tt>
+<br>
+<tt>enum Glow::KeyCode <b>pageUpKey</b></tt>
+<br>
+<tt>enum Glow::KeyCode <b>pageDownKey</b></tt>
+<br>
+<tt>enum Glow::KeyCode <b>homeKey</b></tt>
+<br>
+<tt>enum Glow::KeyCode <b>endKey</b></tt>
+<br>
+<tt>enum Glow::KeyCode <b>insertKey</b></tt>
+</p>
+
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Static methods</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+
+<p>
+<b>General methods</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>static void <b>Init</b>(int& argc, char** argv)</tt>
+</p>
+<blockquote>
+Initializes GLOW. Should be called once at the beginning of the program. Pass argc and argv to it.
+</blockquote>
+
+<p>
+<tt>static void <b>MainLoop</b>(void)</tt>
+</p>
+<blockquote>
+Starts the GLOW main loop. Should be called once after all program initialization is complete. The call never returns normally.
+</blockquote>
+
+<p>
+<tt>static double <b>Version</b>(void)</tt>
+</p>
+<blockquote>
+Returns the version of GLOW currently in use. This value is also defined by the constant <tt>GLOW_VERSION</tt>. The value is of the form <tt>a.bbccdd</tt> where <tt>a</tt> is the major release number, <tt>b</tt> is the major revision number, <tt>c</tt> is the minor revision number and <tt>d</tt> is the prerelease number (99 for final). Hence, version 1.3.11pre4 would show up as 1.031104. This is a non-inline method, so you can test that the headers match up with the library at runtime by comparing <tt>GLOW_VERSION</tt> with the value returned by <tt>Version()</tt>.
+</blockquote>
+
+<p>
+<tt>static int <b>APIVersion</b>(void)</tt>
+</p>
+<blockquote>
+Returns the version of the GLOW API currently in use. This value is also defined by the constant <tt>GLOW_APIVERSION</tt>. For the GLOW 1.0 release, the API version is 1. This is a non-inline method, so you can test that the headers match up with the library at runtime by comparing <tt>GLOW_APIVERSION</tt> with the value returned by <tt>APIVersion()</tt>.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Managing idle tasks</b>
+<br>
+Idle tasks are descendents of <tt><a href="GlowIdleReceiver.html">GlowIdleReceiver</a></tt>. Tasks that are registered will receive a <tt><a href="GlowIdleMessage.html">GlowIdleMessage</a></tt> periodically whenever the program is idle.
+</p>
+
+<blockquote>
+
+<p>
+<tt>static void <b>RegisterIdle</b>(<a href="GlowIdleReceiver.html">GlowIdleReceiver</a>* idle)</tt>
+</p>
+<blockquote>
+Registers the given idle task with the GLOW system. Has no effect if the receiver is already registered.
+</blockquote>
+
+<p>
+<tt>static void <b>UnregisterIdle</b>(<a href="GlowIdleReceiver.html">GlowIdleReceiver</a>* idle)</tt>
+</p>
+<blockquote>
+Unregisters the given idle receiver. Has no effect if the reciver is not already registered.
+</blockquote>
+
+<p>
+<tt>static void <b>UnregisterAllIdle</b>(void)</tt>
+</p>
+<blockquote>
+Unregisters all idle receivers.
+</blockquote>
+
+<p>
+<tt>static int <b>NumRegisteredIdle</b>(void)</tt>
+</p>
+<blockquote>
+Returns the number of registered idle receivers.
+</blockquote>
+
+<p>
+<tt>static bool <b>IsRegisteredIdle</b>(<a href="GlowIdleReceiver.html">GlowIdleReceiver</a>* idle)</tt>
+</p>
+<blockquote>
+Returns true if and only if the given idle receiver is registered.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Managing timer tasks</b>
+<br>
+Timer tasks are descendents of <tt><a href="GlowTimerReceiver.html">GlowTimerReceiver</a></tt>. Registered tasks will receive a <tt><a href="GlowTimerMessage.html">GlowTimerMessage</a></tt> soon after the given number of milliseconds have elapsed. There is no guarantee about the exact amount of time, but it will be at least msecs milliseconds, and as soon afterwards as the system can schedule. 
+</p>
+
+<blockquote>
+
+<p>
+<tt>static int <b>RegisterTimer</b>(unsigned int msecs, <a href="GlowTimerReceiver.html">GlowTimerReceiver</a>* timer)</tt>
+</p>
+<blockquote>
+Registers the given timer receiver with the GLOW system. Returns a unique ID to identify this particular timer request. The ID will be included in the message sent. It may also be used to unregister the timer task or to check on its status.
+</blockquote>
+
+<p>
+<tt>static void <b>UnregisterTimer</b>(int id)</tt>
+</p>
+<blockquote>
+Unregisters the timer task specified by the given unique ID. If the task has not yet been executed, it will be cancelled.
+</blockquote>
+
+<p>
+<tt>static bool <b>IsTimerPending</b>(int id)</tt>
+</p>
+<blockquote>
+Returns true if and only if the given id refers to a timer task that has been registered and has not yet been executed.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Managing event filters</b>
+<br>
+Event filters can be set up to pre-filter events before they are delivered. They can modify the parameters of the event, or even handle the event themselves and consume the event so it is not passed on to the receiving object.
+</p>
+
+<blockquote>
+
+<p>
+<tt>static void <b>RegisterFilter</b>(<a href="GlowKeyboardFilter.html">GlowKeyboardFilter</a>* filter)</tt>
+</p>
+<blockquote>
+Adds the given keyboard event filter to the list of filters run for keyboard events. Has no effect if the filter is already registered.
+</blockquote>
+
+<p>
+<tt>static void <b>RegisterFilter</b>(<a href="GlowMouseFilter.html">GlowMouseFilter</a>* filter)</tt>
+</p>
+<blockquote>
+Adds the given mouse event filter to the list of filters run for mouse up and mouse down events. Has no effect if the filter is already registered.
+</blockquote>
+
+<p>
+<tt>static void <b>UnregisterFilter</b>(<a href="GlowKeyboardFilter.html">GlowKeyboardFilter</a>* filter)</tt>
+</p>
+<blockquote>
+Removes the given keyboard event filter from the list of filters run for keyboard events. Has no effect if the filter is not registered.
+</blockquote>
+
+<p>
+<tt>static void <b>UnregisterFilter</b>(<a href="GlowMouseFilter.html">GlowMouseFilter</a>* filter)</tt>
+</p>
+<blockquote>
+Removes the given mouse event filter from the list of filters run for mouse up and mouse down events. Has no effect if the filter is not registered.
+</blockquote>
+
+<p>
+<tt>static void <b>UnregisterAllKeyboardFilters</b>(void)</tt>
+</p>
+<blockquote>
+Unregisters all keyboard event filters, but doesn't modify the mouse event filter list.
+</blockquote>
+
+<p>
+<tt>static void <b>UnregisterAllMouseFilters</b>(void)</tt>
+</p>
+<blockquote>
+Unregisters all mouse event filters, but doesn't modify the keyboard event filter list.
+</blockquote>
+
+<p>
+<tt>static unsigned int <b>NumRegisteredKeyboardFilters</b>(void)</tt>
+</p>
+<blockquote>
+Returns the number of registered keyboard event filters.
+</blockquote>
+
+<p>
+<tt>static unsigned int <b>NumRegisteredMouseFilters</b>(void)</tt>
+</p>
+<blockquote>
+Returns the number of registered mouse event filters.
+</blockquote>
+
+<p>
+<tt>static bool <b>IsFilterRegistered</b>(<a href="GlowKeyboardFilter.html">GlowKeyboardFilter</a>* filter)</tt>
+</p>
+<blockquote>
+Reports whether the given keyboard event filter is registered.
+</blockquote>
+
+<p>
+<tt>static bool <b>IsFilterRegistered</b>(<a href="GlowMouseFilter.html">GlowMouseFilter</a>* filter)</tt>
+</p>
+<blockquote>
+Reports whether the given mouse event filter is registered.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Managing modal windows</b>
+<br>
+GLOW keeps a stack of modal toplevel windows. If the stack is non-empty, the window occupying the top of the stack is made to "grab" events. That is, all other windows are temporarily deactivated, normally preventing events from being delivered to the deactivated windows. This is useful for implementing alerts and other dialog boxes that require immediate attention. Because modal windows are stored in a stack, you may nest modal windows.
+</p>
+
+<blockquote>
+
+<p>
+<tt>static void <b>PushModalWindow</b>(<a href="GlowWindow.html">GlowWindow</a>* window)</tt>
+</p>
+<blockquote>
+Pushes the given window onto the modal window stack, deactivating all other windows.
+</blockquote>
+
+<p>
+<tt>static void <b>PopModalWindow</b>(void)</tt>
+</p>
+<blockquote>
+Pops the topmost window off the modal window stack. If this results in the stack being empty, GLOW reactivates other toplevel windows. Otherwise, the next window in the stack is made the focused window. Has no effect if there are no modal windows.
+</blockquote>
+
+<p>
+<tt>static int <b>NumModalWindows</b>(void)</tt>
+</p>
+<blockquote>
+Returns the size of the modal window stack. This is 0 if no window is modal.
+</blockquote>
+
+<p>
+<tt>static <a href="GlowWindow.html">GlowWindow</a>* <b>TopModalWindow</b>(void)</tt>
+</p>
+<blockquote>
+Returns the top of the modal window stack (i.e. the currently modal window), or 0 if there is no modal window.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Toplevel window management</b>
+<br>
+GLOW provides the option of exiting the program automatically when the last toplevel window is deleted. The auto-quit feature is disabled by default, but may be enabled or manipulated using these routines.
+</p>
+
+<blockquote>
+
+<p>
+<tt>static int <b>NumToplevelWindows</b>(void)</tt>
+</p>
+<blockquote>
+Returns the number of toplevel GLOW window objects in existence. This includes windows that are hidden or iconified.
+</blockquote>
+
+<p>
+<tt>static bool <b>IsAutoQuitting</b>(void)</tt>
+</p>
+<blockquote>
+Returns true if auto-quitting is active.
+</blockquote>
+
+<p>
+<tt>static void <b>SetAutoQuitting</b>(bool autoQuitting = true)</tt>
+</p>
+<blockquote>
+Activates or deactivates the auto-quitting feature.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Miscellaneous state</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>static bool <b>IsMenuDown</b>(void)</tt>
+</p>
+<blockquote>
+Returns true if and only if a menu is currently down. It is not safe to manipulate menu data structures in this state.
+</blockquote>
+
+<p>
+<tt>static int <b>GetMilliseconds</b>(void)</tt>
+</p>
+<blockquote>
+Returns the number of milliseconds since GLOW was initialized.
+</blockquote>
+
+<p>
+<tt>static bool <b>IsExtensionSupported</b>(const char* extensionName)</tt>
+</p>
+<blockquote>
+Determines whether the OpenGL extension with the specified name is supported by the current implementation. This function requires a window to be present; it will throw an assertion otherwise.
+</blockquote>
+
+<p>
+<tt>static bool <b>IsBufferTypeSupported</b>(Glow::BufferType type)</tt>
+</p>
+<blockquote>
+Determines whether the given frame buffer type is supported. If it isn't, you should not attempt to create a window with that buffer type.
+</blockquote>
+
+<p>
+<tt>static int <b>NumMouseButtons</b>(void)</tt>
+</p>
+<blockquote>
+Returns the number of mouse buttons supported by the implementation. If two buttons are supported, they will be Glow::leftButton and Glow::rightButton. If only one button is supported, it will be Glow::leftButton.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>GLUT integration</b>
+<br>
+These routines provide services to assist you with using GLUT and GLOW in the same program. GLOW provides replacement functions for glutIdleFunc() and glutMenuStatusFunc(), and an implementation of glutPostWindowRedisplay() that functions under the GLUT 3 APIs. You can also resolve GLUT window and menu IDs into <tt><a href="GlowSubwindow.html">GlowSubwindow</a>*</tt> or <tt><a href="GlowMenu.html">GlowMenu</a>*</tt> pointers, respectively.
+</p>
+
+<blockquote>
+
+<p>
+<tt>static void <b>SetIdleFunc</b>(void (*func)())</tt>
+</p>
+<blockquote>
+Performs the same function as GLUT's function <tt>glutIdleFunc()</tt>. If you are integrating GLOW and GLUT code, or if you otherwise want to use a callback-based API for your idle function, you <i>must</i> use this function instead of <tt>glutIdleFunc()</tt>.
+</blockquote>
+
+<p>
+<tt>static void <b>SetMenuStatusFunc</b>(void (*func)(int status, int x, int y))</tt>
+</p>
+<blockquote>
+Performs the same function as GLUT's function <tt>glutMenuStatusFunc()</tt>. If you are integrating GLOW and GLUT code and want to register a menu status function, you <i>must</i> use this function instead of <tt>glutMenuStatusFunc()</tt>.
+</blockquote>
+
+<p>
+<tt>static void <b>RefreshGlutWindow</b>(int windowid)</tt>
+</p>
+<blockquote>
+Refreshes a GLUT window with the given ID. Equivalent to the GLUT 4 function <tt>::glutPostWindowRedisplay()</tt>, but also works under the GLUT 3 API.
+</blockquote>
+
+<p>
+<tt>static <a href="GlowSubwindow.html">GlowSubwindow</a>* <b>ResolveWindow</b>(int windowNum)</tt>
+</p>
+<blockquote>
+Returns a pointer to the <tt><a href="GlowSubwindow.html">GlowSubwindow</a></tt> associated with the given id, or 0 if there is no such GLOW window.
+</blockquote>
+
+<p>
+<tt>static <a href="GlowMenu.html">GlowMenu</a>* <b>ResolveMenu</b>(int menuNum)</tt>
+</p>
+<blockquote>
+Returns a pointer to the <tt><a href="GlowMenu.html">GlowMenu</a></tt> associated with the given id, or 0 if there is no such GLOW menu.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Delivering events</b>
+<br>
+These advanced routines allow you to simulate events in <tt><a href="GlowSubwindow.html">GlowSubwindow</a></tt>s. They deliver the appropriate event messages to the objects, causing the event handler to be called. The event handler is called regardless of the state of the subwindow's event mask. Normally, you should not need to simulate events in this manner.
+</p>
+
+<blockquote>
+
+<p>
+<tt>static void <b>DeliverKeyboardEvt</b>(<a href="GlowSubwindow.html">GlowSubwindow</a>* receiver, Glow::KeyCode key, int x, int y, Glow::Modifiers modifiers)</tt>
+</p>
+<blockquote>
+Delivers a keypress event to the specified subwindow.
+</blockquote>
+
+<p>
+<tt>static void <b>DeliverMouseDownEvt</b>(<a href="GlowSubwindow.html">GlowSubwindow</a>* receiver, Glow::MouseButton button, int x, int y, Glow::Modifiers modifiers)</tt>
+</p>
+<blockquote>
+Delivers a mouse button down event to the specified subwindow.
+</blockquote>
+
+<p>
+<tt>static void <b>DeliverMouseUpEvt</b>(<a href="GlowSubwindow.html">GlowSubwindow</a>* receiver, Glow::MouseButton button, int x, int y, Glow::Modifiers modifiers)</tt>
+</p>
+<blockquote>
+Delivers a mouse button up event to the specified subwindow.
+</blockquote>
+
+<p>
+<tt>static void <b>DeliverMouseDragEvt</b>(<a href="GlowSubwindow.html">GlowSubwindow</a>* receiver, int x, int y)</tt>
+</p>
+<blockquote>
+Delivers a mouse button drag event to the specified subwindow.
+</blockquote>
+
+<p>
+<tt>static void <b>DeliverMouseMotionEvt</b>(<a href="GlowSubwindow.html">GlowSubwindow</a>* receiver, int x, int y)</tt>
+</p>
+<blockquote>
+Delivers a mouse motion event to the specified subwindow.
+</blockquote>
+
+<p>
+<tt>static void <b>DeliverMouseEnterEvt</b>(<a href="GlowSubwindow.html">GlowSubwindow</a>* receiver)</tt>
+</p>
+<blockquote>
+Delivers a cursor entered event to the specified subwindow.
+</blockquote>
+
+<p>
+<tt>static void <b>DeliverMouseExitEvt</b>(<a href="GlowSubwindow.html">GlowSubwindow</a>* receiver)</tt>
+</p>
+<blockquote>
+Delivers a cursor exited event to the specified subwindow.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Drawing methods</b>
+<br>
+These advanced routines provide miscellaneous drawing services.
+</p>
+
+<blockquote>
+
+<p>
+<tt>static void <b>SwapBuffers</b>()</tt>
+</p>
+<blockquote>
+Causes the front and back buffers for the current drawing context to be swapped. Equivalent to calling <tt>::glutSwapBuffers()</tt>. Normally, you do not need to call this, because GLOW will normally swap buffers automatically.
+</blockquote>
+
+</blockquote>
+
+
+</blockquote>
+
+
+<hr size=2>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+
+<hr size=2>
+
+<p>
+<address>
+<a href="http://www.ugcs.caltech.edu/~dazuma/glow/">The GLOW Toolkit</a>
+</address>
+</p>
+
+
+</body>
+
+</html>

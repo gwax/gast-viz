@@ -1,0 +1,287 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<html>
+
+<head>
+
+<title>
+GLOW Reference
+</title>
+
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3>
+GLOW API version 1.0 reference
+</h3>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+<hr>
+
+<h2>
+class GlowFont
+</h2>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>General information</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>
+type: class
+<br>
+inherits: (none)
+<br>
+module: <tt><a href="M_glowAux.html">glowAux</a></tt>
+</b>
+</p>
+<p>
+<tt>GlowFont</tt> encapsulates a GLUT font specification and provides methods for gathering useful information about a font's metrics. There are seven fonts available in GLOW, corresponding to the seven GLUT bitmap fonts. Conversions are provided that allow GlowFont objects to be used pretty much interchangeably with the GLUT API constants.
+</p>
+<p>
+Any GLOW program that deals with drawing text using the GLUT text drawing functions, as well as those that use GLOW widgets, may need to handle GlowFont objects.
+</p>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Constants</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Available system fonts</b>
+<br>
+This objects may be used to specify the available fonts.
+</p>
+
+<blockquote>
+
+<p>
+<tt>static const GlowFont <b>fixed8by13</b></tt>
+</p>
+<blockquote>
+A fixed-width font fitting in an 8x13 rectangle. Corresponds to <tt>GLUT_BITMAP_8_BY_13</tt>.
+</blockquote>
+<p>
+<tt>static const GlowFont <b>fixed9by15</b></tt>
+</p>
+<blockquote>
+A fixed-width font fitting in an 9x15 rectangle. Corresponds to <tt>GLUT_BITMAP_9_BY_15</tt>.
+</blockquote>
+<p>
+<tt>static const GlowFont <b>helvetica10</b></tt>
+</p>
+<blockquote>
+A sans serif proportionally spaced font at 10 point. Corresponds to <tt>GLUT_BITMAP_HELVETICA_10</tt>.
+</blockquote>
+<p>
+<tt>static const GlowFont <b>helvetica12</b></tt>
+</p>
+<blockquote>
+A sans serif proportionally spaced font at 12 point. Corresponds to <tt>GLUT_BITMAP_HELVETICA_12</tt>.
+</blockquote>
+<p>
+<tt>static const GlowFont <b>helvetica18</b></tt>
+</p>
+<blockquote>
+A sans serif proportionally spaced font at 18 point. Corresponds to <tt>GLUT_BITMAP_HELVETICA_18</tt>.
+</blockquote>
+<p>
+<tt>static const GlowFont <b>timesRoman10</b></tt>
+</p>
+<blockquote>
+A serif proportionally spaced font at 10 point. Corresponds to <tt>GLUT_BITMAP_TIMES_ROMAN_10</tt>.
+</blockquote>
+<p>
+<tt>static const GlowFont <b>timesRoman24</b></tt>
+</p>
+<blockquote>
+A serif proportionally spaced font at 24 point. Corresponds to <tt>GLUT_BITMAP_TIMES_ROMAN_24</tt>.
+</blockquote>
+
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Methods</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Constructors and conversions</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt><b>GlowFont</b>(void* glutFont = GLUT_BITMAP_HELVETICA_12)</tt>
+</p>
+<blockquote>
+Creates a new GlowFont given a GLUT font.
+</blockquote>
+
+<p>
+<tt><b>operator void*</b>(void)</tt>
+</p>
+<blockquote>
+Converts a GlowFont to the corresponding GLUT font.
+</blockquote>
+
+<p>
+<tt><b>operator const void*</b>(void) const</tt>
+</p>
+<blockquote>
+Converts a GlowFont to the corresponding GLUT font.
+</blockquote>
+
+<p>
+<tt>GlowFont& <b>operator=</b>(const GlowFont& font)</tt>
+</p>
+<blockquote>
+Copies a GlowFont.
+</blockquote>
+
+<p>
+<tt>GlowFont& <b>operator=</b>(const void* glutFont)</tt>
+</p>
+<blockquote>
+Converts a GLUT font to the corresponding GlowFont.
+</blockquote>
+
+<p>
+<tt>bool <b>operator==</b>(const void* glutFont)</tt>
+</p>
+<blockquote>
+Determines if a GlowFont and a GLUT font refer to the same font.
+</blockquote>
+
+</blockquote>
+
+<p>
+<b>Getting font metrics</b>
+<br>
+GLOW provides some rough metrics information for GLUT fonts. Width values are gotten from GLUT. Leading and baseline values were gathered by inspection from the IRIX GLUT 3.7 implementation.
+</p>
+
+<blockquote>
+
+<p>
+<tt>int <b>Leading</b>(void)</tt>
+</p>
+<blockquote>
+Returns the leading (pixels between baseline to baseline) of the font.
+</blockquote>
+
+<p>
+<tt>int <b>BaselinePos</b>(void)</tt>
+</p>
+<blockquote>
+Returns the baseline shift (pixels between the top of the font's rectangle and the baseline) of the font. This gives the correct raster position for drawing characters using this font.
+</blockquote>
+
+<p>
+<tt>int <b>StringWidth</b>(const char* str)</tt>
+</p>
+<blockquote>
+Returns the width of the given string in pixels, if drawn using this font.
+</blockquote>
+
+<p>
+<tt>int <b>CharWidth</b>(char ch)</tt>
+</p>
+<blockquote>
+Returns the width of the given character in pixels, if drawn using this font.
+</blockquote>
+
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Static Methods</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Adjusting metrics</b>
+<br>
+These advanced routines allow you to set the metrics values for fonts. They may be useful if, for example, you want widgets to space text differently than they do by default, or if you are using a GLUT implementation with font metrics different from the standard IRIX implementation. Width metrics go through GLUT and therefore cannot be adjusted.
+</p>
+
+<blockquote>
+
+<p>
+<tt>static void <b>SetLeadingMetric</b>(GlowFont font, int value)</tt>
+</p>
+<blockquote>
+Sets the leading metric for the given font to the given value.
+</blockquote>
+
+<p>
+<tt>static void <b>SetBaselineMetric</b>(GlowFont font, int value)</tt>
+</p>
+<blockquote>
+Sets the baseline position metric for the given font to the given value.
+</blockquote>
+
+</blockquote>
+
+</blockquote>
+
+
+<hr size=2>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+
+<hr size=2>
+
+<p>
+<address>
+<a href="http://www.ugcs.caltech.edu/~dazuma/glow/">The GLOW Toolkit</a>
+</address>
+</p>
+
+
+</body>
+
+</html>

@@ -1,0 +1,304 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<html>
+
+<head>
+
+<title>
+GLOW Reference
+</title>
+
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3>
+GLOW API version 1.0 reference
+</h3>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+<hr>
+
+<h2>
+class GlowRenderSwitch
+</h2>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>General information</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>
+type: class
+<br>
+inherits: <tt><a href="GlowComponent.html">GlowComponent</a></tt>
+<br>
+module: <tt><a href="M_glowRenderSwitch.html">glowRenderSwitch</a></tt>
+</b>
+</p>
+<p>
+<tt>GlowRenderSwitch</tt> is a simple component that can enable and disable rendering of its children. One common use of <tt>GlowRenderSwitch</tt> is in conjunction with <tt><a href="GlowViewManipulator.html">GlowViewManipulator</a></tt>. You may wish to render a simplified version of the scene while the user is interactively manipulating. One way to do this is to define two components under the manipulator, one for detailed (slow) rendering, and the other for simplified (faster) rendering, and then guard each component by a render switch. You can then turn these switches on and off depending on whether or not the user is interactively manipulating.
+</p>
+<p>
+<pre>                      |--> GlowRenderSwitch --> My_Fast_Component
+GlowViewManipulator --|
+                      |--> GlowRenderSwitch --> My_Slow_Component</pre>
+</p>
+<p>
+GLOW programs may use <tt>GlowRenderSwitch</tt> to manage rendering of component subtrees.
+</p>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Methods</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Constructors and destructor</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt><b>GlowRenderSwitch</b>(<a href="GlowComponent.html">GlowComponent</a>* parent)</tt>
+</p>
+<blockquote>
+Creates a new <tt>GlowRenderSwitch</tt> underneath <tt>parent</tt> in the component hierarchy.
+</blockquote>
+
+<p>
+<tt><b>GlowRenderSwitch</b>(void)</tt>
+</p>
+<blockquote>
+Creates a new <tt>GlowRenderSwitch</tt> but does not initialize it. A render switch created in this way may not be used until its <tt>Init()</tt> method is called.
+</blockquote>
+
+<p>
+<tt>void <b>Init</b>(<a href="GlowComponent.html">GlowComponent</a>* parent)</tt>
+</p>
+<blockquote>
+Initializes a new <tt>GlowRenderSwitch</tt> and places it underneath <tt>parent</tt> in the component hierarchy.
+</blockquote>
+
+<p>
+<tt>virtual <b>~GlowRenderSwitch</b>(void)</tt>
+</p>
+<blockquote>
+The destructor for <tt>GlowRenderSwitch</tt> also recursively deletes the components's children in the hierarchy.
+</blockquote>
+
+</blockquote>
+
+<p>
+<b>Render switch methods</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>void <b>Enable</b>(void)</tt>
+</p>
+<blockquote>
+Enables rendering of the component's children.
+</blockquote>
+
+<p>
+<tt>void <b>Disable</b>(void)</tt>
+</p>
+<blockquote>
+Disables rendering of the component's children.
+</blockquote>
+
+<p>
+<tt>void <b>SetEnabled</b>(bool enabled)</tt>
+</p>
+<blockquote>
+Enables or disables rendering of the component's children.
+</blockquote>
+
+<p>
+<tt>bool <b>IsEnabled</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the enable state.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Inherited methods</b>
+<br>
+These methods are inherited from <tt><a href="GlowComponent.html">GlowComponent</a></tt>.
+</p>
+
+<blockquote>
+
+<p>
+<tt>void <b>Close</b>(void)</tt>
+</p>
+
+<p>
+<tt><a href="GlowComponent.html">GlowComponent</a>* <b>Parent</b>(void) const</tt>
+</p>
+
+<p>
+<tt><a href="GlowSubwindow.html">GlowSubwindow</a>* <b>WhichWindow</b>(void)</tt>
+</p>
+
+<p>
+<tt><a href="GlowSubwindow.html">GlowSubwindow</a>* <b>ParentWindow</b>(void) const</tt>
+</p>
+
+<p>
+<tt><a href="GlowWindow.html">GlowWindow</a>* <b>ToplevelWindow</b>(void)</tt>
+</p>
+
+<p>
+<tt>bool <b>IsToplevel</b>(void) const</tt>
+</p>
+
+<p>
+<tt><a href="GlowComponent.html">GlowComponent</a>* <b>Next</b>(void) const</tt>
+</p>
+
+<p>
+<tt><a href="GlowComponent.html">GlowComponent</a>* <b>Prev</b>(void) const</tt>
+</p>
+
+<p>
+<tt>int <b>NumChildren</b>(void) const</tt>
+</p>
+
+<p>
+<tt><a href="GlowComponent.html">GlowComponent</a>* <b>FirstChild</b>(void) const</tt>
+</p>
+
+<p>
+<tt><a href="GlowComponent.html">GlowComponent</a>* <b>LastChild</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>ReorderChild</b>(<a href="GlowComponent.html">GlowComponent</a>* child, <a href="GlowComponent.html">GlowComponent</a>* pos)</tt>
+</p>
+
+<p>
+<tt>void <b>KillChildren</b>(void)</tt>
+</p>
+
+<p>
+<tt>void <b>Activate</b>(void)</tt>
+</p>
+
+<p>
+<tt>void <b>Deactivate</b>(void)</tt>
+</p>
+
+<p>
+<tt>bool <b>IsActive</b>(void)</tt>
+</p>
+
+<p>
+<tt>bool <b>IsInactive</b>(void)</tt>
+</p>
+
+<p>
+<tt>bool <b>IsActiveStandby</b>(void)</tt>
+</p>
+
+<p>
+<tt>void <b>Paint</b>(void)</tt>
+</p>
+
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Overrideable methods</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Inherited methods</b>
+<br>
+These methods are inherited from <tt><a href="GlowComponent.html">GlowComponent</a></tt>.
+</p>
+
+<blockquote>
+
+<p>
+<tt>virtual void <b>OnActivate</b>(void)</tt>
+</p>
+
+<p>
+<tt>virtual void <b>OnDeactivate</b>(void)</tt>
+</p>
+
+<p>
+<tt>virtual void <b>OnBeginPaint</b>(void)</tt>
+</p>
+<blockquote>
+This method is overridden by <tt>GlowRenderSwitch</tt> to perform render enabling and disabling. You should not normally override it again.
+</blockquote>
+
+<p>
+<tt>virtual void <b>OnEndPaint</b>(void)</tt>
+</p>
+
+</blockquote>
+
+</blockquote>
+
+
+<hr size=2>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+
+<hr size=2>
+
+<p>
+<address>
+<a href="http://www.ugcs.caltech.edu/~dazuma/glow/">The GLOW Toolkit</a>
+</address>
+</p>
+
+
+</body>
+
+</html>

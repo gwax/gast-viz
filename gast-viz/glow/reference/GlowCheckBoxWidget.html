@@ -1,0 +1,919 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<html>
+
+<head>
+
+<title>
+GLOW Reference
+</title>
+
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3>
+GLOW API version 1.0 reference
+</h3>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+<hr>
+
+<h2>
+class GlowCheckBoxWidget
+</h2>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>General information</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>
+type: class
+<br>
+inherits: <tt><a href="GlowWidget.html">GlowWidget</a></tt>
+<br>
+module: <tt><a href="M_glowCheckBoxWidget.html">glowCheckBoxWidget</a></tt>
+</b>
+</p>
+<p>
+<tt>GlowCheckBoxWidget</tt> is a checkbox widget. It can exist in three states: on, off and half. Normally, its behavior switches back and forth between on and off, but this can be changed to include half.
+</p>
+<p>
+GLOW programs that make use of checkbox widgets should use this class.
+</p>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Constants</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>States</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>enum GlowCheckBoxWidget::State <b>on</b></tt>
+</p>
+<blockquote>
+On state
+</blockquote>
+<p>
+<tt>enum GlowCheckBoxWidget::State <b>off</b></tt>
+</p>
+<blockquote>
+Off state
+</blockquote>
+<p>
+<tt>enum GlowCheckBoxWidget::State <b>half</b></tt>
+</p>
+<blockquote>
+Mixed state
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Behavior options</b>
+<br>
+These behavior options should be or'ed together and passed in the options parameter.
+</p>
+
+<blockquote>
+
+<p>
+<tt>enum GlowCheckBoxWidget::Behavior <b>defaultBehavior</b></tt>
+</p>
+<blockquote>
+Defaults (equal to <tt>onFollowsOff | offFollowsOn | onFollowsHalf</tt>)
+</blockquote>
+<p>
+<tt>enum GlowCheckBoxWidget::Behavior <b>onFollowsOff</b></tt>
+</p>
+<blockquote>
+Clicking during the <tt>off</tt> state results in change to <tt>on</tt>. (default)
+</blockquote>
+<p>
+<tt>enum GlowCheckBoxWidget::Behavior <b>halfFollowsOff</b></tt>
+</p>
+<blockquote>
+Clicking during the <tt>off</tt> state results in change to <tt>half</tt>.
+</blockquote>
+<p>
+<tt>enum GlowCheckBoxWidget::Behavior <b>offFollowsOn</b></tt>
+</p>
+<blockquote>
+Clicking during the <tt>on</tt> state results in change to <tt>off</tt>. (default)
+</blockquote>
+<p>
+<tt>enum GlowCheckBoxWidget::Behavior <b>halfFollowsOn</b></tt>
+</p>
+<blockquote>
+Clicking during the <tt>on</tt> state results in change to <tt>half</tt>.
+</blockquote>
+<p>
+<tt>enum GlowCheckBoxWidget::Behavior <b>onFollowsHalf</b></tt>
+</p>
+<blockquote>
+Clicking during the <tt>half</tt> state results in change to <tt>on</tt>. (default)
+</blockquote>
+<p>
+<tt>enum GlowCheckBoxWidget::Behavior <b>offFollowsHalf</b></tt>
+</p>
+<blockquote>
+Clicking during the <tt>half</tt> state results in change to <tt>off</tt>.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Inherited constants</b>
+<br>
+These constants are inherited from <tt><a href="GlowWidget.html">GlowWidget</a></tt>.
+</p>
+
+<blockquote>
+
+<p>
+<tt>enum <a href="GlowWidget.html">GlowWidget</a>::AutoPackError <b>noAutoPackError</b></tt>
+<br>
+<tt>enum <a href="GlowWidget.html">GlowWidget</a>::AutoPackError <b>hAutoPackError</b></tt>
+<br>
+<tt>enum <a href="GlowWidget.html">GlowWidget</a>::AutoPackError <b>vAutoPackError</b></tt>
+</p>
+
+<p>
+<tt>enum <a href="GlowWidget.html">GlowWidget</a>::AutoPackOptions <b>noReshape</b></tt>
+<br>
+<tt>enum <a href="GlowWidget.html">GlowWidget</a>::AutoPackOptions <b>preferredSize</b></tt>
+<br>
+<tt>enum <a href="GlowWidget.html">GlowWidget</a>::AutoPackOptions <b>expandPreferredSize</b></tt>
+<br>
+<tt>enum <a href="GlowWidget.html">GlowWidget</a>::AutoPackOptions <b>forcedSize</b></tt>
+<br>
+<tt>enum <a href="GlowWidget.html">GlowWidget</a>::AutoPackOptions <b>noMove</b></tt>
+<br>
+<tt>enum <a href="GlowWidget.html">GlowWidget</a>::AutoPackOptions <b>leftPos</b></tt>
+<br>
+<tt>enum <a href="GlowWidget.html">GlowWidget</a>::AutoPackOptions <b>rightPos</b></tt>
+<br>
+<tt>enum <a href="GlowWidget.html">GlowWidget</a>::AutoPackOptions <b>topPos</b></tt>
+<br>
+<tt>enum <a href="GlowWidget.html">GlowWidget</a>::AutoPackOptions <b>bottomPos</b></tt>
+<br>
+<tt>enum <a href="GlowWidget.html">GlowWidget</a>::AutoPackOptions <b>centerPos</b></tt>
+</p>
+
+<p>
+<tt>enum { <b>unspecifiedSize</b> }</tt>
+<br>
+<tt>enum { <b>unspecifiedPos</b> }</tt>
+</p>
+
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Methods</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Constructors and destructor</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt><b>GlowCheckBoxWidget</b>(<a href="GlowWidget.html">GlowWidget</a>* parent, const <a href="GlowCheckBoxParams.html">GlowCheckBoxParams</a>& params)</tt>
+</p>
+<blockquote>
+Creates a new <tt>GlowCheckBoxWidget</tt> using the given <tt>params</tt> and adds it to <tt>parent</tt>'s children.
+</blockquote>
+
+<p>
+<tt><b>GlowCheckBoxWidget</b>(<a href="GlowWidgetRoot.html">GlowWidgetRoot</a>* root, const <a href="GlowCheckBoxParams.html">GlowCheckBoxParams</a>& params)</tt>
+</p>
+<blockquote>
+Creates a new <tt>GlowCheckBoxWidget</tt> using the given <tt>params</tt> and adds it to the top level under <tt>root</tt>.
+</blockquote>
+
+<p>
+<tt><b>GlowCheckBoxWidget</b>(void)</tt>
+</p>
+<blockquote>
+Creates a new <tt>GlowCheckBoxWidget</tt> but does not initialize it. A checkbox created in this way may not be used until its <tt>Init()</tt> method is called.
+</blockquote>
+
+<p>
+<tt>void <b>Init</b>(<a href="GlowWidget.html">GlowWidget</a>* parent, const <a href="GlowCheckBoxParams.html">GlowCheckBoxParams</a>& params)</tt>
+</p>
+<blockquote>
+Initializes a new <tt>GlowCheckBoxWidget</tt> using the given <tt>params</tt> and adds it to <tt>parent</tt>'s children.
+</blockquote>
+
+<p>
+<tt>void <b>Init</b>(<a href="GlowWidgetRoot.html">GlowWidgetRoot</a>* root, const <a href="GlowCheckBoxParams.html">GlowCheckBoxParams</a>& params)</tt>
+</p>
+<blockquote>
+Initializes a new <tt>GlowCheckBoxWidget</tt> using the given <tt>params</tt> and adds it to the top level under <tt>root</tt>.
+</blockquote>
+
+<p>
+<tt>virtual <b>~GlowCheckBoxWidget</b>(void)</tt>
+</p>
+
+</blockquote>
+
+<p>
+<b>Attributes</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>const char* <b>GetText</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the label string for the checkbox.
+</blockquote>
+
+<p>
+<tt>void <b>SetText</b>(const char* text)</tt>
+</p>
+<blockquote>
+Sets the label string for the checkbox.
+</blockquote>
+
+<p>
+<tt><a href="GlowFont.html">GlowFont</a> <b>GetFont</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the font for the checkbox label.
+</blockquote>
+
+<p>
+<tt>void <b>SetFont</b>(<a href="GlowFont.html">GlowFont</a> font)</tt>
+</p>
+<blockquote>
+Sets the font for the checkbox label.
+</blockquote>
+
+<p>
+<tt>int <b>GetSpacing</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the pixel spacing between the box and label.
+</blockquote>
+
+<p>
+<tt>void <b>SetSpacing</b>(int spacing)</tt>
+</p>
+<blockquote>
+Sets the pixel spacing between the box and label.
+</blockquote>
+
+<p>
+<tt>GlowCheckBoxWidget::Behavior <b>GetBehavior</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the current behavior options of the checkbox.
+</blockquote>
+
+<p>
+<tt>void <b>SetBehavior</b>(GlowCheckBoxWidget::Behavior behavior)</tt>
+</p>
+<blockquote>
+Sets the behavior options of the checkbox.
+</blockquote>
+
+<p>
+<tt>GlowCheckBoxWidget::State <b>GetState</b>(void) const</tt>
+</p>
+<blockquote>
+Returns the current state of the checkbox.
+</blockquote>
+
+<p>
+<tt>void <b>SetState</b>(GlowCheckBoxWidget::State state)</tt>
+</p>
+<blockquote>
+Sets the current state of the checkbox.
+</blockquote>
+
+<p>
+<tt>void <b>ToggleState</b>(void)</tt>
+</p>
+<blockquote>
+Toggles the state of the checkbox according to the current behavior.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Color attributes</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt><a href="GlowColor.html">GlowColor</a> <b>GetBoxColor</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>SetBoxColor</b>(<a href="GlowColor.html">GlowColor</a> c)</tt>
+</p>
+
+<p>
+<tt><a href="GlowColor.html">GlowColor</a> <b>GetTextColor</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>SetTextColor</b>(<a href="GlowColor.html">GlowColor</a> c)</tt>
+</p>
+
+<p>
+<tt><a href="GlowColor.html">GlowColor</a> <b>GetCheckColor</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>SetCheckColor</b>(<a href="GlowColor.html">GlowColor</a> c)</tt>
+</p>
+
+<p>
+<tt><a href="GlowColor.html">GlowColor</a> <b>GetHiliteBoxColor</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>SetHiliteBoxColor</b>(<a href="GlowColor.html">GlowColor</a> c)</tt>
+</p>
+
+<p>
+<tt><a href="GlowColor.html">GlowColor</a> <b>GetHiliteTextColor</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>SetHiliteTextColor</b>(<a href="GlowColor.html">GlowColor</a> c)</tt>
+</p>
+
+<p>
+<tt><a href="GlowColor.html">GlowColor</a> <b>GetHiliteCheckColor</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>SetHiliteCheckColor</b>(<a href="GlowColor.html">GlowColor</a> c)</tt>
+</p>
+
+<p>
+<tt><a href="GlowColor.html">GlowColor</a> <b>GetDisableBoxColor</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>SetDisableBoxColor</b>(<a href="GlowColor.html">GlowColor</a> c)</tt>
+</p>
+
+<p>
+<tt><a href="GlowColor.html">GlowColor</a> <b>GetDisableTextColor</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>SetDisableTextColor</b>(<a href="GlowColor.html">GlowColor</a> c)</tt>
+</p>
+
+<p>
+<tt><a href="GlowColor.html">GlowColor</a> <b>GetDisableCheckColor</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>SetDisableCheckColor</b>(<a href="GlowColor.html">GlowColor</a> c)</tt>
+</p>
+
+<p>
+<tt><a href="GlowColor.html">GlowColor</a> <b>GetDisableOutlineColor</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>SetDisableOutlineColor</b>(<a href="GlowColor.html">GlowColor</a> c)</tt>
+</p>
+
+<p>
+<tt><a href="GlowColor.html">GlowColor</a> <b>GetLightBevelColor</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>SetLightBevelColor</b>(<a href="GlowColor.html">GlowColor</a> c)</tt>
+</p>
+
+<p>
+<tt><a href="GlowColor.html">GlowColor</a> <b>GetDarkBevelColor</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>SetDarkBevelColor</b>(<a href="GlowColor.html">GlowColor</a> c)</tt>
+</p>
+
+</blockquote>
+
+
+<p>
+<b>Other methods</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>void <b>CropWidth</b>(void)</tt>
+</p>
+<blockquote>
+Reduces the width of a checkbox to fit snugly around the label. Only reduces the width: does not widen the widget if it is too narrow to contain the label.
+</blockquote>
+
+<p>
+<tt><a href="TSender.html">TSender</a>&lt;const <a href="GlowCheckBoxMessage.html">GlowCheckBoxMessage</a>&&gt;& <b>Notifier</b>(void)</tt>
+</p>
+<blockquote>
+Returns a reference to the sender used by the checkbox to notify objects of changes to the state. Bind this sender to a <a href="GlowCheckBoxReceiver.html">GlowCheckBoxReceiver</a> to cause that receiver to be notified when the user toggles the checkbox.
+</blockquote>
+
+<p>
+<tt>void <b>Hit</b>(<a href="Glow.html">Glow</a>::MouseButton mouseButton, <a href="Glow.html">Glow</a>::Modifiers modifiers)</tt>
+</p>
+<blockquote>
+Simulates a hit on this check box by calling the <tt>OnHit()</tt> method.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Inherited methods</b>
+<br>
+These methods are inherited from <tt><a href="GlowWidget.html">GlowWidget</a></tt>.
+</p>
+
+<blockquote>
+
+<p>
+<tt>void <b>Move</b>(int x, int y)</tt>
+</p>
+
+<p>
+<tt>int <b>PositionX</b>(void) const</tt>
+</p>
+
+<p>
+<tt>int <b>PositionY</b>(void) const</tt>
+</p>
+
+<p>
+<tt>int <b>RootPositionX</b>(void) const</tt>
+</p>
+
+<p>
+<tt>int <b>RootPositionY</b>(void) const</tt>
+</p>
+
+<p>
+<tt>int <b>GlobalPositionX</b>(void) const</tt>
+</p>
+
+<p>
+<tt>int <b>GlobalPositionY</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>Reshape</b>(int width, int height)</tt>
+</p>
+
+<p>
+<tt>int <b>Width</b>(void) const</tt>
+</p>
+
+<p>
+<tt>int <b>Height</b>(void) const</tt>
+</p>
+
+<p>
+<tt><a href="GlowWidget.html">GlowWidget</a>::AutoPackError <b>AutoPack</b>(int leftLimit, int rightLimit, int topLimit, int bottomLimit, <a href="GlowWidget.html">GlowWidget</a>::AutoPackOptions hOption, <a href="GlowWidget.html">GlowWidget</a>::AutoPackOptions vOption, int& leftMargin, int& rightMargin, int& topMargin, int& bottomMargin)</tt>
+<br>
+<tt><a href="GlowWidget.html">GlowWidget</a>::AutoPackError <b>AutoPack</b>(int leftLimit, int rightLimit, int topLimit, int bottomLimit, <a href="GlowWidget.html">GlowWidget</a>::AutoPackOptions hOption, <a href="GlowWidget.html">GlowWidget</a>::AutoPackOptions vOption)</tt>
+</p>
+
+<p>
+<tt><a href="GlowWidget.html">GlowWidget</a>::AutoPackError <b>AutoReshape</b>(int& leftMargin, int& rightMargin, int& topMargin, int& bottomMargin)</tt>
+<br>
+<tt><a href="GlowWidget.html">GlowWidget</a>::AutoPackError <b>AutoReshape</b>()</tt>
+</p>
+
+<p>
+<tt>void <b>Hide</b>(void)</tt>
+</p>
+
+<p>
+<tt>void <b>Show</b>(void)</tt>
+</p>
+
+<p>
+<tt>bool <b>IsVisible</b>(void) const</tt>
+</p>
+
+<p>
+<tt>bool <b>IsInvisible</b>(void) const</tt>
+</p>
+
+<p>
+<tt>bool <b>IsVisibleMasked</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>Refresh</b>(void)</tt>
+</p>
+
+<p>
+<tt>void <b>SetRefreshEnabled</b>(bool enabled)</tt>
+</p>
+
+<p>
+<tt>bool <b>IsRefreshEnabled</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>SetClipping</b>(bool clip)</tt>
+</p>
+
+<p>
+<tt>bool <b>IsClipping</b>(void)</tt>
+</p>
+
+<p>
+<tt>void <b>GrabKeyboardFocus</b>(void)</tt>
+</p>
+<blockquote>
+Checkboxes should not attempt to grab the keyboard focus unless a subclass makes use of keyboard events.
+</blockquote>
+
+<p>
+<tt>void <b>RelinquishKeyboardFocus</b>(void)</tt>
+</p>
+
+<p>
+<tt>bool <b>HasKeyboardFocus</b>(void)</tt>
+</p>
+
+<p>
+<tt><a href="GlowWidgetRoot.html">GlowWidgetRoot</a>* <b>Root</b>(void)</tt>
+</p>
+
+<p>
+<tt>void <b>SetRefCon</b>(long refcon)</tt>
+</p>
+
+<p>
+<tt>long <b>GetRefCon</b>(void)</tt>
+</p>
+
+</blockquote>
+
+
+<p>
+<b>Inherited methods</b>
+<br>
+These methods are inherited from <tt><a href="GlowComponent.html">GlowComponent</a></tt>.
+</p>
+
+<blockquote>
+
+<p>
+<tt>void <b>Close</b>(void)</tt>
+</p>
+
+<p>
+<tt><a href="GlowComponent.html">GlowComponent</a>* <b>Parent</b>(void) const</tt>
+</p>
+
+<p>
+<tt><a href="GlowSubwindow.html">GlowSubwindow</a>* <b>WhichWindow</b>(void)</tt>
+</p>
+
+<p>
+<tt><a href="GlowSubwindow.html">GlowSubwindow</a>* <b>ParentWindow</b>(void) const</tt>
+</p>
+
+<p>
+<tt><a href="GlowWindow.html">GlowWindow</a>* <b>ToplevelWindow</b>(void)</tt>
+</p>
+
+<p>
+<tt>bool <b>IsToplevel</b>(void) const</tt>
+</p>
+
+<p>
+<tt><a href="GlowComponent.html">GlowComponent</a>* <b>Next</b>(void) const</tt>
+</p>
+
+<p>
+<tt><a href="GlowComponent.html">GlowComponent</a>* <b>Prev</b>(void) const</tt>
+</p>
+
+<p>
+<tt>int <b>NumChildren</b>(void) const</tt>
+</p>
+
+<p>
+<tt><a href="GlowComponent.html">GlowComponent</a>* <b>FirstChild</b>(void) const</tt>
+</p>
+
+<p>
+<tt><a href="GlowComponent.html">GlowComponent</a>* <b>LastChild</b>(void) const</tt>
+</p>
+
+<p>
+<tt>void <b>ReorderChild</b>(<a href="GlowComponent.html">GlowComponent</a>* child, <a href="GlowComponent.html">GlowComponent</a>* pos)</tt>
+</p>
+
+<p>
+<tt>void <b>KillChildren</b>(void)</tt>
+</p>
+
+<p>
+<tt>void <b>Activate</b>(void)</tt>
+</p>
+
+<p>
+<tt>void <b>Deactivate</b>(void)</tt>
+</p>
+
+<p>
+<tt>bool <b>IsActive</b>(void)</tt>
+</p>
+
+<p>
+<tt>bool <b>IsInactive</b>(void)</tt>
+</p>
+
+<p>
+<tt>bool <b>IsActiveStandby</b>(void)</tt>
+</p>
+
+<p>
+<tt>void <b>Paint</b>(void)</tt>
+</p>
+
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Protected methods for subclasses</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Initialization</b>
+</p>
+
+<blockquote>
+
+<p>
+<tt>void <b>Init</b>(<a href="GlowWidgetRoot.html">GlowWidgetRoot</a>* root, <a href="GlowWidget.html">GlowWidget</a>* parent, const <a href="GlowCheckBoxParams.html">GlowCheckBoxParams</a>& params)</tt>
+</p>
+<blockquote>
+Initializes a new <tt>GlowCheckBoxWidget</tt> using the given <tt>params</tt> and adds it to <tt>root</tt>'s hierarchy under <tt>parent</tt>. <tt>parent</tt> must be present in <tt>root</tt>'s hierarchy.
+</blockquote>
+
+</blockquote>
+
+<p>
+<b>Inherited methods</b>
+<br>
+These methods are inherited from <tt><a href="GlowWidget.html">GlowWidget</a></tt>.
+</p>
+
+<blockquote>
+
+<p>
+<tt>void <b>NormalizeCoordinates</b>(int x, int y, GLfloat& xn, GLfloat& yn) const</tt>
+</p>
+
+<p>
+<tt>void <b>RegisterMouseEvents</b>(void)</tt>
+</p>
+
+<p>
+<tt>void <b>RegisterKeyboardEvents</b>(void)</tt>
+</p>
+
+<p>
+<tt>void <b>UnegisterMouseEvents</b>(void)</tt>
+</p>
+
+<p>
+<tt>void <b>UnregisterKeyboardEvents</b>(void)</tt>
+</p>
+
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<table width="100%" bgcolor="#ffffcc" cellpadding=3 cellspacing=0><tr><td>
+<font size="+1"><b>Overrideable methods</b></font>
+</td></tr></table>
+</p>
+
+<blockquote>
+
+<p>
+<b>Event handlers</b>
+<br>
+These methods are called as soon as a widget-level event occurs. The default methods typically send the appropriate messages to the attached receivers.
+</p>
+
+<blockquote>
+
+<p>
+<tt>virtual void <b>OnHit</b>(<a href="Glow.html">Glow</a>::MouseButton mouseButton, <a href="Glow.html">Glow</a>::Modifiers modifiers)</tt>
+</p>
+<blockquote>
+Called when a checkbox has been toggled. <tt>mouseButton</tt> is the mouse button pressed (see constants in <a href="Glow.html">Glow</a>) and <tt>modifiers</tt> gives the keyboard modifiers that were down when the mouse button was pressed. The default method toggles the state according to the current behavior and sends messages to the attached <a href="GlowCheckBoxReceiver.html">GlowCheckBoxReceiver</a>s.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Inherited methods</b>
+<br>
+These methods are inherited from <tt><a href="GlowWidget.html">GlowWidget</a></tt>.
+</p>
+
+<blockquote>
+
+<p>
+<tt>virtual void <b>OnWidgetPaint</b>(void)</tt>
+</p>
+<blockquote>
+<tt>GlowCheckBoxWidget</tt> overrides this method to draw the check box. You should not override it again unless a subclass needs to modify how checkboxes are drawn.
+</blockquote>
+
+<p>
+<tt>virtual void <b>OnWidgetMouseDown</b>(<a href="Glow.html">Glow</a>::MouseButton mouseButton, int x, int y, <a href="Glow.html">Glow</a>::Modifiers modifiers)</tt>
+</p>
+<blockquote>
+<tt>GlowCheckBoxWidget</tt> overrides this method to handle mouse events. You should not override it again unless a subclass needs to modify how events are handled.
+</blockquote>
+
+<p>
+<tt>virtual void <b>OnWidgetMouseUp</b>(<a href="Glow.html">Glow</a>::MouseButton mouseButton, int x, int y, <a href="Glow.html">Glow</a>::Modifiers modifiers)</tt>
+</p>
+<blockquote>
+<tt>GlowCheckBoxWidget</tt> overrides this method to handle mouse events. You should not override it again unless a subclass needs to modify how events are handled.
+</blockquote>
+
+<p>
+<tt>virtual void <b>OnWidgetMouseDrag</b>(int x, int y)</tt>
+</p>
+<blockquote>
+<tt>GlowCheckBoxWidget</tt> overrides this method to handle mouse events. You should not override it again unless a subclass needs to modify how events are handled.
+</blockquote>
+
+<p>
+<tt>virtual void <b>OnWidgetKeyboard</b>(<a href="Glow.html">Glow</a>::KeyCode key, int x, int y, <a href="Glow.html">Glow</a>::Modifiers modifiers)</tt>
+</p>
+<blockquote>
+The standard <tt>GlowCheckBoxWidget</tt> does not handle keyboard events. Override this method if a subclass needs to receive keyboard events.
+</blockquote>
+
+<p>
+<tt>virtual void <b>OnWidgetMove</b>(int x, int y)</tt>
+</p>
+
+<p>
+<tt>virtual void <b>OnWidgetReshape</b>(int width, int height)</tt>
+</p>
+
+<p>
+<tt>virtual void <b>OnWidgetInvisible</b>(void)</tt>
+</p>
+
+<p>
+<tt>virtual void <b>OnWidgetVisible</b>(void)</tt>
+</p>
+
+<p>
+<tt>virtual void <b>OnWidgetDeactivate</b>(void)</tt>
+</p>
+
+<p>
+<tt>virtual void <b>OnWidgetActivate</b>(void)</tt>
+</p>
+
+<p>
+<tt>virtual void <b>OnGotKeyboardFocus</b>(void)</tt>
+</p>
+
+<p>
+<tt>virtual void <b>OnLostKeyboardFocus</b>(void)</tt>
+</p>
+
+<p>
+<tt>virtual <a href="GlowWidget.html">GlowWidget</a>::AutoPackError <b>OnAutoPack</b>(int hSize, int vSize, <a href="GlowWidget.html">GlowWidget</a>::AutoPackOptions hOption, <a href="GlowWidget.html">GlowWidget</a>::AutoPackOptions vOption, int& leftMargin, int& rightMargin, int& topMargin, int& bottomMargin)</tt>
+</p>
+<blockquote>
+<tt>GlowCheckBoxWidget</tt> implements this method to pack a checkbox. Override it if a subclass requires different packing.
+</blockquote>
+
+</blockquote>
+
+
+<p>
+<b>Inherited methods</b>
+<br>
+These methods are inherited from <tt><a href="GlowComponent.html">GlowComponent</a></tt>, but are used by <tt><a href="GlowWidget.html">GlowWidget</a></tt> and should not be overridden again.
+</p>
+
+<blockquote>
+
+<p>
+<tt>virtual void <b>OnActivate</b>(void)</tt>
+</p>
+
+<p>
+<tt>virtual void <b>OnDeactivate</b>(void)</tt>
+</p>
+
+<p>
+<tt>virtual void <b>OnBeginPaint</b>(void)</tt>
+</p>
+
+<p>
+<tt>virtual void <b>OnEndPaint</b>(void)</tt>
+</p>
+
+</blockquote>
+
+</blockquote>
+
+
+<hr size=2>
+
+<p>
+<table cellpadding=0 cellspacing=3><tr>
+<td valign=top>
+<a href="index.html"><image src="../graphics/revert.gif" border=0></a>
+</td>
+<td valign=top>
+<a href="index.html">Back to<br>Table of contents</a>
+</td>
+</tr></table>
+</p>
+
+
+<hr size=2>
+
+<p>
+<address>
+<a href="http://www.ugcs.caltech.edu/~dazuma/glow/">The GLOW Toolkit</a>
+</address>
+</p>
+
+
+</body>
+
+</html>
