@@ -12,3 +12,6 @@
 *.la
 *.a
 
+# Compiled Dependency files
+*.dep
+
